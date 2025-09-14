@@ -17,6 +17,7 @@
   --color-foreground: var(--foreground);
   --color-primary: var(--primary);
   --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
   --color-card: var(--card);
   --color-border: var(--border);
   --color-ring: var(--ring);
@@ -32,6 +33,7 @@
   --foreground: rgba(20, 18, 28, 1);
   --primary: rgba(123, 83, 238, 1);
   --secondary: rgba(250, 114, 104, 1);
+  --secondary-foreground: rgba(20, 18, 28, 1);
 
   --card: rgb(255, 255, 255);
   --border: rgb(229, 229, 229);
@@ -43,6 +45,7 @@
   --foreground: rgba(224, 217, 245, 1);
   --primary: rgba(123, 83, 238, 1);
   --secondary: rgba(250, 114, 104, 1);
+  --secondary-foreground: rgba(224, 217, 245, 1);
 
   --card: rgba(35, 32, 48, 1);
   --border: rgba(224, 217, 245, 0.1);
