@@ -9,7 +9,7 @@ import { Button } from "../ui/button";
 
 const Home = () => {
   return (
-    <section className="relative grid grid-cols-1 place-items-center gap-y-4 w-full min-h-screen pt-18 px-4">
+    <section className="relative grid grid-cols-1 place-items-center gap-y-4 w-full min-h-screen pt-18 pb-9 px-5">
       <Squares
         direction="down"
         speed={0.05}

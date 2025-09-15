@@ -21,7 +21,7 @@ const Navbar = () => {
   }, [isPortuguese]);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 flex flex-row justify-between items-center p-4 z-50">
+    <nav className="fixed top-0 left-0 right-0 flex flex-row justify-between items-center p-5 z-50">
       <img src={Icon} alt="Logo LH" />
 
       <ul className="hidden">
