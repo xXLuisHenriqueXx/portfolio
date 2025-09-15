@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react";
 import { Menu, Sun, X } from "lucide-react";
 
-import Modal from "./_components/Modal";
+import Modal from "./Modal";
 import { Button } from "../ui/button";
 
 import Icon from "@src/assets/icon.svg";
