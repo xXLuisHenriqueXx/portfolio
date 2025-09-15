@@ -48,8 +48,8 @@
   --secondary-foreground: rgba(224, 217, 245, 1);
 
   --card: rgba(35, 32, 48, 1);
-  --border: rgba(224, 217, 245, 0.1);
-  --ring: rgba(224, 217, 245, 0.15);
+  --border: rgba(123, 83, 238, 0.25);
+  --ring: rgba(123, 83, 238, 0.25);
 }
 
 @layer base {

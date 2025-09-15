@@ -32,7 +32,7 @@ const Navbar = () => {
         <li className="text-sm font-medium text-primary-text">Contact</li>
       </ul>
 
-      <ul className="flex flex-row items-center gap-x-4">
+      <ul className="flex flex-row items-center gap-x-2">
         <Button
           variant="outline"
           size={"sm"}
