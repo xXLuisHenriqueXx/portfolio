@@ -18,6 +18,9 @@
   --color-primary: var(--primary);
   --color-secondary: var(--secondary);
   --color-secondary-foreground: var(--secondary-foreground);
+  --color-projects: var(--projects);
+  --color-graduation: var(--graduation);
+  --color-study: var(--study);
   --color-card: var(--card);
   --color-border: var(--border);
   --color-ring: var(--ring);
@@ -35,6 +38,10 @@
   --secondary: rgba(250, 114, 104, 1);
   --secondary-foreground: rgba(20, 18, 28, 1);
 
+  --graduation: rgba(238, 202, 83, 1);
+  --projects: rgba(83, 238, 158, 1);
+  --study: rgba(83, 155, 238, 1);
+
   --card: rgb(255, 255, 255);
   --border: rgb(229, 229, 229);
   --ring: rgb(161, 161, 161);
@@ -47,6 +54,10 @@
   --secondary: rgba(250, 114, 104, 1);
   --secondary-foreground: rgba(224, 217, 245, 1);
 
+  --graduation: rgba(238, 202, 83, 1);
+  --projects: rgba(83, 238, 158, 1);
+  --study: rgba(83, 155, 238, 1);
+
   --card: rgba(35, 32, 48, 1);
   --border: rgba(123, 83, 238, 0.25);
   --ring: rgba(123, 83, 238, 0.25);
@@ -57,6 +68,6 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-inter;
   }
 }
