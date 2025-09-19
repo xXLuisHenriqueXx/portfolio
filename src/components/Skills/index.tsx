@@ -1,3 +1,4 @@
+import SpotlightCard from "../SpotlightCard";
 import { Separator } from "../ui/separator";
 
 import { skillsData } from "@src/static/SkillsData";
@@ -37,9 +38,10 @@ const Skills = () => {
               style={{ msOverflowStyle: "none", scrollbarWidth: "none" }}
             >
               {skill.items.map((item, index) => (
-                <div
+                <SpotlightCard
                   key={index}
                   className="flex shrink-0 flex-col items-center justify-center gap-y-2 p-2 bg-card rounded-md"
+                  spotlightColor="rgba(123, 83, 238, 0.25)"
                 >
                   <div className="flex flex-col items-center gap-y-1">
                     <img className="w-6 h-6" src={item.image} />
@@ -47,7 +49,7 @@ const Skills = () => {
                   </div>
 
                   <item.tag />
-                </div>
+                </SpotlightCard>
               ))}
             </div>
           </div>
