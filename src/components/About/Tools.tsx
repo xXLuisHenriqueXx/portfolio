@@ -16,7 +16,7 @@ const Tools = () => {
             className="flex flex-row items-center gap-x-2 bg-primary/10 hover:scale-[101%] p-2 rounded-lg transition-all duration-300 cursor-pointer text-xs font-medium"
             spotlightColor="rgba(123, 83, 238, 0.5)"
           >
-            <img className="w-4 h-4" src={tool.image} />
+            <tool.icon className="w-4 h-4 fill-primary" />
             <p>#{tool.name}</p>
           </SpotlightCard>
         ))}

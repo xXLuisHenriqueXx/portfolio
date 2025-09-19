@@ -1,3 +1,21 @@
+import {
+  aws,
+  docker,
+  express,
+  fastify,
+  figma,
+  git,
+  mongodb,
+  nestjs,
+  nextjs,
+  node,
+  postgresql,
+  react,
+  rubyonrails,
+  tailwindcss,
+  typescript,
+} from "./SVGs";
+
 export const aboutData = {
   paragraphs: [
     "Olá, me chamo Luis Henrique Cardoso e sou Desenvolvedor FullStack e Mobile dedicado a criar soluções web e mobile, otimizadas e escalàveis. Meus conhecimentos vão desde o web design até a criação de interfaces agrádaveis e responsivas com arquitetura robusta na infraestrutura.",
@@ -9,78 +27,67 @@ export const aboutData = {
   tools: [
     {
       name: "React",
-      image:
-        "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg",
+      icon: react,
     },
     {
       name: "React Native",
-      image:
-        "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg",
+      icon: react,
+    },
+    {
+      name: "Next.js",
+      icon: nextjs,
     },
     {
       name: "TypeScript",
-      image:
-        "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-plain.svg",
+      icon: typescript,
     },
     {
       name: "TailwindCSS",
-      image:
-        "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg",
+      icon: tailwindcss,
     },
     {
       name: "Node.js",
-      image:
-        "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-plain.svg",
+      icon: node,
     },
     {
       name: "Express",
-      image:
-        "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/express/express-original.svg",
+      icon: express,
     },
     {
       name: "Fastify",
-      image:
-        "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/fastify/fastify-plain.svg",
+      icon: fastify,
     },
     {
       name: "NestJS",
-      image:
-        "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nestjs/nestjs-original.svg",
+      icon: nestjs,
     },
     {
       name: "RubyOnRails",
-      image:
-        "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/rails/rails-plain.svg",
+      icon: rubyonrails,
     },
     {
       name: "Docker",
-      image:
-        "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-plain.svg",
+      icon: docker,
     },
     {
       name: "Git",
-      image:
-        "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg",
+      icon: git,
     },
     {
       name: "PostgreSQL",
-      image:
-        "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-plain.svg",
+      icon: postgresql,
     },
     {
       name: "MongoDB",
-      image:
-        "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-plain.svg",
+      icon: mongodb,
     },
     {
       name: "Figma",
-      image:
-        "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/figma/figma-original.svg",
+      icon: figma,
     },
     {
       name: "AWS",
-      image:
-        "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-plain-wordmark.svg",
+      icon: aws,
     },
   ],
 };

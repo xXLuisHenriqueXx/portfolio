@@ -9,6 +9,35 @@ import {
   RefreshCw,
   Settings,
 } from "lucide-react";
+import {
+  aws,
+  cplusplus,
+  css,
+  docker,
+  express,
+  fastify,
+  figma,
+  framermotion,
+  git,
+  html,
+  insomnia,
+  javascript,
+  jest,
+  mongodb,
+  mysql,
+  nestjs,
+  nextjs,
+  node,
+  postgresql,
+  postman,
+  react,
+  ruby,
+  rubyonrails,
+  sqlite,
+  tailwindcss,
+  typescript,
+  vite,
+} from "./SVGs";
 
 const DiaryTag = () => {
   return (
@@ -56,43 +85,37 @@ const StudyTag = () => {
 
 export const skillsData = [
   {
-    title: "Linguagens de programação",
+    title: "Linguagens",
     icon: Code,
     items: [
       {
         name: "HTML5",
-        image:
-          "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-plain.svg",
+        icon: html,
         tag: DiaryTag,
       },
       {
         name: "CSS3",
-        image:
-          "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-plain.svg",
+        icon: css,
         tag: DiaryTag,
       },
       {
         name: "TypeScript",
-        image:
-          "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-plain.svg",
+        icon: typescript,
         tag: DiaryTag,
       },
       {
         name: "JavaScript",
-        image:
-          "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg",
+        icon: javascript,
         tag: DiaryTag,
       },
       {
         name: "Ruby",
-        image:
-          "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/ruby/ruby-plain.svg",
+        icon: ruby,
         tag: ProjectsTag,
       },
       {
         name: "C++",
-        image:
-          "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cplusplus/cplusplus-plain.svg",
+        icon: cplusplus,
         tag: GraduationTag,
       },
     ],
@@ -103,32 +126,32 @@ export const skillsData = [
     items: [
       {
         name: "React",
-        image:
-          "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg",
+        icon: react,
         tag: DiaryTag,
       },
       {
         name: "React Native",
-        image:
-          "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg",
+        icon: react,
         tag: DiaryTag,
       },
       {
+        name: "Next.js",
+        icon: nextjs,
+        tag: StudyTag,
+      },
+      {
         name: "ViteJS",
-        image:
-          "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vitejs/vitejs-original.svg",
+        icon: vite,
         tag: DiaryTag,
       },
       {
         name: "TailwindCSS",
-        image:
-          "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg",
+        icon: tailwindcss,
         tag: DiaryTag,
       },
       {
         name: "Framer Motion",
-        image:
-          "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/framermotion/framermotion-original.svg",
+        icon: framermotion,
         tag: DiaryTag,
       },
     ],
@@ -139,38 +162,32 @@ export const skillsData = [
     items: [
       {
         name: "Node.js",
-        image:
-          "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-plain.svg",
+        icon: node,
         tag: DiaryTag,
       },
       {
         name: "Express",
-        image:
-          "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/express/express-original.svg",
+        icon: express,
         tag: DiaryTag,
       },
       {
         name: "Fastify",
-        image:
-          "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/fastify/fastify-plain.svg",
+        icon: fastify,
         tag: DiaryTag,
       },
       {
         name: "NestJS",
-        image:
-          "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nestjs/nestjs-original.svg",
+        icon: nestjs,
         tag: ProjectsTag,
       },
       {
         name: "RubyOnRails",
-        image:
-          "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/rails/rails-plain.svg",
+        icon: rubyonrails,
         tag: ProjectsTag,
       },
       {
         name: "Docker",
-        image:
-          "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-plain.svg",
+        icon: docker,
         tag: DiaryTag,
       },
     ],
@@ -181,26 +198,22 @@ export const skillsData = [
     items: [
       {
         name: "PostgreSQL",
-        image:
-          "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-plain.svg",
+        icon: postgresql,
         tag: DiaryTag,
       },
       {
         name: "MongoDB",
-        image:
-          "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-plain.svg",
+        icon: mongodb,
         tag: DiaryTag,
       },
       {
         name: "MySQL",
-        image:
-          "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg",
+        icon: mysql,
         tag: GraduationTag,
       },
       {
         name: "SQLite",
-        image:
-          "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/sqlite/sqlite-original.svg",
+        icon: sqlite,
         tag: ProjectsTag,
       },
     ],
@@ -211,38 +224,32 @@ export const skillsData = [
     items: [
       {
         name: "Git",
-        image:
-          "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg",
+        icon: git,
         tag: DiaryTag,
       },
       {
         name: "AWS",
-        image:
-          "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-plain-wordmark.svg",
+        icon: aws,
         tag: StudyTag,
       },
       {
         name: "Insomnia",
-        image:
-          "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/insomnia/insomnia-original.svg",
+        icon: insomnia,
         tag: DiaryTag,
       },
       {
         name: "Postman",
-        image:
-          "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postman/postman-plain.svg",
+        icon: postman,
         tag: StudyTag,
       },
       {
         name: "Figma",
-        image:
-          "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/figma/figma-original.svg",
+        icon: figma,
         tag: DiaryTag,
       },
       {
         name: "Jest",
-        image:
-          "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/jest/jest-plain.svg",
+        icon: jest,
         tag: DiaryTag,
       },
     ],

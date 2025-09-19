@@ -44,7 +44,7 @@ const Skills = () => {
                   spotlightColor="rgba(123, 83, 238, 0.25)"
                 >
                   <div className="flex flex-col items-center gap-y-1">
-                    <img className="w-6 h-6" src={item.image} />
+                    <item.icon className="w-6 h-6 fill-foreground" />
                     <p className="text-[8px] font-semibold">{item.name}</p>
                   </div>
 
