@@ -4,10 +4,21 @@ import { CarouselItem } from "../ui/carousel";
 
 interface ProjectItemProps {
   data: any;
+  setShowModal: (showModal: boolean) => void;
+  setSelectedProject: (project: any) => void;
 }
-const ProjectItem = ({ data }: ProjectItemProps) => {
+const ProjectItem = ({
+  data,
+  setShowModal,
+  setSelectedProject,
+}: ProjectItemProps) => {
   return (
-    <CarouselItem>
+    <CarouselItem
+      onClick={() => {
+        setShowModal(true);
+        setSelectedProject(data);
+      }}
+    >
       <SpotlightCard
         className="relative bg-card rounded-xl hover:scale-[99%] transition-all cursor-pointer"
         spotlightColor="rgba(123, 83, 238, 0.25)"

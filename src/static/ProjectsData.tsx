@@ -41,6 +41,8 @@ export const projectsData = [
     image: EmptyImage,
     link: "https://github.com/xXLuisHenriqueXx/expense_assistant",
     tag: InProgressTag,
+    description:
+      "Aplicativo para dispositivos móveis que ajuda a gerenciar despesas mensais. Permitindo adicionar, editar, excluir e visualizar despesas e contas bancárias, afim de facilitar o controle financeiro.",
     technologies: [
       {
         name: "React Native",
@@ -63,6 +65,8 @@ export const projectsData = [
         icon: figma,
       },
     ],
+    code: "https://github.com/xXLuisHenriqueXx/expense_assistant",
+    demo: null,
     createDate: "31/01/2025",
   },
   {
@@ -72,6 +76,8 @@ export const projectsData = [
     image: EmptyImage,
     link: "https://github.com/xXLuisHenriqueXx/descubra",
     tag: CompletedTag,
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit numquam recusandae quibusdam sint vitae similique culpa reiciendis facere sequi, perferendis vero voluptatum optio? Autem laborum laboriosam voluptate placeat, nobis iusto.",
     technologies: [
       {
         name: "Vite",
@@ -94,6 +100,8 @@ export const projectsData = [
         icon: figma,
       },
     ],
+    code: null,
+    demo: null,
     createDate: "2/09/2025",
   },
   {
@@ -103,6 +111,8 @@ export const projectsData = [
     image: EmptyImage,
     link: "https://github.com/xXLuisHenriqueXx/savetube",
     tag: NewTag,
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit numquam recusandae quibusdam sint vitae similique culpa reiciendis facere sequi, perferendis vero voluptatum optio? Autem laborum laboriosam voluptate placeat, nobis iusto.",
     technologies: [
       {
         name: "Next.js",
@@ -117,6 +127,8 @@ export const projectsData = [
         icon: typescript,
       },
     ],
+    code: null,
+    demo: null,
     createDate: "17/05/2024",
   },
   {
@@ -126,6 +138,8 @@ export const projectsData = [
     image: EmptyImage,
     link: "https://github.com/xXLuisHenriqueXx/pizzaria_landing_page",
     tag: CompletedTag,
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit numquam recusandae quibusdam sint vitae similique culpa reiciendis facere sequi, perferendis vero voluptatum optio? Autem laborum laboriosam voluptate placeat, nobis iusto.",
     technologies: [
       {
         name: "Vite",
@@ -148,6 +162,8 @@ export const projectsData = [
         icon: figma,
       },
     ],
+    code: null,
+    demo: null,
     createDate: "17/05/2024",
   },
   {
@@ -157,6 +173,8 @@ export const projectsData = [
     image: EmptyImage,
     link: "https://github.com/xXLuisHenriqueXx/petshop_frontend",
     tag: InProgressTag,
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit numquam recusandae quibusdam sint vitae similique culpa reiciendis facere sequi, perferendis vero voluptatum optio? Autem laborum laboriosam voluptate placeat, nobis iusto.",
     technologies: [
       {
         name: "Next.js",
@@ -171,6 +189,8 @@ export const projectsData = [
         icon: typescript,
       },
     ],
+    code: null,
+    demo: null,
     createDate: "18/07/2025",
   },
 ];

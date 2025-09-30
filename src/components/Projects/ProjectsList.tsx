@@ -8,9 +8,15 @@ import ProjectItem from "./ProjectItem";
 
 interface ProjectsListProps {
   data: any[];
+  setShowModal: (showModal: boolean) => void;
+  setSelectedProject: (project: any) => void;
 }
 
-const ProjectsList = ({ data }: ProjectsListProps) => {
+const ProjectsList = ({
+  data,
+  setShowModal,
+  setSelectedProject,
+}: ProjectsListProps) => {
   return (
     <Carousel
       className="w-full max-w-sm"
@@ -20,7 +26,12 @@ const ProjectsList = ({ data }: ProjectsListProps) => {
     >
       <CarouselContent>
         {data.map((item) => (
-          <ProjectItem key={item.id} data={item} />
+          <ProjectItem
+            key={item.id}
+            data={item}
+            setShowModal={setShowModal}
+            setSelectedProject={setSelectedProject}
+          />
         ))}
       </CarouselContent>
 

@@ -5,9 +5,12 @@ import Filter from "./Filter";
 import ProjectsList from "./ProjectsList";
 
 import { projectsData } from "@src/static/ProjectsData";
+import Modal from "../Modal";
 
 const Projects = () => {
   const [filter, setFilter] = useState<string>("");
+  const [showModal, setShowModal] = useState<boolean>(false);
+  const [selectedProject, setSelectedProject] = useState<any>();
 
   const filteredProjects = projectsData.filter((project) => {
     return project.type.toLowerCase().includes(filter.toLowerCase());
@@ -19,7 +22,17 @@ const Projects = () => {
 
       <Filter filter={filter} setFilter={setFilter} />
 
-      <ProjectsList data={filteredProjects} />
+      <ProjectsList
+        data={filteredProjects}
+        setShowModal={setShowModal}
+        setSelectedProject={setSelectedProject}
+      />
+
+      <Modal
+        showModal={showModal}
+        setShowModal={setShowModal}
+        data={selectedProject}
+      />
     </section>
   );
 };
