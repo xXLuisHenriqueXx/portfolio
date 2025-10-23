@@ -35,7 +35,7 @@ const Home = ({ setActiveScreen }: IHomeProps) => {
     <section
       ref={ref}
       id={"home"}
-      className="relative grid grid-cols-1 lg:grid-cols-2 place-items-center gap-y-4 w-full min-h-screen pt-18 pb-9 px-5"
+      className="relative grid grid-cols-1 lg:grid-cols-2 place-items-center gap-y-4 w-full h-screen pt-18 pb-9 px-5"
     >
       <Squares
         direction="down"
@@ -53,7 +53,7 @@ const Home = ({ setActiveScreen }: IHomeProps) => {
       </article>
 
       <img
-        className="relative w-64 z-10"
+        className="relative w-64 xl:w-92 z-10"
         src={Me}
         alt="Foto de Luis Henrique"
       />

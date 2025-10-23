@@ -12,12 +12,14 @@ const ScrollDown = () => {
         }}
       >
         <ArrowDownCircle
-          className="w-6 h-6 text-foreground/75"
+          className="w-6 h-6 lg:w-8 lg:h-8 text-foreground/75"
           strokeWidth={1}
         />
       </motion.div>
 
-      <p className="text-xs font-medium text-foreground/75">Role para baixo</p>
+      <p className="text-xs lg:text-sm font-medium text-foreground/75">
+        Role para baixo
+      </p>
     </article>
   );
 };

@@ -3,19 +3,19 @@ import { Button } from "../ui/button";
 const IntroductionButtons = () => {
   return (
     <div className="flex flex-col items-center gap-y-8">
-      <p className="text-xs font-light text-foreground/75 text-center">
+      <p className="max-w-[80%] text-xs lg:text-sm font-light text-foreground/75 text-center">
         Desenvolvedor FullSatck Web e Mobile, dedicado a criar soluções
         elegantes e eficientes que melhoram a vida das pessoas.
       </p>
 
-      <div className="grid grid-cols-1 gap-y-2 w-full">
-        <Button variant={"outline"} className="text-xs">
+      <div className="grid grid-cols-1 gap-y-2 w-full max-w-xl">
+        <Button variant={"outline"} className="text-xs lg:text-sm">
           Meus projetos
         </Button>
-        <Button variant={"outline"} className="text-xs">
+        <Button variant={"outline"} className="text-xs lg:text-sm">
           Contato
         </Button>
-        <Button variant={"gradient"} className="text-xs">
+        <Button variant={"gradient"} className="text-xs lg:text-sm">
           Baixar CV
         </Button>
       </div>
