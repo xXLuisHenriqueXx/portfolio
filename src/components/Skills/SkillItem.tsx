@@ -9,7 +9,7 @@ const SkillItem = ({ data, index }: SkillItemProps) => {
   return (
     <div
       key={index}
-      className="flex flex-row gap-x-4 w-full p-4 bg-background rounded-xl"
+      className="flex flex-row gap-x-4 w-full p-4 bg-background rounded-xl hover:scale-[102.5%] transition-all duration-300 cursor-pointer"
     >
       <div className="flex shrink-0 flex-col items-center justify-center gap-y-1 w-16">
         <data.icon className="w-6 h-6 text-foreground/75 p-1 bg-primary rounded-md" />
