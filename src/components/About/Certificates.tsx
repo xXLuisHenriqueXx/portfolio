@@ -6,8 +6,8 @@ import AWS from "@src/assets/aws.png";
 
 const CertificateInfo = () => {
   return (
-    <div className="flex flex-col gap-y-2 text-[8px] text-center">
-      <h3 className="text-[10px] font-semibold text-secondary">
+    <div className="flex flex-col items-center gap-y-2 lg:gap-y-4 text-[8px] lg:text-[10px] 2xl:text-xs text-center">
+      <h3 className="text-[10px] lg:text-sm 2xl:text-base font-semibold text-secondary">
         Certificação AWS CFL-02
       </h3>
 
@@ -20,7 +20,9 @@ const CertificateInfo = () => {
         </p>
       </div>
 
-      <p>Certificação que recebi durante meu estágio na empresa Compass UOL.</p>
+      <p className="w-[80%]">
+        Certificação que recebi durante meu estágio na empresa Compass UOL.
+      </p>
     </div>
   );
 };
@@ -31,15 +33,19 @@ const Certificates = () => {
 
   return (
     <div className="flex flex-col gap-y-2">
-      <h2 className="text-sm font-bold">Certificados</h2>
+      <h2 className="text-sm font-semibold">Certificados</h2>
       <div className="grid grid-cols-3 gap-4">
         <div onClick={() => setShowCertificateInfo(!showCertificateInfo)}>
           <SpotlightCard
-            className="flex flex-1 flex-col items-center justify-center p-4 bg-background rounded-xl cursor-pointer hover:scale-[101%] transition-all duration-300"
+            className="flex flex-1 flex-col items-center justify-center h-32  xl:h-44 bg-background rounded-xl cursor-pointer hover:scale-[101%] transition-all duration-300"
             spotlightColor="rgba(123, 83, 238, 0.2)"
           >
             {!showCertificateInfo ? (
-              <img className="w-24 h-24 object-contain" src={AWS} alt="AWS" />
+              <img
+                className="w-24 h-24 xl:w-36 xl:h-36 object-contain"
+                src={AWS}
+                alt="AWS"
+              />
             ) : (
               <CertificateInfo />
             )}
