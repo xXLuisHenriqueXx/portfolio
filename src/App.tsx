@@ -7,7 +7,7 @@ import Contact from "./components/Contact";
 
 function App() {
   return (
-    <main className="flex flex-col min-w-full">
+    <main className="flex flex-col min-w-full overflow-x-hidden">
       <Navbar />
 
       <Home />
