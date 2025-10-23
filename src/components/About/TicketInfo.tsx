@@ -1,6 +1,6 @@
 const TicketInfo = () => {
   return (
-    <div className="relative flex flex-row items-center justify-center self-center w-[85%] py-8 bg-gradient-to-r from-primary to-secondary rounded-xl">
+    <div className="relative flex flex-row items-center justify-center self-center w-[85%] max-w-sm py-8 bg-gradient-to-r from-primary to-secondary rounded-xl">
       <div className="absolute -top-5 w-10 h-10 bg-background rounded-full" />
       <div className="absolute -bottom-5 w-10 h-10 bg-background rounded-full" />
 

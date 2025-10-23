@@ -8,37 +8,50 @@ import {
 } from "lucide-react";
 
 interface ILinksData {
-  id: number;
+  id: string;
   text: string;
-  label?: string;
-  action?: () => void;
+  action: () => void;
   icon: LucideIcon;
 }
 
 export const linksData: ILinksData[] = [
   {
-    id: 1,
+    id: "home",
     text: "Home",
     icon: Home,
+    action: () =>
+      document.getElementById("home")?.scrollIntoView({ behavior: "smooth" }),
   },
   {
-    id: 2,
+    id: "about",
     text: "Sobre",
     icon: BookOpen,
+    action: () =>
+      document.getElementById("about")?.scrollIntoView({ behavior: "smooth" }),
   },
   {
-    id: 3,
+    id: "skills",
     text: "Habilidades",
     icon: Settings,
+    action: () =>
+      document.getElementById("skills")?.scrollIntoView({ behavior: "smooth" }),
   },
   {
-    id: 4,
+    id: "projects",
     text: "Projetos",
     icon: Folder,
+    action: () =>
+      document
+        .getElementById("projects")
+        ?.scrollIntoView({ behavior: "smooth" }),
   },
   {
-    id: 5,
+    id: "contact",
     text: "Contato",
     icon: Mail,
+    action: () =>
+      document
+        .getElementById("contact")
+        ?.scrollIntoView({ behavior: "smooth" }),
   },
 ];

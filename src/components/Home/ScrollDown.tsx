@@ -3,7 +3,7 @@ import { ArrowDownCircle } from "lucide-react";
 
 const ScrollDown = () => {
   return (
-    <article className="flex flex-col items-center justify-center gap-y-2 z-10">
+    <article className="lg:absolute bottom-8 flex flex-col items-center justify-center gap-y-2 z-10">
       <motion.div
         animate={{ translateY: [0, 2, 0] }}
         transition={{

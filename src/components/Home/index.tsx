@@ -1,3 +1,5 @@
+import { useEffect, useRef } from "react";
+
 import Squares from "../Squares";
 import Greetings from "./Greetings";
 import IntroductionButtons from "./IntroductionButtons";
@@ -5,9 +7,36 @@ import ScrollDown from "./ScrollDown";
 
 import Me from "@src/assets/me.png";
 
-const Home = () => {
+interface IHomeProps {
+  setActiveScreen: (value: "home") => void;
+}
+
+const Home = ({ setActiveScreen }: IHomeProps) => {
+  const ref = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setActiveScreen("home");
+        }
+      },
+      { threshold: 0.5 }
+    );
+
+    if (ref.current) observer.observe(ref.current);
+
+    return () => {
+      if (ref.current) observer.unobserve(ref.current);
+    };
+  }, []);
+
   return (
-    <section className="relative grid grid-cols-1 place-items-center gap-y-4 w-full min-h-screen pt-18 pb-9 px-5">
+    <section
+      ref={ref}
+      id={"home"}
+      className="relative grid grid-cols-1 lg:grid-cols-2 place-items-center gap-y-4 w-full min-h-screen pt-18 pb-9 px-5"
+    >
       <Squares
         direction="down"
         speed={0.05}
