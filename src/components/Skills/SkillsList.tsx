@@ -1,5 +1,6 @@
-import { skillsData } from "@src/static/SkillsData";
 import SkillItem from "./SkillItem";
+
+import { skillsData } from "@src/static/SkillsData";
 
 const SkillsList = () => {
   return (

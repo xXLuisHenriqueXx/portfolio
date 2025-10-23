@@ -1,9 +1,9 @@
 import Squares from "../Squares";
 import Greetings from "./Greetings";
 import IntroductionButtons from "./IntroductionButtons";
+import ScrollDown from "./ScrollDown";
 
 import Me from "@src/assets/me.png";
-import ScrollDown from "./ScrollDown";
 
 const Home = () => {
   return (

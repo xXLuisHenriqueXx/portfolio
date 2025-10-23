@@ -1,4 +1,5 @@
 import { FaGithub, FaLinkedin, FaWhatsapp } from "react-icons/fa";
+
 import SpotlightCard from "../SpotlightCard";
 
 const QuickAccessButtons = () => {

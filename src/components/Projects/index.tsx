@@ -3,9 +3,9 @@ import { useState } from "react";
 import Header from "./Header";
 import Filter from "./Filter";
 import ProjectsList from "./ProjectsList";
+import Modal from "../Modal";
 
 import { projectsData } from "@src/static/ProjectsData";
-import Modal from "../Modal";
 
 const Projects = () => {
   const [filter, setFilter] = useState<string>("");

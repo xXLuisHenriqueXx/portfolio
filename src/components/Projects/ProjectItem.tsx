@@ -1,6 +1,6 @@
-import SpotlightCard from "../SpotlightCard";
 import { Button } from "../ui/button";
 import { CarouselItem } from "../ui/carousel";
+import SpotlightCard from "../SpotlightCard";
 
 interface ProjectItemProps {
   data: any;

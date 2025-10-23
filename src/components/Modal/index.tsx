@@ -1,7 +1,8 @@
-import { FaGithub } from "react-icons/fa";
-import SpotlightCard from "../SpotlightCard";
-import { Button } from "../ui/button";
 import { Globe } from "lucide-react";
+import { FaGithub } from "react-icons/fa";
+
+import { Button } from "../ui/button";
+import SpotlightCard from "../SpotlightCard";
 
 interface IModalProps {
   showModal: boolean;

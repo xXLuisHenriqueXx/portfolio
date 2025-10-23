@@ -1,9 +1,8 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
+import { useForm } from "react-hook-form";
 import emailjs from "@emailjs/browser";
 
-import { useForm } from "react-hook-form";
-import { contactSchema } from "@src/schemas/ContactSchema";
 import {
   Form,
   FormControl,
@@ -16,6 +15,8 @@ import { Input } from "../ui/input";
 import { Card, CardContent } from "../ui/card";
 import { Textarea } from "../ui/textarea";
 import { Button } from "../ui/button";
+
+import { contactSchema } from "@src/schemas/ContactSchema";
 
 const FormEmail = () => {
   const form = useForm<z.infer<typeof contactSchema>>({

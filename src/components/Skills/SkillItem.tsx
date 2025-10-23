@@ -1,5 +1,5 @@
-import SpotlightCard from "../SpotlightCard";
 import { Separator } from "../ui/separator";
+import SpotlightCard from "../SpotlightCard";
 
 interface SkillItemProps {
   data: any;
