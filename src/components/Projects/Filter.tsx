@@ -16,7 +16,7 @@ const Filter = ({ filter, setFilter }: IFilterProps) => {
         <Button
           key={item.label}
           variant={filter === item.value ? "gradient" : "outline"}
-          className="text-xs"
+          className="text-xs lg:text-sm 2xl:text-base"
           onClick={() => setFilter(item.value)}
         >
           {item.label}

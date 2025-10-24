@@ -19,7 +19,7 @@ const ProjectsList = ({
 }: ProjectsListProps) => {
   return (
     <Carousel
-      className="w-full max-w-sm"
+      className="w-full max-w-sm lg:max-w-2xl 2xl:max-w-5xl"
       opts={{
         align: "start",
       }}

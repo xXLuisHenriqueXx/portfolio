@@ -22,7 +22,7 @@ const ModalContent = ({ setShowModal, data }: IModalContentProps) => {
       onClick={() => setShowModal(false)}
     >
       <article
-        className="grid grid-cols-1 gap-y-4 w-full p-4 bg-card rounded-xl border shadow"
+        className="grid grid-cols-1 gap-y-4 w-full max-w-2xl p-4 bg-card rounded-xl border shadow"
         onClick={(e) => e.stopPropagation()}
       >
         <img className="w-full h-64 object-cover rounded-lg" src={data.image} />
@@ -36,16 +36,16 @@ const ModalContent = ({ setShowModal, data }: IModalContentProps) => {
           {data.technologies.map((technology: any, index: number) => (
             <SpotlightCard
               key={index}
-              className="flex flex-row items-center gap-x-1 bg-primary/10 hover:scale-[101%] p-1 rounded-sm transition-all duration-300 cursor-pointer text-xs font-medium"
+              className="flex flex-row items-center gap-x-1 bg-primary/10 hover:scale-[102.5%] p-1 lg:p-2 rounded-sm transition-all duration-300 cursor-pointer text-xs font-medium"
               spotlightColor="rgba(123, 83, 238, 0.5)"
             >
-              <technology.icon className="w-3 h-3 fill-primary" />
-              <p className="text-[10px]">#{technology.name}</p>
+              <technology.icon className="w-3 h-3 lg:w-4 lg:h-4 fill-primary" />
+              <p className="text-[10px] lg:text-xs">#{technology.name}</p>
             </SpotlightCard>
           ))}
         </div>
 
-        <p className="text-xs text-foreground/75 indent-4">
+        <p className="text-xs lg:text-sm text-foreground/75 indent-4">
           {data.description}
         </p>
 
@@ -57,7 +57,7 @@ const ModalContent = ({ setShowModal, data }: IModalContentProps) => {
             className="w-full"
           >
             <Button
-              className="relative w-full"
+              className="relative w-full lg:text-sm"
               variant="outline"
               size={"sm"}
               disabled={!data.code}
@@ -73,7 +73,7 @@ const ModalContent = ({ setShowModal, data }: IModalContentProps) => {
             className="w-full"
           >
             <Button
-              className="relative w-full"
+              className="relative w-full lg:text-sm"
               variant="outline"
               size={"sm"}
               disabled={!data.demo}

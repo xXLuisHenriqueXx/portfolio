@@ -14,6 +14,7 @@ const ProjectItem = ({
 }: ProjectItemProps) => {
   return (
     <CarouselItem
+      className="lg:basis-1/2 2xl:basis-1/3"
       onClick={() => {
         setShowModal(true);
         setSelectedProject(data);
@@ -44,7 +45,7 @@ const ProjectItem = ({
         <div className="flex flex-col gap-y-4 w-full p-4">
           <div className="flex flex-col gap-y-2 items-center">
             <h2 className="text-base font-semibold">{data.title}</h2>
-            <p className="text-[10px] font-medium text-foreground/75">
+            <p className="text-[10px] xl:text-xs font-medium text-foreground/75">
               {data.createDate}
             </p>
           </div>
