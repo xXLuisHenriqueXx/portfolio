@@ -4,13 +4,13 @@ import TextType from "../TextType";
 const Greetings = () => {
   return (
     <div className="flex flex-col -gap-y-2">
-      <h2 className="text-base lg:text-xl font-light text-foreground text-center">
+      <h2 className="text-base lg:text-xl 2xl:text-2xl font-light text-foreground text-center">
         Olá, me chamo
       </h2>
 
       <SplitText
         text="LUIS HENRIQUE"
-        className="text-4xl lg:text-5xl font-black text-start text-primary"
+        className="text-4xl lg:text-5xl 2xl:text-6xl font-black text-start text-primary"
         delay={100}
         duration={0.6}
         ease="power3.out"
@@ -22,7 +22,7 @@ const Greetings = () => {
         textAlign="center"
       />
 
-      <h2 className="text-base lg:text-xl font-light text-foreground text-center">
+      <h2 className="text-base lg:text-xl 2xl:text-2xl font-light text-foreground text-center">
         e sou{" "}
         <TextType
           className="font-bold"

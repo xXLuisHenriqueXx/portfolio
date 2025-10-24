@@ -26,7 +26,7 @@ const SkillItem = ({ data, index }: SkillItemProps) => {
         {data.items.map((item: any) => (
           <SpotlightCard
             key={item.name}
-            className="flex shrink-0 flex-col items-center justify-center gap-y-2 lg:gap-y-4 p-2 lg:p-4 bg-card rounded-md"
+            className="flex shrink-0 flex-col items-center justify-center gap-y-2 lg:gap-y-4 p-2 lg:p-4 bg-card rounded-md hover:scale-[97.5%] transition-all duration-300 cursor-pointer"
             spotlightColor="rgba(123, 83, 238, 0.25)"
           >
             <div className="flex flex-col items-center gap-y-1 lg:gap-y-2">
