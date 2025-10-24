@@ -59,7 +59,7 @@ const FormEmail = () => {
   };
 
   return (
-    <Card className="w-full">
+    <Card className="w-full max-w-4xl">
       <CardContent>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
@@ -68,10 +68,12 @@ const FormEmail = () => {
               name="title"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="text-xs">Título</FormLabel>
+                  <FormLabel className="text-xs lg:text-sm 2xl:text-base">
+                    Título
+                  </FormLabel>
                   <FormControl>
                     <Input
-                      className="text-xs"
+                      className="text-xs lg:text-sm 2xl:text-base"
                       placeholder="Título da sua proposta ..."
                       {...field}
                       autoComplete="off"
@@ -81,34 +83,18 @@ const FormEmail = () => {
                 </FormItem>
               )}
             />
-            {/* <FormField
-              control={form.control}
-              name="email"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel className="text-xs">E-mail</FormLabel>
-                  <FormControl>
-                    <Input
-                      className="text-xs"
-                      placeholder="seuemail@exemplo.com"
-                      {...field}
-                      autoComplete="off"
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            /> */}
 
             <FormField
               control={form.control}
               name="name"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="text-xs">Nome</FormLabel>
+                  <FormLabel className="text-xs lg:text-sm 2xl:text-base">
+                    Nome
+                  </FormLabel>
                   <FormControl>
                     <Input
-                      className="text-xs"
+                      className="text-xs lg:text-sm 2xl:text-base"
                       placeholder="Nome ..."
                       {...field}
                       autoComplete="off"
@@ -118,15 +104,18 @@ const FormEmail = () => {
                 </FormItem>
               )}
             />
+
             <FormField
               control={form.control}
               name="message"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="text-xs">Mensagem</FormLabel>
+                  <FormLabel className="text-xs lg:text-sm 2xl:text-base">
+                    Mensagem
+                  </FormLabel>
                   <FormControl>
                     <Textarea
-                      className="text-xs"
+                      className="text-xs lg:text-sm 2xl:text-base"
                       placeholder="Explique sua proposta ..."
                       {...field}
                     />
@@ -136,7 +125,11 @@ const FormEmail = () => {
               )}
             />
 
-            <Button variant={"gradient"} type="submit" className="w-full">
+            <Button
+              variant={"gradient"}
+              type="submit"
+              className="w-full 2xl:text-base"
+            >
               Enviar
             </Button>
           </form>

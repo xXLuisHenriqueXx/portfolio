@@ -32,7 +32,7 @@ const Contact = ({ setActiveScreen }: IContactProps) => {
     <section
       ref={ref}
       id={"contact"}
-      className="relative grid grid-cols-1 place-items-center gap-y-8 w-full pt-12 pb-9 px-5"
+      className="flex flex-col gap-y-8 items-center w-full pt-12 pb-9 px-5 bg-gradient-to-b from-card to-[#1B142F]"
     >
       <Header
         title="MEUS CONTATOS"
@@ -40,9 +40,11 @@ const Contact = ({ setActiveScreen }: IContactProps) => {
         propostas. Me chame para combinarmos nosso próximo projeto!"
       />
 
-      <FormEmail />
+      <div className="grid grid-cols-1 xl:grid-cols-2 place-items-center xl:place-items-start gap-8 w-full max-w-7xl">
+        <FormEmail />
 
-      <QuickAccessButtons />
+        <QuickAccessButtons />
+      </div>
     </section>
   );
 };

@@ -7,7 +7,7 @@ const QuickAccessButtons = () => {
   const message = `Olá, gostaria de entrar em contato para contratar seus serviços.`;
 
   return (
-    <div className="flex flex-col gap-y-2 w-full">
+    <div className="flex flex-col gap-y-2 w-full max-w-4xl">
       {[
         {
           name: "GitHub",

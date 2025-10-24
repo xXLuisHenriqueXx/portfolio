@@ -33,7 +33,7 @@ const About = ({ setActiveScreen }: IAboutProps) => {
     <section
       ref={ref}
       id={"about"}
-      className="relative grid grid-cols-1 lg:grid-cols-2 place-items-center gap-y-8 lg:gap-y-0 lg:gap-x-14 w-full pt-12 pb-9 px-5"
+      className="relative grid grid-cols-1 lg:grid-cols-2 place-items-center self-center gap-y-8 lg:gap-y-0 lg:gap-x-14 w-full max-w-7xl pt-12 pb-9 px-5"
     >
       <AboutText />
 
