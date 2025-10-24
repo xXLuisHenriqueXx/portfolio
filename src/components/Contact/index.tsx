@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 
-import Header from "./Header";
+import Header from "../Header";
 import FormEmail from "./FormEmail";
 import QuickAccessButtons from "./QuickAccessButtons";
 
@@ -34,7 +34,11 @@ const Contact = ({ setActiveScreen }: IContactProps) => {
       id={"contact"}
       className="relative grid grid-cols-1 place-items-center gap-y-8 w-full pt-12 pb-9 px-5"
     >
-      <Header />
+      <Header
+        title="MEUS CONTATOS"
+        description="Abaixo você pode entrar em contato comigo, estou sempre aberto a
+        propostas. Me chame para combinarmos nosso próximo projeto!"
+      />
 
       <FormEmail />
 

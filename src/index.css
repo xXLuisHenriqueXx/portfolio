@@ -65,6 +65,9 @@
 
 @layer base {
   * {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+
     @apply border-border outline-ring/50;
   }
   body {

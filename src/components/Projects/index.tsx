@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 
-import Header from "./Header";
+import Header from "../Header";
 import Filter from "./Filter";
 import ProjectsList from "./ProjectsList";
 import Modal from "../Modal";
@@ -45,7 +45,11 @@ const Projects = ({ setActiveScreen }: IProjectsProps) => {
       id={"projects"}
       className="relative grid grid-cols-1 place-items-center gap-y-8 w-full pt-12 pb-9 px-5"
     >
-      <Header />
+      <Header
+        title="MEUS PROJETOS"
+        description="Abaixo você pode visualizar a comprovação das minhas habilidades
+        descritas acima, por meio de projetos em que trabalhei."
+      />
 
       <Filter filter={filter} setFilter={setFilter} />
 

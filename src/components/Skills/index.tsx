@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
-import Header from "./Header";
+
+import Header from "../Header";
 import SkillsList from "./SkillsList";
 
 interface ISkillsProps {
@@ -30,9 +31,13 @@ const Skills = ({ setActiveScreen }: ISkillsProps) => {
     <section
       ref={ref}
       id={"skills"}
-      className="relative grid grid-cols-1 place-items-center gap-y-8 w-full pt-12 pb-9 px-5 bg-gradient-to-b from-card to-[#1B142F]"
+      className="grid grid-cols-1 place-items-center gap-y-8 w-full pt-12 pb-9 px-5 bg-gradient-to-b from-card to-[#1B142F]"
     >
-      <Header />
+      <Header
+        title="MINHAS HABILIDADES"
+        description="Abaixo você pode visualizar com maior nível de detalhe as tecnologias e
+        ferramentas que possuo conhecimento."
+      />
 
       <SkillsList />
     </section>
