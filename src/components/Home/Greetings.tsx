@@ -3,6 +3,8 @@ import { tv } from "tailwind-variants";
 import SplitText from "../SplitText";
 import TextType from "../TextType";
 
+import { homeData } from "@src/static/HomeData";
+
 const greetingsStyles = tv({
   slots: {
     container: "flex flex-col -gap-y-2",
@@ -39,11 +41,7 @@ const Greetings = () => {
         e sou{" "}
         <TextType
           className={highlight()}
-          text={[
-            "Desenvolvedor Web",
-            "Desenvolvedor Mobile",
-            "Desenvolvedor FullStack",
-          ]}
+          text={homeData.experiences}
           typingSpeed={75}
           pauseDuration={1500}
           showCursor={true}

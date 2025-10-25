@@ -6,7 +6,7 @@ import Greetings from "./Greetings";
 import IntroductionButtons from "./IntroductionButtons";
 import ScrollDown from "./ScrollDown";
 
-import Me from "@src/assets/me.png";
+import { homeData } from "@src/static/HomeData";
 
 const homeStyles = tv({
   slots: {
@@ -61,7 +61,11 @@ const Home = ({ setActiveScreen }: IHomeProps) => {
         <IntroductionButtons />
       </article>
 
-      <img className={image()} src={Me} alt="Foto de Luis Henrique" />
+      <img
+        className={image()}
+        src={homeData.image}
+        alt="Foto de Luis Henrique"
+      />
 
       <ScrollDown />
     </section>

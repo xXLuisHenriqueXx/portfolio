@@ -1,6 +1,7 @@
 import { tv } from "tailwind-variants";
 
 import { Button } from "../ui/button";
+import { homeData } from "@src/static/HomeData";
 
 const introductionButtonsStyles = tv({
   slots: {
@@ -17,21 +18,14 @@ const { container, containerButtons, button, text } =
 const IntroductionButtons = () => {
   return (
     <div className={container()}>
-      <p className={text()}>
-        Desenvolvedor FullSatck Web e Mobile, dedicado a criar soluções
-        elegantes e eficientes que melhoram a vida das pessoas.
-      </p>
+      <p className={text()}>{homeData.introduction}</p>
 
       <div className={containerButtons()}>
-        <Button variant={"outline"} className={button()}>
-          Meus projetos
-        </Button>
-        <Button variant={"outline"} className={button()}>
-          Contato
-        </Button>
-        <Button variant={"gradient"} className={button()}>
-          Baixar CV
-        </Button>
+        {homeData.buttons.map(({ label, variant, action }) => (
+          <Button variant={variant} className={button()} onClick={action}>
+            {label}
+          </Button>
+        ))}
       </div>
     </div>
   );
