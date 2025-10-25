@@ -1,10 +1,22 @@
-import { Separator } from "../ui/separator";
+import { useEffect, useRef } from "react";
+import { tv } from "tailwind-variants";
 
+import { Separator } from "../ui/separator";
 import AboutText from "./AboutText";
 import TicketInfo from "./TicketInfo";
 import Tools from "./Tools";
 import Certificates from "./Certificates";
-import { useEffect, useRef } from "react";
+
+const aboutStyles = tv({
+  slots: {
+    container:
+      "relative grid grid-cols-1 lg:grid-cols-2 place-items-center self-center gap-y-8 lg:gap-y-0 lg:gap-x-14 w-full max-w-7xl pt-12 pb-9 px-5",
+    containerContent: "flex flex-col gap-y-8 w-full",
+    separator: "lg:hidden",
+  },
+});
+
+const { container, containerContent, separator } = aboutStyles();
 
 interface IAboutProps {
   setActiveScreen: (value: "about") => void;
@@ -29,17 +41,14 @@ const About = ({ setActiveScreen }: IAboutProps) => {
       if (ref.current) observer.unobserve(ref.current);
     };
   }, []);
+
   return (
-    <section
-      ref={ref}
-      id={"about"}
-      className="relative grid grid-cols-1 lg:grid-cols-2 place-items-center self-center gap-y-8 lg:gap-y-0 lg:gap-x-14 w-full max-w-7xl pt-12 pb-9 px-5"
-    >
+    <section ref={ref} id={"about"} className={container()}>
       <AboutText />
 
-      <Separator className="lg:hidden" />
+      <Separator className={separator()} />
 
-      <article className="flex flex-col gap-y-8 w-full">
+      <article className={containerContent()}>
         <TicketInfo />
 
         <Tools />
