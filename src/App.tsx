@@ -8,13 +8,13 @@ import Skills from "./components/Skills";
 import Projects from "./components/Projects";
 import Contact from "./components/Contact";
 
-const card = tv({
+const appStyles = tv({
   slots: {
     container: "flex flex-col min-w-full overflow-x-hidden",
   },
 });
 
-const { container } = card();
+const { container } = appStyles();
 
 export type TActiveScreen =
   | "home"

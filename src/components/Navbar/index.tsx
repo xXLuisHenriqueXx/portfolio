@@ -1,4 +1,5 @@
 import { useMemo, useState } from "react";
+import { tv } from "tailwind-variants";
 import { Menu, Sun, X } from "lucide-react";
 
 import { Button } from "../ui/button";
@@ -10,6 +11,40 @@ import Icon from "@src/assets/icon.svg";
 import FlagBr from "@src/assets/flag-br.svg";
 import FlagUs from "@src/assets/flag-us.svg";
 import { linksData } from "@src/static/LinksData";
+
+const navbarStyles = tv({
+  slots: {
+    container:
+      "fixed top-0 left-0 right-0 flex flex-row justify-between items-center p-5 lg:px-8 z-50",
+    containerLinksGroup:
+      "hidden lg:flex flex-row items-center gap-x-6 px-4 py-2 bg-background/75 rounded-xl",
+    containerLink:
+      "relative flex flex-row items-center justify-center text-sm hover:text-primary transition-all duration-300 cursor-pointer",
+    containerButtonsGroup: "flex flex-row items-center gap-x-2",
+    image: "cursor-pointer",
+    icon: "w-4 h-4 lg:w-6 lg:h-6",
+    bottomBar: "absolute -bottom-0.5 w-6 h-1 bg-primary rounded-full",
+  },
+  variants: {
+    activeScreen: {
+      true: {
+        containerLink:
+          "px-4 py-2 rounded-md bg-primary/10 font-semibold text-primary",
+      },
+      false: { containerLink: "font-medium text-primary-text" },
+    },
+  },
+});
+
+const {
+  container,
+  containerLinksGroup,
+  containerLink,
+  containerButtonsGroup,
+  image,
+  icon,
+  bottomBar,
+} = navbarStyles();
 
 interface INavbarProps {
   activeScreen: TActiveScreen;
@@ -28,9 +63,9 @@ const Navbar = ({ activeScreen }: INavbarProps) => {
   }, [isPortuguese]);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 flex flex-row justify-between items-center p-5 lg:px-8 z-50">
+    <nav className={container()}>
       <img
-        className="cursor-pointer"
+        className={image()}
         src={Icon}
         alt="Logo LH"
         onClick={() =>
@@ -40,34 +75,28 @@ const Navbar = ({ activeScreen }: INavbarProps) => {
         }
       />
 
-      <ul className="hidden lg:flex flex-row items-center gap-x-6 px-4 py-2 bg-background/75 rounded-xl">
+      <ul className={containerLinksGroup()}>
         {linksData.map(({ id, text, action }) => (
           <li
             key={id}
-            className={`relative flex flex-row items-center justify-center text-sm hover:text-primary transition-all duration-300 cursor-pointer ${
-              activeScreen === id
-                ? "px-4 py-2 rounded-md bg-primary/10 font-semibold text-primary"
-                : "font-medium text-primary-text"
-            }`}
+            className={containerLink({ activeScreen: activeScreen === id })}
             onClick={action}
           >
             <p>{text}</p>
 
-            {activeScreen === id && (
-              <span className="absolute -bottom-0.5 w-6 h-1 bg-primary rounded-full" />
-            )}
+            {activeScreen === id && <span className={bottomBar()} />}
           </li>
         ))}
       </ul>
 
-      <ul className="flex flex-row items-center gap-x-2">
+      <ul className={containerButtonsGroup()}>
         <Button
           variant="outline"
           size={"sm"}
           onClick={() => setIsPortuguese(!isPortuguese)}
         >
           <img
-            className="w-4 h-4"
+            className={icon()}
             src={languageButtonData.image}
             alt="Bandeira"
           />
