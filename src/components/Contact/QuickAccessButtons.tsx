@@ -1,13 +1,38 @@
+import { tv } from "tailwind-variants";
 import { FaGithub, FaLinkedin, FaWhatsapp } from "react-icons/fa";
 
 import SpotlightCard from "../SpotlightCard";
+
+const quickAccessButtonsStyles = tv({
+  slots: {
+    container: "flex flex-col gap-y-2 w-full max-w-4xl",
+    containerItem:
+      "bg-card hover:scale-[101%] w-full p-4 rounded-lg transition-all duration-300 cursor-pointer",
+    containerContent: "flex flex-row items-center justify-between",
+    containerText: "flex flex-row items-center gap-x-2",
+    icon: "w-8 h-8 text-primary",
+    title: "text-sm font-semibold",
+    description:
+      "max-w-[60%] text-[10px] font-medium text-foreground/75 text-wrap",
+  },
+});
+
+const {
+  container,
+  containerItem,
+  containerContent,
+  containerText,
+  icon,
+  title,
+  description,
+} = quickAccessButtonsStyles();
 
 const QuickAccessButtons = () => {
   const phoneNumber = import.meta.env.VITE_PHONE_NUMBER;
   const message = `Olá, gostaria de entrar em contato para contratar seus serviços.`;
 
   return (
-    <div className="flex flex-col gap-y-2 w-full max-w-4xl">
+    <div className={container()}>
       {[
         {
           name: "GitHub",
@@ -33,7 +58,7 @@ const QuickAccessButtons = () => {
       ].map((item) => (
         <SpotlightCard
           key={item.name}
-          className="bg-card hover:scale-[101%] w-full p-4 rounded-lg transition-all duration-300 cursor-pointer"
+          className={containerItem()}
           spotlightColor="rgba(123, 83, 238, 0.5)"
         >
           <a
@@ -41,15 +66,13 @@ const QuickAccessButtons = () => {
             href={item.href}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex flex-row items-center justify-between"
+            className={containerContent()}
           >
-            <div className="flex flex-row items-center gap-x-2">
-              <item.icon className="w-8 h-8 fill-primary" />
-              <p className="text-sm font-semibold">{item.name}</p>
+            <div className={containerText()}>
+              <item.icon className={icon()} />
+              <p className={title()}>{item.name}</p>
             </div>
-            <p className="max-w-[60%] text-[10px] font-medium text-foreground/75 text-wrap">
-              {item.description}
-            </p>
+            <p className={description()}>{item.description}</p>
           </a>
         </SpotlightCard>
       ))}
