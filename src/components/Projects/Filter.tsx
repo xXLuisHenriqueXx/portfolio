@@ -1,4 +1,15 @@
+import { tv } from "tailwind-variants";
+
 import { Button } from "../ui/button";
+
+const filterStyles = tv({
+  slots: {
+    container: "flex flex-row gap-x-2",
+    button: "text-xs lg:text-sm 2xl:text-base",
+  },
+});
+
+const { container, button } = filterStyles();
 
 interface IFilterProps {
   filter: string;
@@ -7,7 +18,7 @@ interface IFilterProps {
 
 const Filter = ({ filter, setFilter }: IFilterProps) => {
   return (
-    <nav className="flex flex-row gap-x-2">
+    <nav className={container()}>
       {[
         { label: "Todos", value: "" },
         { label: "Web", value: "web" },
@@ -16,7 +27,7 @@ const Filter = ({ filter, setFilter }: IFilterProps) => {
         <Button
           key={item.label}
           variant={filter === item.value ? "gradient" : "outline"}
-          className="text-xs lg:text-sm 2xl:text-base"
+          className={button()}
           onClick={() => setFilter(item.value)}
         >
           {item.label}

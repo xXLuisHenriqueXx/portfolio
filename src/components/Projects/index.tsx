@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { tv } from "tailwind-variants";
 
 import Header from "../Header";
 import Filter from "./Filter";
@@ -6,6 +7,15 @@ import ProjectsList from "./ProjectsList";
 import Modal from "../Modal";
 
 import { projectsData } from "@src/static/ProjectsData";
+
+const projectsStyles = tv({
+  slots: {
+    container:
+      "relative grid grid-cols-1 place-items-center gap-y-8 w-full py-12 px-5",
+  },
+});
+
+const { container } = projectsStyles();
 
 interface IProjectsProps {
   setActiveScreen: (value: "projects") => void;
@@ -40,11 +50,7 @@ const Projects = ({ setActiveScreen }: IProjectsProps) => {
   }, []);
 
   return (
-    <section
-      ref={ref}
-      id={"projects"}
-      className="relative grid grid-cols-1 place-items-center gap-y-8 w-full pt-12 pb-9 px-5"
-    >
+    <section ref={ref} id={"projects"} className={container()}>
       <Header
         title="MEUS PROJETOS"
         description="Abaixo você pode visualizar a comprovação das minhas habilidades
