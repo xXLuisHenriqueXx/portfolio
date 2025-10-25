@@ -32,7 +32,7 @@ const Contact = ({ setActiveScreen }: IContactProps) => {
     <section
       ref={ref}
       id={"contact"}
-      className="flex flex-col gap-y-8 items-center w-full pt-12 pb-9 px-5 bg-gradient-to-b from-card to-[#1B142F]"
+      className="flex flex-col gap-y-8 items-center w-full py-12 px-5 bg-gradient-to-b from-card to-[#1B142F]"
     >
       <Header
         title="MEUS CONTATOS"

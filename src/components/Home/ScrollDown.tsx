@@ -5,7 +5,7 @@ import { ArrowDownCircle } from "lucide-react";
 const scrollDownStyles = tv({
   slots: {
     container:
-      "lg:absolute bottom-8 flex flex-col items-center justify-center gap-y-2 z-10",
+      "lg:absolute bottom-12 flex flex-col items-center justify-center gap-y-2 z-10",
     icon: "w-6 h-6 lg:w-8 lg:h-8 text-foreground/75",
     text: "text-xs lg:text-sm font-medium text-foreground/75",
   },

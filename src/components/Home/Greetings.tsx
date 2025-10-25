@@ -42,7 +42,7 @@ const Greetings = () => {
           text={[
             "Desenvolvedor Web",
             "Desenvolvedor Mobile",
-            "Desenvolvedor FullSatck",
+            "Desenvolvedor FullStack",
           ]}
           typingSpeed={75}
           pauseDuration={1500}

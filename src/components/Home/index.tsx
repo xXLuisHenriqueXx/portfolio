@@ -11,7 +11,7 @@ import Me from "@src/assets/me.png";
 const homeStyles = tv({
   slots: {
     container:
-      "relative grid grid-cols-1 lg:grid-cols-2 place-items-center gap-y-4 lg:gap-y-0 w-full h-screen pt-18 pb-9 px-5",
+      "relative grid grid-cols-1 lg:grid-cols-2 place-items-center gap-y-4 lg:gap-y-0 w-full h-dvh pt-18 pb-8 px-5",
     containerContent: "flex flex-col items-center gap-y-4 z-10",
     image: "w-64 xl:w-92 2xl:w-md z-10",
     squares: "absolute inset-0 z-0",

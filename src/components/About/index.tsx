@@ -10,7 +10,7 @@ import Certificates from "./Certificates";
 const aboutStyles = tv({
   slots: {
     container:
-      "relative grid grid-cols-1 lg:grid-cols-2 place-items-center self-center gap-y-8 lg:gap-y-0 lg:gap-x-14 w-full max-w-7xl pt-12 pb-9 px-5",
+      "relative grid grid-cols-1 lg:grid-cols-2 place-items-center self-center gap-y-8 lg:gap-y-0 lg:gap-x-14 w-full max-w-7xl py-12 px-5",
     containerContent: "flex flex-col gap-y-8 w-full",
     separator: "lg:hidden",
   },

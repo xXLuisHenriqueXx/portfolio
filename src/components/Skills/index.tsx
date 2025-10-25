@@ -7,7 +7,7 @@ import SkillsList from "./SkillsList";
 const skillsStyles = tv({
   slots: {
     container:
-      "grid grid-cols-1 place-items-center gap-y-8 w-full pt-12 pb-9 px-5 bg-gradient-to-b from-card to-[#1B142F]",
+      "grid grid-cols-1 place-items-center gap-y-8 w-full py-12 px-5 bg-gradient-to-b from-card to-[#1B142F]",
   },
 });
 
