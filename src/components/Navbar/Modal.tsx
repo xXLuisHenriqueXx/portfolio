@@ -2,7 +2,7 @@ import { tv } from "tailwind-variants";
 
 import { Card, CardContent } from "@src/components/ui/card";
 
-import { linksData } from "@src/static/LinksData";
+import { navbarData } from "@src/static/NavbarData";
 
 const modalStyles = tv({
   slots: {
@@ -35,7 +35,7 @@ const Modal = ({ showModal, activeScreen }: IModalProps) => {
   return (
     <Card className={container({ showModal })}>
       <CardContent className={containerContent()}>
-        {linksData.map(({ id, text, icon: Icon, action }) => (
+        {navbarData.links.map(({ id, text, icon: Icon, action }) => (
           <li
             key={id}
             className={containerLink({ activeScreen: activeScreen === id })}

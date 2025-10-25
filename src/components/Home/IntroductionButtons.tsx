@@ -22,7 +22,12 @@ const IntroductionButtons = () => {
 
       <div className={containerButtons()}>
         {homeData.buttons.map(({ label, variant, action }) => (
-          <Button variant={variant} className={button()} onClick={action}>
+          <Button
+            key={label}
+            variant={variant}
+            className={button()}
+            onClick={action}
+          >
             {label}
           </Button>
         ))}

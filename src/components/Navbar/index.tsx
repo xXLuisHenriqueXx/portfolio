@@ -7,10 +7,9 @@ import Modal from "./Modal";
 
 import type { TActiveScreen } from "@src/App";
 
-import Icon from "@src/assets/icon.svg";
+import { navbarData } from "@src/static/NavbarData";
 import FlagBr from "@src/assets/flag-br.svg";
 import FlagUs from "@src/assets/flag-us.svg";
-import { linksData } from "@src/static/LinksData";
 
 const navbarStyles = tv({
   slots: {
@@ -66,17 +65,13 @@ const Navbar = ({ activeScreen }: INavbarProps) => {
     <nav className={container()}>
       <img
         className={image()}
-        src={Icon}
+        src={navbarData.logo.src}
         alt="Logo LH"
-        onClick={() =>
-          document
-            .getElementById("home")
-            ?.scrollIntoView({ behavior: "smooth" })
-        }
+        onClick={navbarData.logo.action}
       />
 
       <ul className={containerLinksGroup()}>
-        {linksData.map(({ id, text, action }) => (
+        {navbarData.links.map(({ id, text, action }) => (
           <li
             key={id}
             className={containerLink({ activeScreen: activeScreen === id })}
