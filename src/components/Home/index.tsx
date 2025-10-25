@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import { tv } from "tailwind-variants";
 
 import Squares from "../Squares";
 import Greetings from "./Greetings";
@@ -6,6 +7,18 @@ import IntroductionButtons from "./IntroductionButtons";
 import ScrollDown from "./ScrollDown";
 
 import Me from "@src/assets/me.png";
+
+const homeStyles = tv({
+  slots: {
+    container:
+      "relative grid grid-cols-1 lg:grid-cols-2 place-items-center gap-y-4 lg:gap-y-0 w-full h-screen pt-18 pb-9 px-5",
+    containerContent: "flex flex-col items-center gap-y-4 z-10",
+    image: "w-64 xl:w-92 2xl:w-md z-10",
+    squares: "absolute inset-0 z-0",
+  },
+});
+
+const { container, containerContent, image, squares } = homeStyles();
 
 interface IHomeProps {
   setActiveScreen: (value: "home") => void;
@@ -32,31 +45,23 @@ const Home = ({ setActiveScreen }: IHomeProps) => {
   }, []);
 
   return (
-    <section
-      ref={ref}
-      id={"home"}
-      className="relative grid grid-cols-1 lg:grid-cols-2 place-items-center gap-y-4 lg:gap-y-0 w-full h-screen pt-18 pb-9 px-5"
-    >
+    <section ref={ref} id={"home"} className={container()}>
       <Squares
         direction="down"
         speed={0.05}
         squareSize={60}
         borderColor="rgba(123, 83, 238, 0.1)"
         hoverFillColor="rgba(123, 83, 238, 0.1)"
-        className="absolute inset-0 z-0"
+        className={squares()}
       />
 
-      <article className="relative flex flex-col items-center gap-y-4 z-10">
+      <article className={containerContent()}>
         <Greetings />
 
         <IntroductionButtons />
       </article>
 
-      <img
-        className="relative w-64 xl:w-92 2xl:w-md z-10"
-        src={Me}
-        alt="Foto de Luis Henrique"
-      />
+      <img className={image()} src={Me} alt="Foto de Luis Henrique" />
 
       <ScrollDown />
     </section>

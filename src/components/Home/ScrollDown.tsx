@@ -1,9 +1,21 @@
+import { tv } from "tailwind-variants";
 import { motion } from "framer-motion";
 import { ArrowDownCircle } from "lucide-react";
 
+const scrollDownStyles = tv({
+  slots: {
+    container:
+      "lg:absolute bottom-8 flex flex-col items-center justify-center gap-y-2 z-10",
+    icon: "w-6 h-6 lg:w-8 lg:h-8 text-foreground/75",
+    text: "text-xs lg:text-sm font-medium text-foreground/75",
+  },
+});
+
+const { container, icon, text } = scrollDownStyles();
+
 const ScrollDown = () => {
   return (
-    <article className="lg:absolute bottom-8 flex flex-col items-center justify-center gap-y-2 z-10">
+    <article className={container()}>
       <motion.div
         animate={{ translateY: [0, 2, 0] }}
         transition={{
@@ -11,15 +23,10 @@ const ScrollDown = () => {
           repeat: Infinity,
         }}
       >
-        <ArrowDownCircle
-          className="w-6 h-6 lg:w-8 lg:h-8 text-foreground/75"
-          strokeWidth={1}
-        />
+        <ArrowDownCircle className={icon()} strokeWidth={1} />
       </motion.div>
 
-      <p className="text-xs lg:text-sm font-medium text-foreground/75">
-        Role para baixo
-      </p>
+      <p className={text()}>Role para baixo</p>
     </article>
   );
 };

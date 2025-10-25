@@ -1,16 +1,29 @@
+import { tv } from "tailwind-variants";
+
 import SplitText from "../SplitText";
 import TextType from "../TextType";
 
+const greetingsStyles = tv({
+  slots: {
+    container: "flex flex-col -gap-y-2",
+    title:
+      "text-4xl lg:text-5xl 2xl:text-6xl font-black text-start text-primary",
+    subtitle:
+      "text-base lg:text-xl 2xl:text-2xl font-light text-foreground text-center",
+    highlight: "font-bold",
+  },
+});
+
+const { container, title, subtitle, highlight } = greetingsStyles();
+
 const Greetings = () => {
   return (
-    <div className="flex flex-col -gap-y-2">
-      <h2 className="text-base lg:text-xl 2xl:text-2xl font-light text-foreground text-center">
-        Olá, me chamo
-      </h2>
+    <div className={container()}>
+      <h2 className={subtitle()}>Olá, me chamo</h2>
 
       <SplitText
         text="LUIS HENRIQUE"
-        className="text-4xl lg:text-5xl 2xl:text-6xl font-black text-start text-primary"
+        className={title()}
         delay={100}
         duration={0.6}
         ease="power3.out"
@@ -22,10 +35,10 @@ const Greetings = () => {
         textAlign="center"
       />
 
-      <h2 className="text-base lg:text-xl 2xl:text-2xl font-light text-foreground text-center">
+      <h2 className={subtitle()}>
         e sou{" "}
         <TextType
-          className="font-bold"
+          className={highlight()}
           text={[
             "Desenvolvedor Web",
             "Desenvolvedor Mobile",
