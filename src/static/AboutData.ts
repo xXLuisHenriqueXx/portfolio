@@ -1,4 +1,4 @@
-import type { IAboutData } from "@src/common/interfaces/About.interface";
+import type { IAboutProps } from "@src/common/interfaces/About.interface";
 import {
   aws,
   docker,
@@ -23,7 +23,7 @@ import {
 
 import AWS from "@src/assets/aws.png";
 
-export const aboutData: IAboutData = {
+export const aboutData: IAboutProps = {
   paragraphs: [
     "Olá! Eu sou Luis Henrique Cardoso, Desenvolvedor Full Stack e Mobile, apaixonado por criar soluções web e mobile robustas, escaláveis e centradas na melhor experiência do usuário. Meu trabalho abrange todo o ciclo de desenvolvimento, desde a concepção visual até a implementação de interfaces modernas, responsivas e bem estruturadas.",
     "No frontend, atuo com React, React Native, Next.js e TypeScript, utilizando TailwindCSS, Tailwind Variants e Styled-Components para garantir consistência visual e interfaces elegantes. Para gerenciamento de estado e performance, emprego Zustand, criando aplicações interativas e eficientes.",

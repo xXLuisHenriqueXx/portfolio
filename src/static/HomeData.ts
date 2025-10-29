@@ -1,7 +1,7 @@
-import type { IHomeDataProps } from "@src/common/interfaces/Home.interface";
+import type { IHomeProps } from "@src/common/interfaces/Home.interface";
 import Me from "@src/assets/me.png";
 
-export const homeData: IHomeDataProps = {
+export const homeData: IHomeProps = {
   experiences: [
     "Desenvolvedor Web",
     "Desenvolvedor Mobile",

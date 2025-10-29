@@ -19,7 +19,7 @@ interface ICertificateProps {
   description: string;
 }
 
-export interface IAboutData {
+export interface IAboutProps {
   paragraphs: string[];
   ticket: ITicketProps[];
   tools: IToolProps[];

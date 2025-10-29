@@ -4,7 +4,7 @@ interface IButtonProps {
   action: () => void;
 }
 
-export interface IHomeDataProps {
+export interface IHomeProps {
   experiences: string[];
   introduction: string;
   buttons: IButtonProps[];
