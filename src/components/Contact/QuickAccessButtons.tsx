@@ -1,7 +1,8 @@
 import { tv } from "tailwind-variants";
-import { FaGithub, FaLinkedin, FaWhatsapp } from "react-icons/fa";
 
 import SpotlightCard from "../SpotlightCard";
+
+import { contactData } from "@src/static/ContactData";
 
 const quickAccessButtonsStyles = tv({
   slots: {
@@ -12,7 +13,7 @@ const quickAccessButtonsStyles = tv({
     containerText: "flex flex-row items-center gap-x-2",
     icon: "w-8 h-8 text-primary",
     title: "text-sm font-semibold",
-    description:
+    descriptionText:
       "max-w-[60%] text-[10px] font-medium text-foreground/75 text-wrap",
   },
 });
@@ -24,55 +25,30 @@ const {
   containerText,
   icon,
   title,
-  description,
+  descriptionText,
 } = quickAccessButtonsStyles();
 
 const QuickAccessButtons = () => {
-  const phoneNumber = import.meta.env.VITE_PHONE_NUMBER;
-  const message = `Olá, gostaria de entrar em contato para contratar seus serviços.`;
-
   return (
     <div className={container()}>
-      {[
-        {
-          name: "GitHub",
-          description: "Clique para ver mais projetos meus",
-          icon: FaGithub,
-          href: "https://github.com/xXLuisHenriqueXx",
-        },
-        {
-          name: "LinkedIn",
-          description: "Clique para ver minhas postagens e certificados",
-          icon: FaLinkedin,
-          href: "https://www.linkedin.com/in/luis-henrique-cardoso-a2b833269/",
-        },
-        {
-          name: "Whatsapp",
-          description:
-            "Clique para podermos ter um contato mais livre e rápido",
-          icon: FaWhatsapp,
-          href: `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
-            message
-          )}`,
-        },
-      ].map((item) => (
+      {contactData.buttons.map(({ name, href, description, icon: Icon }) => (
         <SpotlightCard
-          key={item.name}
+          key={name}
           className={containerItem()}
           spotlightColor="rgba(123, 83, 238, 0.5)"
         >
           <a
-            key={item.name}
-            href={item.href}
+            key={name}
+            href={href}
             target="_blank"
             rel="noopener noreferrer"
             className={containerContent()}
           >
             <div className={containerText()}>
-              <item.icon className={icon()} />
-              <p className={title()}>{item.name}</p>
+              <Icon className={icon()} />
+              <p className={title()}>{name}</p>
             </div>
-            <p className={description()}>{item.description}</p>
+            <p className={descriptionText()}>{description}</p>
           </a>
         </SpotlightCard>
       ))}
