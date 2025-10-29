@@ -28,7 +28,7 @@ const Projects = ({ setActiveScreen }: IProjectsProps) => {
   const [showModal, setShowModal] = useState<boolean>(false);
   const [selectedProject, setSelectedProject] = useState<any>();
 
-  const filteredProjects = projectsData.filter((project) => {
+  const filteredProjects = projectsData.projects.filter((project) => {
     return project.type.toLowerCase().includes(filter.toLowerCase());
   });
 

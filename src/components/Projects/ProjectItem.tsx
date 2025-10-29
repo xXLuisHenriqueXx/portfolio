@@ -4,6 +4,8 @@ import { Button } from "../ui/button";
 import { CarouselItem } from "../ui/carousel";
 import SpotlightCard from "../SpotlightCard";
 
+import type { IProjectProps } from "@src/common/interfaces/Projects.interface";
+
 const projectItemStyles = tv({
   slots: {
     container: "lg:basis-1/2 2xl:basis-1/3",
@@ -38,9 +40,9 @@ const {
 } = projectItemStyles();
 
 interface ProjectItemProps {
-  data: any;
+  data: IProjectProps;
   setShowModal: (showModal: boolean) => void;
-  setSelectedProject: (project: any) => void;
+  setSelectedProject: (project: IProjectProps) => void;
 }
 
 const ProjectItem = ({

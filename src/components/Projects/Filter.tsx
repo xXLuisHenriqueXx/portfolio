@@ -1,6 +1,7 @@
 import { tv } from "tailwind-variants";
 
 import { Button } from "../ui/button";
+import { projectsData } from "@src/static/ProjectsData";
 
 const filterStyles = tv({
   slots: {
@@ -19,18 +20,14 @@ interface IFilterProps {
 const Filter = ({ filter, setFilter }: IFilterProps) => {
   return (
     <nav className={container()}>
-      {[
-        { label: "Todos", value: "" },
-        { label: "Web", value: "web" },
-        { label: "Mobile", value: "mobile" },
-      ].map((item) => (
+      {projectsData.buttons.map(({ label, value }) => (
         <Button
-          key={item.label}
-          variant={filter === item.value ? "gradient" : "outline"}
+          key={label}
+          variant={filter === value ? "gradient" : "outline"}
           className={button()}
-          onClick={() => setFilter(item.value)}
+          onClick={() => setFilter(value)}
         >
-          {item.label}
+          {label}
         </Button>
       ))}
     </nav>

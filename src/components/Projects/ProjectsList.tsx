@@ -8,6 +8,8 @@ import {
 } from "../ui/carousel";
 import ProjectItem from "./ProjectItem";
 
+import type { IProjectProps } from "@src/common/interfaces/Projects.interface";
+
 const projectsListStyles = tv({
   slots: {
     container: "w-full max-w-sm lg:max-w-2xl 2xl:max-w-5xl",
@@ -17,9 +19,9 @@ const projectsListStyles = tv({
 const { container } = projectsListStyles();
 
 interface ProjectsListProps {
-  data: any[];
+  data: IProjectProps[];
   setShowModal: (showModal: boolean) => void;
-  setSelectedProject: (project: any) => void;
+  setSelectedProject: (project: IProjectProps) => void;
 }
 
 const ProjectsList = ({

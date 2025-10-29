@@ -5,6 +5,8 @@ import { FaGithub } from "react-icons/fa";
 import { Button } from "../ui/button";
 import SpotlightCard from "../SpotlightCard";
 
+import type { IProjectProps } from "@src/common/interfaces/Projects.interface";
+
 const modalContentStyles = tv({
   slots: {
     container:
@@ -12,6 +14,7 @@ const modalContentStyles = tv({
     containerModal:
       "grid grid-cols-1 gap-y-4 w-full max-w-2xl p-4 bg-card rounded-xl border shadow",
     containerTitle: "flex flex-col items-center gap-y-1",
+    containerDescription: "flex flex-col gap-y-2",
     containerTools: "flex flex-row flex-wrap justify-center gap-2",
     containerToolItem:
       "flex flex-row items-center gap-x-1 bg-primary/10 hover:scale-[102.5%] p-1 lg:p-2 rounded-sm transition-all duration-300 cursor-pointer text-xs font-medium",
@@ -23,7 +26,7 @@ const modalContentStyles = tv({
     button: "relative w-full lg:text-sm",
     title: "text-lg font-extrabold text-center",
     nameTool: "text-[10px] lg:text-xs",
-    description: "text-xs lg:text-sm text-foreground/75 indent-4",
+    descriptionText: "text-xs lg:text-sm text-foreground/75 indent-4",
   },
 });
 
@@ -31,6 +34,7 @@ const {
   container,
   containerModal,
   containerTitle,
+  containerDescription,
   containerTools,
   containerToolItem,
   containerButtons,
@@ -41,18 +45,18 @@ const {
   button,
   title,
   nameTool,
-  description,
+  descriptionText,
 } = modalContentStyles();
 
 interface IModalProps {
   showModal: boolean;
   setShowModal: (showModal: boolean) => void;
-  data: any;
+  data: IProjectProps;
 }
 
 interface IModalContentProps {
   setShowModal: (showModal: boolean) => void;
-  data: any;
+  data: IProjectProps;
 }
 
 const ModalContent = ({ setShowModal, data }: IModalContentProps) => {
@@ -82,11 +86,17 @@ const ModalContent = ({ setShowModal, data }: IModalContentProps) => {
           ))}
         </div>
 
-        <p className={description()}>{data.description}</p>
+        <div className={containerDescription()}>
+          {data.description.map((description: string, index: number) => (
+            <p key={index} className={descriptionText()}>
+              {description}
+            </p>
+          ))}
+        </div>
 
         <div className={containerButtons()}>
           <a
-            href={data.code}
+            href={data.code ?? undefined}
             target="_blank"
             rel="noreferrer"
             className="w-full"
@@ -102,7 +112,7 @@ const ModalContent = ({ setShowModal, data }: IModalContentProps) => {
           </a>
 
           <a
-            href={data.demo}
+            href={data.demo ?? undefined}
             target="_blank"
             rel="noreferrer"
             className="w-full"
