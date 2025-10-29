@@ -30,7 +30,7 @@ const TicketInfo = () => {
       <span className={dot({ position: "bottom" })} />
 
       {aboutData.ticket.map(({ title, subtitle }) => (
-        <div className={containerContent()}>
+        <div key={title} className={containerContent()}>
           <strong className={titleText()}>{title}</strong>
           <p className={subtitleText()}>{subtitle}</p>
         </div>

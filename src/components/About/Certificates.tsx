@@ -38,7 +38,7 @@ const Certificates = () => {
             const isSelected = selectedCertificate === index;
 
             return (
-              <div onClick={() => handleClick(index)}>
+              <div key={name} onClick={() => handleClick(index)}>
                 <SpotlightCard
                   className={containerItem()}
                   spotlightColor="rgba(123, 83, 238, 0.2)"
