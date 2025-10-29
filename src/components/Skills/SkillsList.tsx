@@ -6,7 +6,8 @@ import { skillsData } from "@src/static/SkillsData";
 
 const skillsStyles = tv({
   slots: {
-    container: "grid grid-cols-1 md:place-items-center gap-8 max-w-full",
+    container:
+      "grid grid-cols-1 md:place-items-center gap-8 w-full max-w-xl lg:max-w-4xl",
   },
 });
 
@@ -15,8 +16,8 @@ const { container } = skillsStyles();
 const SkillsList = () => {
   return (
     <article className={container()}>
-      {skillsData.map((skill, index) => (
-        <SkillItem key={index} data={skill} index={index} />
+      {skillsData.map((skill) => (
+        <SkillItem key={skill.title} data={skill} />
       ))}
     </article>
   );

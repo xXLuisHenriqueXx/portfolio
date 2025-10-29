@@ -1,12 +1,8 @@
 import {
-  Blocks,
-  BriefcaseBusiness,
   CircleEllipsis,
   Code,
   Database,
-  GraduationCap,
   Monitor,
-  RefreshCw,
   Settings,
 } from "lucide-react";
 
@@ -31,60 +27,27 @@ import {
   node,
   postgresql,
   postman,
+  prisma,
   react,
   ruby,
   rubyonrails,
   sqlite,
+  styledComponents,
   tailwindcss,
   typescript,
   vite,
+  zustand,
 } from "./SVGs";
+import {
+  DiaryTag,
+  GraduationTag,
+  ProjectsTag,
+  StudyTag,
+} from "@src/components/Skills/Tags";
 
-const DiaryTag = () => {
-  return (
-    <div className="flex flex-row items-center gap-x-0.5 lg:gap-x-1">
-      <RefreshCw className="w-2 h-2 lg:w-3 lg:h-3 2xl:w-4 2xl:h-4 text-primary" />
-      <p className="p-0.75 lg:p-1 2xl:p-2 bg-primary/25 rounded-sm text-[6px] lg:text-[8px] 2xl:text-[10px] font-semibold text-primary">
-        # Uso diário
-      </p>
-    </div>
-  );
-};
+import type { ISkillsProps } from "@src/common/interfaces/Skills.interface";
 
-const ProjectsTag = () => {
-  return (
-    <div className="flex flex-row items-center gap-x-0.5 lg:gap-x-1">
-      <BriefcaseBusiness className="w-2 h-2 lg:w-3 lg:h-3 2xl:w-4 2xl:h-4 text-projects" />
-      <p className="p-0.75 lg:p-1 2xl:p-2 bg-projects/25 rounded-sm text-[6px] lg:text-[8px] 2xl:text-[10px] font-semibold text-projects">
-        # Projetos
-      </p>
-    </div>
-  );
-};
-
-const GraduationTag = () => {
-  return (
-    <div className="flex flex-row items-center gap-x-0.5 lg:gap-x-1">
-      <GraduationCap className="w-2 h-2 lg:w-3 lg:h-3 2xl:w-4 2xl:h-4 text-graduation" />
-      <p className="p-0.75 lg:p-1 2xl:p-2 bg-graduation/25 rounded-sm text-[6px] lg:text-[8px] 2xl:text-[10px] font-semibold text-graduation">
-        # Faculdade
-      </p>
-    </div>
-  );
-};
-
-const StudyTag = () => {
-  return (
-    <div className="flex flex-row items-center gap-x-0.5 lg:gap-x-1">
-      <Blocks className="w-2 h-2 lg:w-3 lg:h-3 2xl:w-4 2xl:h-4 text-study" />
-      <p className="p-0.75 lg:p-1 2xl:p-2 bg-study/25 rounded-sm text-[6px] lg:text-[8px] 2xl:text-[10px] font-semibold text-study">
-        # Estudando
-      </p>
-    </div>
-  );
-};
-
-export const skillsData = [
+export const skillsData: ISkillsProps[] = [
   {
     title: "Linguagens",
     icon: Code,
@@ -151,6 +114,21 @@ export const skillsData = [
         tag: DiaryTag,
       },
       {
+        name: "Tailwind Variants",
+        icon: tailwindcss,
+        tag: DiaryTag,
+      },
+      {
+        name: "Styled-Components",
+        icon: styledComponents,
+        tag: DiaryTag,
+      },
+      {
+        name: "Zustand",
+        icon: zustand,
+        tag: DiaryTag,
+      },
+      {
         name: "Framer Motion",
         icon: framermotion,
         tag: DiaryTag,
@@ -185,6 +163,16 @@ export const skillsData = [
         name: "RubyOnRails",
         icon: rubyonrails,
         tag: ProjectsTag,
+      },
+      {
+        name: "PrismaORM",
+        icon: prisma,
+        tag: ProjectsTag,
+      },
+      {
+        name: "Jest",
+        icon: jest,
+        tag: DiaryTag,
       },
       {
         name: "Docker",
@@ -246,11 +234,6 @@ export const skillsData = [
       {
         name: "Figma",
         icon: figma,
-        tag: DiaryTag,
-      },
-      {
-        name: "Jest",
-        icon: jest,
         tag: DiaryTag,
       },
     ],

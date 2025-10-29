@@ -2,14 +2,16 @@ import { tv } from "tailwind-variants";
 
 import SpotlightCard from "../SpotlightCard";
 
+import type { ISkillsProps } from "@src/common/interfaces/Skills.interface";
+
 const skillItemStyles = tv({
   slots: {
-    container: "flex flex-col gap-y-2 lg:gap-y-4 w-full max-w-4xl",
+    container: "flex flex-col gap-y-2 lg:gap-y-4 w-full",
     containerHeader: "flex flex-row items-center gap-x-2",
     containerIcon: "p-2 border border-primary rounded-md",
     containerContent: "relative flex flex-row gap-x-2 overflow-x-auto",
     containerItem:
-      "flex shrink-0 flex-col items-center justify-center gap-y-2 lg:gap-y-4 p-2 lg:p-4 bg-card rounded-md hover:scale-[97.5%] transition-all duration-300 cursor-pointer",
+      "flex shrink-0 flex-col items-center justify-center gap-y-2 lg:gap-y-4 w-24 lg:w-38 p-2 lg:p-4 bg-card rounded-md hover:scale-[97.5%] transition-all duration-300 cursor-pointer",
     containerItemIconText: "flex flex-col items-center gap-y-1 lg:gap-y-2",
     icon: "w-3 h-3 lg:w-6 lg:h-6 text-primary",
     iconItem: "w-6 h-6 lg:w-8 lg:h-8 2xl:w-10 2xl:h-10",
@@ -34,12 +36,11 @@ const {
 } = skillItemStyles();
 
 interface SkillItemProps {
-  data: any;
-  index: number;
+  data: ISkillsProps;
 }
-const SkillItem = ({ data, index }: SkillItemProps) => {
+const SkillItem = ({ data }: SkillItemProps) => {
   return (
-    <div key={index} className={container()}>
+    <div className={container()}>
       <div className={containerHeader()}>
         <div className={containerIcon()}>
           <data.icon className={icon()} />
