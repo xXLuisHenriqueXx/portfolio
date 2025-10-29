@@ -14,8 +14,8 @@ const { container } = aboutTextStyles();
 const AboutText = () => {
   return (
     <article className={container()}>
-      {aboutData.paragraphs.map((paragraph, index) => (
-        <p key={index}>{paragraph}</p>
+      {aboutData.paragraphs.map((paragraph: string) => (
+        <p key={paragraph}>{paragraph}</p>
       ))}
     </article>
   );
