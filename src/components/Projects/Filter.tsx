@@ -1,4 +1,5 @@
 import { tv } from "tailwind-variants";
+import { motion } from "framer-motion";
 
 import { Button } from "../ui/button";
 import { projectsData } from "@src/static/ProjectsData";
@@ -19,7 +20,13 @@ interface IFilterProps {
 
 const Filter = ({ filter, setFilter }: IFilterProps) => {
   return (
-    <nav className={container()}>
+    <motion.nav
+      className={container()}
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      transition={{ duration: 1, type: "spring" }}
+      viewport={{ once: true }}
+    >
       {projectsData.buttons.map(({ label, value }) => (
         <Button
           key={label}
@@ -30,7 +37,7 @@ const Filter = ({ filter, setFilter }: IFilterProps) => {
           {label}
         </Button>
       ))}
-    </nav>
+    </motion.nav>
   );
 };
 

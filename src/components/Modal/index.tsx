@@ -1,4 +1,5 @@
 import { tv } from "tailwind-variants";
+import { AnimatePresence, motion } from "framer-motion";
 import { Globe } from "lucide-react";
 import { FaGithub } from "react-icons/fa";
 
@@ -54,86 +55,92 @@ interface IModalProps {
   data: IProjectProps;
 }
 
-interface IModalContentProps {
-  setShowModal: (showModal: boolean) => void;
-  data: IProjectProps;
-}
-
-const ModalContent = ({ setShowModal, data }: IModalContentProps) => {
-  return (
-    <div className={container()} onClick={() => setShowModal(false)}>
-      <article
-        className={containerModal()}
-        onClick={(e) => e.stopPropagation()}
-      >
-        <img className={image()} src={data.image} />
-
-        <div className={containerTitle()}>
-          <h1 className={title()}>{data.title}</h1>
-          <div className={bottomBar()} />
-        </div>
-
-        <div className={containerTools()}>
-          {data.technologies.map((technology: any, index: number) => (
-            <SpotlightCard
-              key={index}
-              className={containerToolItem()}
-              spotlightColor="rgba(123, 83, 238, 0.5)"
-            >
-              <technology.icon className={iconTool()} />
-              <p className={nameTool()}>#{technology.name}</p>
-            </SpotlightCard>
-          ))}
-        </div>
-
-        <div className={containerDescription()}>
-          {data.description.map((description: string, index: number) => (
-            <p key={index} className={descriptionText()}>
-              {description}
-            </p>
-          ))}
-        </div>
-
-        <div className={containerButtons()}>
-          <a
-            href={data.code ?? undefined}
-            target="_blank"
-            rel="noreferrer"
-            className="w-full"
-          >
-            <Button
-              className={button()}
-              variant="outline"
-              size={"sm"}
-              disabled={!data.code}
-            >
-              <FaGithub className={iconButton()} /> Código
-            </Button>
-          </a>
-
-          <a
-            href={data.demo ?? undefined}
-            target="_blank"
-            rel="noreferrer"
-            className="w-full"
-          >
-            <Button
-              className={button()}
-              variant="outline"
-              size={"sm"}
-              disabled={!data.demo}
-            >
-              <Globe className={iconButton()} /> Abrir na Web
-            </Button>
-          </a>
-        </div>
-      </article>
-    </div>
-  );
-};
-
 const Modal = ({ showModal, setShowModal, data }: IModalProps) => {
-  return showModal && <ModalContent setShowModal={setShowModal} data={data} />;
+  return (
+    <AnimatePresence>
+      {showModal && (
+        <motion.div
+          className={container()}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 1, type: "spring" }}
+          onClick={() => setShowModal(false)}
+        >
+          <motion.article
+            className={containerModal()}
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+            exit={{ scale: 0 }}
+            transition={{ duration: 0.5, type: "spring" }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <img className={image()} src={data.image} />
+
+            <div className={containerTitle()}>
+              <h1 className={title()}>{data.title}</h1>
+              <div className={bottomBar()} />
+            </div>
+
+            <div className={containerTools()}>
+              {data.technologies.map((technology: any, index: number) => (
+                <SpotlightCard
+                  key={index}
+                  className={containerToolItem()}
+                  spotlightColor="rgba(123, 83, 238, 0.5)"
+                >
+                  <technology.icon className={iconTool()} />
+                  <p className={nameTool()}>#{technology.name}</p>
+                </SpotlightCard>
+              ))}
+            </div>
+
+            <div className={containerDescription()}>
+              {data.description.map((description: string, index: number) => (
+                <p key={index} className={descriptionText()}>
+                  {description}
+                </p>
+              ))}
+            </div>
+
+            <div className={containerButtons()}>
+              <a
+                href={data.code ?? undefined}
+                target="_blank"
+                rel="noreferrer"
+                className="w-full"
+              >
+                <Button
+                  className={button()}
+                  variant="outline"
+                  size={"sm"}
+                  disabled={!data.code}
+                >
+                  <FaGithub className={iconButton()} /> Código
+                </Button>
+              </a>
+
+              <a
+                href={data.demo ?? undefined}
+                target="_blank"
+                rel="noreferrer"
+                className="w-full"
+              >
+                <Button
+                  className={button()}
+                  variant="outline"
+                  size={"sm"}
+                  disabled={!data.demo}
+                >
+                  <Globe className={iconButton()} /> Abrir na Web
+                </Button>
+              </a>
+            </div>
+          </motion.article>
+        </motion.div>
+      )}
+    </AnimatePresence>
+  );
 };
 
 export default Modal;

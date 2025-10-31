@@ -1,4 +1,5 @@
 import { tv } from "tailwind-variants";
+import { motion } from "framer-motion";
 
 import {
   Carousel,
@@ -30,26 +31,33 @@ const ProjectsList = ({
   setSelectedProject,
 }: ProjectsListProps) => {
   return (
-    <Carousel
-      className={container()}
-      opts={{
-        align: "start",
-      }}
+    <motion.div
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      transition={{ duration: 1.5, type: "spring" }}
+      viewport={{ once: true }}
     >
-      <CarouselContent>
-        {data.map((item) => (
-          <ProjectItem
-            key={item.id}
-            data={item}
-            setShowModal={setShowModal}
-            setSelectedProject={setSelectedProject}
-          />
-        ))}
-      </CarouselContent>
+      <Carousel
+        className={container()}
+        opts={{
+          align: "start",
+        }}
+      >
+        <CarouselContent>
+          {data.map((item) => (
+            <ProjectItem
+              key={item.id}
+              data={item}
+              setShowModal={setShowModal}
+              setSelectedProject={setSelectedProject}
+            />
+          ))}
+        </CarouselContent>
 
-      <CarouselPrevious />
-      <CarouselNext />
-    </Carousel>
+        <CarouselPrevious />
+        <CarouselNext />
+      </Carousel>
+    </motion.div>
   );
 };
 
