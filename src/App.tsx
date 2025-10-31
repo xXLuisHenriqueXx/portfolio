@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { tv } from "tailwind-variants";
 
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
@@ -7,14 +6,6 @@ import About from "./components/About";
 import Skills from "./components/Skills";
 import Projects from "./components/Projects";
 import Contact from "./components/Contact";
-
-const appStyles = tv({
-  slots: {
-    container: "flex flex-col min-w-full overflow-x-hidden",
-  },
-});
-
-const { container } = appStyles();
 
 export type TActiveScreen =
   | "home"
@@ -27,7 +18,7 @@ function App() {
   const [activeScreen, setActiveScreen] = useState<TActiveScreen>("home");
 
   return (
-    <main className={container()}>
+    <main className={"flex flex-col min-w-full overflow-x-hidden"}>
       <Navbar activeScreen={activeScreen} />
 
       <Home setActiveScreen={setActiveScreen} />
