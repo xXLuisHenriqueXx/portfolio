@@ -68,28 +68,33 @@ const Navbar = ({ activeScreen }: INavbarProps) => {
       initial={{ translateY: -100, opacity: 0 }}
       animate={{ translateY: 0, opacity: 1 }}
       transition={{ duration: 1, type: "spring" }}
+      role="navigation"
+      aria-label="Main"
     >
-      <img
+      <button
         className={image()}
-        src={navbarData.logo.src}
-        alt="Logo LH"
         onClick={navbarData.logo.action}
-      />
+        aria-label="Go to home"
+      >
+        <img src={navbarData.logo.src} alt="Logo LH" loading="lazy" />
+      </button>
 
       <ul className={containerLinksGroup()}>
         {navbarData.links.map(({ id, text, action }) => {
           const isActive = activeScreen === id;
 
           return (
-            <motion.li
-              key={id}
-              className={containerLink({ activeScreen: isActive })}
-              onClick={action}
-            >
-              <p>{text}</p>
+            <li key={id}>
+              <button
+                className={containerLink({ activeScreen: isActive })}
+                onClick={action}
+                aria-current={isActive ? "page" : undefined}
+              >
+                {text}
 
-              {isActive && <span className={bottomBar()} />}
-            </motion.li>
+                {isActive && <span className={bottomBar()} />}
+              </button>
+            </li>
           );
         })}
       </ul>
@@ -99,17 +104,24 @@ const Navbar = ({ activeScreen }: INavbarProps) => {
           variant="outline"
           size={"sm"}
           onClick={() => setIsPortuguese(!isPortuguese)}
+          aria-label={`Change language to ${
+            isPortuguese ? "English" : "Portuguese"
+          }`}
         >
           <img
             className={icon()}
             src={languageButtonData.image}
-            alt="Bandeira"
+            alt={isPortuguese ? "Brazil flag" : "USA flag"}
           />
 
           {languageButtonData.text}
         </Button>
 
-        <Button variant={"outline"} className="size-8">
+        <Button
+          variant={"outline"}
+          className="size-8"
+          aria-label="Toggle dark mode"
+        >
           <Sun />
         </Button>
 
@@ -117,6 +129,9 @@ const Navbar = ({ activeScreen }: INavbarProps) => {
           variant={"default"}
           className="relative lg:hidden size-8"
           onClick={() => setShowModal(!showModal)}
+          aria-label={showModal ? "Close menu" : "Open menu"}
+          aria-expanded={showModal}
+          aria-controls="mobile-menu"
         >
           <AnimatePresence mode="wait" initial={false}>
             {showModal ? (

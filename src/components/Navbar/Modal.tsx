@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { tv } from "tailwind-variants";
 import { AnimatePresence, motion } from "framer-motion";
 
@@ -10,7 +11,7 @@ const modalStyles = tv({
     container: "",
     containerContent: "flex flex-col",
     containerLink:
-      "relative flex flex-row items-center gap-x-4 rounded-md hover:text-primary transition-all duration-200 cursor-pointer px-6 py-4 pr-8 text-base text-nowrap",
+      "relative flex flex-row items-center gap-x-4 w-full rounded-md hover:text-primary transition-all duration-200 cursor-pointer px-6 py-4 pr-8 text-base text-nowrap",
     dot: "absolute right-4 w-2 h-2 bg-primary rounded-full",
   },
   variants: {
@@ -37,26 +38,31 @@ const Modal = ({ showModal, activeScreen }: IModalProps) => {
     <AnimatePresence>
       {showModal && (
         <motion.div
+          id="mobile-menu"
           className={container({ showModal })}
           initial={{ translateY: -100, opacity: 0 }}
           animate={{ translateY: 0, opacity: 1 }}
           exit={{ translateY: -100, opacity: 0 }}
           transition={{ duration: 0.25, type: "spring" }}
+          role="menu"
+          aria-label="Mobile navigation"
         >
           <Card>
             <CardContent className={containerContent()}>
               {navbarData.links.map(({ id, text, icon: Icon, action }) => (
-                <li
-                  key={id}
-                  className={containerLink({
-                    activeScreen: activeScreen === id,
-                  })}
-                  onClick={action}
-                >
-                  <Icon size={16} />
-                  <p>{text}</p>
+                <li key={id}>
+                  <button
+                    className={containerLink({
+                      activeScreen: activeScreen === id,
+                    })}
+                    onClick={action}
+                    role="menuitem"
+                  >
+                    <Icon size={16} />
+                    {text}
 
-                  {activeScreen === id && <span className={dot()} />}
+                    {activeScreen === id && <span className={dot()} />}
+                  </button>
                 </li>
               ))}
             </CardContent>
@@ -67,4 +73,4 @@ const Modal = ({ showModal, activeScreen }: IModalProps) => {
   );
 };
 
-export default Modal;
+export default memo(Modal);
