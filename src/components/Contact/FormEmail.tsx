@@ -2,6 +2,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { tv } from "tailwind-variants";
+import { motion } from "framer-motion";
 import emailjs from "@emailjs/browser";
 
 import {
@@ -68,76 +69,84 @@ const FormEmail = () => {
   };
 
   return (
-    <Card className={container()}>
-      <CardContent>
-        <Form {...form}>
-          <form
-            onSubmit={form.handleSubmit(onSubmit)}
-            className={containerContent()}
-          >
-            <FormField
-              control={form.control}
-              name="title"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel className={text()}>Título</FormLabel>
-                  <FormControl>
-                    <Input
-                      className={text()}
-                      placeholder="Título da sua proposta ..."
-                      {...field}
-                      autoComplete="off"
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
+    <motion.div
+      className={container()}
+      initial={{ translateX: -200, opacity: 0 }}
+      whileInView={{ translateX: 0, opacity: 1 }}
+      transition={{ duration: 1.5, type: "spring" }}
+      viewport={{ once: true }}
+    >
+      <Card>
+        <CardContent>
+          <Form {...form}>
+            <form
+              onSubmit={form.handleSubmit(onSubmit)}
+              className={containerContent()}
+            >
+              <FormField
+                control={form.control}
+                name="title"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className={text()}>Título</FormLabel>
+                    <FormControl>
+                      <Input
+                        className={text()}
+                        placeholder="Título da sua proposta ..."
+                        {...field}
+                        autoComplete="off"
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
 
-            <FormField
-              control={form.control}
-              name="name"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel className={text()}>Nome</FormLabel>
-                  <FormControl>
-                    <Input
-                      className={text()}
-                      placeholder="Nome ..."
-                      {...field}
-                      autoComplete="off"
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
+              <FormField
+                control={form.control}
+                name="name"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className={text()}>Nome</FormLabel>
+                    <FormControl>
+                      <Input
+                        className={text()}
+                        placeholder="Nome ..."
+                        {...field}
+                        autoComplete="off"
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
 
-            <FormField
-              control={form.control}
-              name="message"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel className={text()}>Mensagem</FormLabel>
-                  <FormControl>
-                    <Textarea
-                      className={text()}
-                      placeholder="Explique sua proposta ..."
-                      {...field}
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
+              <FormField
+                control={form.control}
+                name="message"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className={text()}>Mensagem</FormLabel>
+                    <FormControl>
+                      <Textarea
+                        className={text()}
+                        placeholder="Explique sua proposta ..."
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
 
-            <Button variant={"gradient"} type="submit" className={button()}>
-              Enviar
-            </Button>
-          </form>
-        </Form>
-      </CardContent>
-    </Card>
+              <Button variant={"gradient"} type="submit" className={button()}>
+                Enviar
+              </Button>
+            </form>
+          </Form>
+        </CardContent>
+      </Card>
+    </motion.div>
   );
 };
 

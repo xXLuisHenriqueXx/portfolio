@@ -1,4 +1,5 @@
 import { tv } from "tailwind-variants";
+import { motion } from "framer-motion";
 
 import SpotlightCard from "../SpotlightCard";
 
@@ -30,7 +31,13 @@ const {
 
 const QuickAccessButtons = () => {
   return (
-    <div className={container()}>
+    <motion.div
+      className={container()}
+      initial={{ translateX: 200, opacity: 0 }}
+      whileInView={{ translateX: 0, opacity: 1 }}
+      transition={{ delay: 0.25, duration: 1.5, type: "spring" }}
+      viewport={{ once: true }}
+    >
       {contactData.buttons.map(({ name, href, description, icon: Icon }) => (
         <SpotlightCard
           key={name}
@@ -52,7 +59,7 @@ const QuickAccessButtons = () => {
           </a>
         </SpotlightCard>
       ))}
-    </div>
+    </motion.div>
   );
 };
 
