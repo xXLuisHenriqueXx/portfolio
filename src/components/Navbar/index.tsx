@@ -1,5 +1,6 @@
 import { useMemo, useState } from "react";
 import { tv } from "tailwind-variants";
+import { AnimatePresence, motion } from "framer-motion";
 import { Menu, Sun, X } from "lucide-react";
 
 import { Button } from "../ui/button";
@@ -18,7 +19,7 @@ const navbarStyles = tv({
     containerLinksGroup:
       "hidden lg:flex flex-row items-center gap-x-6 px-4 py-2 bg-background/75 rounded-xl",
     containerLink:
-      "relative flex flex-row items-center justify-center text-sm hover:text-primary transition-all duration-300 cursor-pointer",
+      "relative flex flex-row items-center justify-center hover:px-4 hover:py-2 text-sm hover:text-primary transition-all duration-200 cursor-pointer",
     containerButtonsGroup: "flex flex-row items-center gap-x-2",
     image: "cursor-pointer",
     icon: "w-4 h-4 lg:w-6 lg:h-6",
@@ -62,7 +63,12 @@ const Navbar = ({ activeScreen }: INavbarProps) => {
   }, [isPortuguese]);
 
   return (
-    <nav className={container()}>
+    <motion.nav
+      className={container()}
+      initial={{ translateY: -100, opacity: 0 }}
+      animate={{ translateY: 0, opacity: 1 }}
+      transition={{ duration: 1, type: "spring" }}
+    >
       <img
         className={image()}
         src={navbarData.logo.src}
@@ -71,17 +77,21 @@ const Navbar = ({ activeScreen }: INavbarProps) => {
       />
 
       <ul className={containerLinksGroup()}>
-        {navbarData.links.map(({ id, text, action }) => (
-          <li
-            key={id}
-            className={containerLink({ activeScreen: activeScreen === id })}
-            onClick={action}
-          >
-            <p>{text}</p>
+        {navbarData.links.map(({ id, text, action }) => {
+          const isActive = activeScreen === id;
 
-            {activeScreen === id && <span className={bottomBar()} />}
-          </li>
-        ))}
+          return (
+            <motion.li
+              key={id}
+              className={containerLink({ activeScreen: isActive })}
+              onClick={action}
+            >
+              <p>{text}</p>
+
+              {isActive && <span className={bottomBar()} />}
+            </motion.li>
+          );
+        })}
       </ul>
 
       <ul className={containerButtonsGroup()}>
@@ -108,12 +118,34 @@ const Navbar = ({ activeScreen }: INavbarProps) => {
           className="relative lg:hidden size-8"
           onClick={() => setShowModal(!showModal)}
         >
-          {showModal ? <X /> : <Menu />}
+          <AnimatePresence mode="wait" initial={false}>
+            {showModal ? (
+              <motion.div
+                key="close"
+                initial={{ rotate: -90, opacity: 0 }}
+                animate={{ rotate: 0, opacity: 1 }}
+                exit={{ rotate: 90, opacity: 0 }}
+                transition={{ duration: 0.25 }}
+              >
+                <X className="w-5 h-5" />
+              </motion.div>
+            ) : (
+              <motion.div
+                key="menu"
+                initial={{ rotate: -90, opacity: 0 }}
+                animate={{ rotate: 0, opacity: 1 }}
+                exit={{ rotate: 90, opacity: 0 }}
+                transition={{ duration: 0.25 }}
+              >
+                <Menu className="w-5 h-5" />
+              </motion.div>
+            )}
+          </AnimatePresence>
         </Button>
 
         <Modal showModal={showModal} activeScreen={activeScreen} />
       </ul>
-    </nav>
+    </motion.nav>
   );
 };
 

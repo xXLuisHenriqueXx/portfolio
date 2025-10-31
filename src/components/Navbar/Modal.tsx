@@ -1,4 +1,5 @@
 import { tv } from "tailwind-variants";
+import { AnimatePresence, motion } from "framer-motion";
 
 import { Card, CardContent } from "@src/components/ui/card";
 
@@ -9,7 +10,7 @@ const modalStyles = tv({
     container: "",
     containerContent: "flex flex-col",
     containerLink:
-      "relative flex flex-row items-center gap-x-4 rounded-md hover:text-primary transition-all duration-300 cursor-pointer px-6 py-4 pr-8 text-base text-nowrap",
+      "relative flex flex-row items-center gap-x-4 rounded-md hover:text-primary transition-all duration-200 cursor-pointer px-6 py-4 pr-8 text-base text-nowrap",
     dot: "absolute right-4 w-2 h-2 bg-primary rounded-full",
   },
   variants: {
@@ -33,22 +34,36 @@ interface IModalProps {
 
 const Modal = ({ showModal, activeScreen }: IModalProps) => {
   return (
-    <Card className={container({ showModal })}>
-      <CardContent className={containerContent()}>
-        {navbarData.links.map(({ id, text, icon: Icon, action }) => (
-          <li
-            key={id}
-            className={containerLink({ activeScreen: activeScreen === id })}
-            onClick={action}
-          >
-            <Icon size={16} />
-            <p>{text}</p>
+    <AnimatePresence>
+      {showModal && (
+        <motion.div
+          className={container({ showModal })}
+          initial={{ translateY: -100, opacity: 0 }}
+          animate={{ translateY: 0, opacity: 1 }}
+          exit={{ translateY: -100, opacity: 0 }}
+          transition={{ duration: 0.25, type: "spring" }}
+        >
+          <Card>
+            <CardContent className={containerContent()}>
+              {navbarData.links.map(({ id, text, icon: Icon, action }) => (
+                <li
+                  key={id}
+                  className={containerLink({
+                    activeScreen: activeScreen === id,
+                  })}
+                  onClick={action}
+                >
+                  <Icon size={16} />
+                  <p>{text}</p>
 
-            {activeScreen === id && <span className={dot()} />}
-          </li>
-        ))}
-      </CardContent>
-    </Card>
+                  {activeScreen === id && <span className={dot()} />}
+                </li>
+              ))}
+            </CardContent>
+          </Card>
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 };
 
