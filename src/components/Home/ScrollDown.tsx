@@ -17,7 +17,7 @@ const ScrollDown = () => {
   return (
     <article className={container()}>
       <motion.div
-        animate={{ translateY: [0, 2, 0] }}
+        animate={{ translateY: [0, 5, 0] }}
         transition={{
           duration: 2,
           repeat: Infinity,

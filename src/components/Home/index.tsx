@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import { tv } from "tailwind-variants";
+import { motion } from "framer-motion";
 
 import Squares from "../Squares";
 import Greetings from "./Greetings";
@@ -55,14 +56,24 @@ const Home = ({ setActiveScreen }: IHomeProps) => {
         className={squares()}
       />
 
-      <article className={containerContent()}>
+      <motion.article
+        className={containerContent()}
+        initial={{ translateX: -200, opacity: 0 }}
+        whileInView={{ translateX: 0, opacity: 1 }}
+        transition={{ duration: 1.5, type: "spring" }}
+        viewport={{ once: true }}
+      >
         <Greetings />
 
         <IntroductionButtons />
-      </article>
+      </motion.article>
 
-      <img
+      <motion.img
         className={image()}
+        initial={{ translateX: 200, opacity: 0 }}
+        whileInView={{ translateX: 0, opacity: 1 }}
+        transition={{ delay: 0.25, duration: 1.5, type: "spring" }}
+        viewport={{ once: true }}
         src={homeData.image}
         alt="Foto de Luis Henrique"
       />
