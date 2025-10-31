@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import { tv } from "tailwind-variants";
+import { motion } from "framer-motion";
 
 import { Separator } from "../ui/separator";
 import AboutText from "./AboutText";
@@ -48,13 +49,19 @@ const About = ({ setActiveScreen }: IAboutProps) => {
 
       <Separator className={separator()} />
 
-      <article className={containerContent()}>
+      <motion.article
+        className={containerContent()}
+        initial={{ translateX: 200, opacity: 0 }}
+        whileInView={{ translateX: 0, opacity: 1 }}
+        transition={{ duration: 1, type: "spring" }}
+        viewport={{ once: true }}
+      >
         <TicketInfo />
 
         <Tools />
 
         <Certificates />
-      </article>
+      </motion.article>
     </section>
   );
 };

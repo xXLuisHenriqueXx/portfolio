@@ -1,4 +1,5 @@
 import { tv } from "tailwind-variants";
+import { motion } from "framer-motion";
 
 import { aboutData } from "@src/static/AboutData";
 
@@ -13,11 +14,17 @@ const { container } = aboutTextStyles();
 
 const AboutText = () => {
   return (
-    <article className={container()}>
+    <motion.article
+      className={container()}
+      initial={{ translateX: -200, opacity: 0 }}
+      whileInView={{ translateX: 0, opacity: 1 }}
+      transition={{ delay: 0.25, duration: 1, type: "spring" }}
+      viewport={{ once: true }}
+    >
       {aboutData.paragraphs.map((paragraph: string) => (
         <p key={paragraph}>{paragraph}</p>
       ))}
-    </article>
+    </motion.article>
   );
 };
 
