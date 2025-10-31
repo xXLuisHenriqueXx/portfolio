@@ -1,4 +1,5 @@
 import { tv } from "tailwind-variants";
+import { motion } from "framer-motion";
 
 import SkillItem from "./SkillItem";
 
@@ -15,11 +16,17 @@ const { container } = skillsStyles();
 
 const SkillsList = () => {
   return (
-    <article className={container()}>
+    <motion.article
+      className={container()}
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      transition={{ duration: 1.5, type: "spring" }}
+      viewport={{ once: true }}
+    >
       {skillsData.map((skill) => (
         <SkillItem key={skill.title} data={skill} />
       ))}
-    </article>
+    </motion.article>
   );
 };
 

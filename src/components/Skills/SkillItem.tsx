@@ -1,4 +1,5 @@
 import { tv } from "tailwind-variants";
+import { motion } from "framer-motion";
 
 import SpotlightCard from "../SpotlightCard";
 
@@ -17,7 +18,7 @@ const skillItemStyles = tv({
     iconItem: "w-6 h-6 lg:w-8 lg:h-8 2xl:w-10 2xl:h-10",
     line: "w-full h-[1px] bg-primary",
     title: "text-[10px] xl:text-xs 2xl:text-sm font-semibold text-nowrap",
-    name: "text-[8px] lg:text-[10px] 2xl:text-xs font-semibold",
+    nameText: "text-[8px] lg:text-[10px] 2xl:text-xs font-semibold",
   },
 });
 
@@ -32,7 +33,7 @@ const {
   iconItem,
   line,
   title,
-  name,
+  nameText,
 } = skillItemStyles();
 
 interface SkillItemProps {
@@ -52,20 +53,27 @@ const SkillItem = ({ data }: SkillItemProps) => {
       </div>
 
       <div className={containerContent()}>
-        {data.items.map((item: any) => (
-          <SpotlightCard
-            key={item.name}
-            className={containerItem()}
-            spotlightColor="rgba(123, 83, 238, 0.25)"
+        {data.items.map(({ name, icon: Icon, tag: Tag }, index) => (
+          <motion.div
+            key={name}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ delay: index * 0.1, duration: 0.5, type: "spring" }}
+            viewport={{ once: true }}
           >
-            <div className={containerItemIconText()}>
-              <item.icon className={iconItem()} />
+            <SpotlightCard
+              className={containerItem()}
+              spotlightColor="rgba(123, 83, 238, 0.25)"
+            >
+              <div className={containerItemIconText()}>
+                <Icon className={iconItem()} />
 
-              <p className={name()}>{item.name}</p>
-            </div>
+                <p className={nameText()}>{name}</p>
+              </div>
 
-            <item.tag />
-          </SpotlightCard>
+              <Tag />
+            </SpotlightCard>
+          </motion.div>
         ))}
       </div>
     </div>

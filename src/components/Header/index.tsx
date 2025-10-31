@@ -1,4 +1,5 @@
 import { tv } from "tailwind-variants";
+import { motion } from "framer-motion";
 
 const headerStyles = tv({
   slots: {
@@ -21,14 +22,20 @@ interface IHeaderProps {
 
 const Header = ({ title, description }: IHeaderProps) => {
   return (
-    <header className={container()}>
+    <motion.header
+      className={container()}
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      transition={{ duration: 1, type: "spring" }}
+      viewport={{ once: true }}
+    >
       <div className={containerTitle()}>
         <h1 className={titleText()}>{title}</h1>
         <div className={bottomBar()} />
       </div>
 
       <p className={descriptionText()}>{description}</p>
-    </header>
+    </motion.header>
   );
 };
 
