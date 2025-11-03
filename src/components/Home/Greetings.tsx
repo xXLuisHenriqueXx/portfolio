@@ -24,6 +24,7 @@ const Greetings = () => {
       <h2 className={subtitle()}>Olá, me chamo</h2>
 
       <SplitText
+        tag="h1"
         text="LUIS HENRIQUE"
         className={title()}
         delay={100}

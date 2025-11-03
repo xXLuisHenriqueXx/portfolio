@@ -29,24 +29,28 @@ const Home = ({ setActiveScreen }: IHomeProps) => {
   const ref = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
+    const element = ref.current;
+    if (!element) return;
+
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
-          setActiveScreen("home");
-        }
+        if (entry.isIntersecting) setActiveScreen("home");
       },
       { threshold: 0.5 }
     );
 
-    if (ref.current) observer.observe(ref.current);
+    observer.observe(element);
 
-    return () => {
-      if (ref.current) observer.unobserve(ref.current);
-    };
+    return () => observer.disconnect();
   }, []);
 
   return (
-    <section ref={ref} id={"home"} className={container()}>
+    <section
+      ref={ref}
+      id={"home"}
+      className={container()}
+      aria-label="Home section"
+    >
       <Squares
         direction="down"
         speed={0.05}
@@ -54,6 +58,7 @@ const Home = ({ setActiveScreen }: IHomeProps) => {
         borderColor="rgba(123, 83, 238, 0.1)"
         hoverFillColor="rgba(123, 83, 238, 0.1)"
         className={squares()}
+        aria-hidden
       />
 
       <motion.article
@@ -76,6 +81,8 @@ const Home = ({ setActiveScreen }: IHomeProps) => {
         viewport={{ once: true }}
         src={homeData.image}
         alt="Foto de Luis Henrique"
+        loading="lazy"
+        decoding="async"
       />
 
       <ScrollDown />

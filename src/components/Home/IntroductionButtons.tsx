@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import { tv } from "tailwind-variants";
 
 import { Button } from "../ui/button";
@@ -16,22 +17,27 @@ const { container, containerButtons, button, text } =
   introductionButtonsStyles();
 
 const IntroductionButtons = () => {
+  const Buttons = useMemo(
+    () =>
+      homeData.buttons.map(({ label, variant, action }) => (
+        <Button
+          key={label}
+          variant={variant}
+          className={button()}
+          onClick={action}
+          aria-label={`Go to ${label}`}
+        >
+          {label}
+        </Button>
+      )),
+    []
+  );
+
   return (
     <div className={container()}>
       <p className={text()}>{homeData.introduction}</p>
 
-      <div className={containerButtons()}>
-        {homeData.buttons.map(({ label, variant, action }) => (
-          <Button
-            key={label}
-            variant={variant}
-            className={button()}
-            onClick={action}
-          >
-            {label}
-          </Button>
-        ))}
-      </div>
+      <div className={containerButtons()}>{Buttons}</div>
     </div>
   );
 };
