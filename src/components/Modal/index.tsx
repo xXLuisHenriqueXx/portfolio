@@ -20,7 +20,7 @@ const modalContentStyles = tv({
     containerToolItem:
       "flex flex-row items-center gap-x-1 bg-primary/10 hover:scale-[102.5%] p-1 lg:p-2 rounded-sm transition-all duration-300 cursor-pointer text-xs font-medium",
     containerButtons: "flex flex-row gap-x-1",
-    image: "w-full h-64 object-cover rounded-lg",
+    image: "w-full aspect-video object-cover rounded-lg",
     iconTool: "w-3 h-3 lg:w-4 lg:h-4 text-primary",
     iconButton: "absolute left-2",
     bottomBar: "w-1/4 h-1 bg-gradient-to-r from-primary to-secondary",

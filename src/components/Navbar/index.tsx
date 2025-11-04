@@ -112,6 +112,7 @@ const Navbar = ({ activeScreen }: INavbarProps) => {
             className={icon()}
             src={languageButtonData.image}
             alt={isPortuguese ? "Brazil flag" : "USA flag"}
+            loading="lazy"
           />
 
           {languageButtonData.text}

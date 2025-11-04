@@ -19,6 +19,9 @@ import {
 } from "@src/components/Projects/Tags";
 
 import EmptyImage from "@src/assets/empty-image.jpg";
+import DescubraOCT from "@src/assets/descubraoct.png";
+import SaveTube from "@src/assets/savetube.png";
+import PetShopMonito from "@src/assets/petshop_monito.png";
 import type { IProjectsProps } from "@src/common/interfaces/Projects.interface";
 
 export const projectsData: IProjectsProps = {
@@ -76,7 +79,7 @@ export const projectsData: IProjectsProps = {
       id: 2,
       title: "Descubra o CT",
       type: "web",
-      image: EmptyImage,
+      image: DescubraOCT,
       tag: CompletedTag,
       description: [
         "Site desenvolvido para apresentar disciplinas e cursos de uma instituição de ensino superior, oferecendo uma plataforma intuitiva para auxiliar potenciais alunos a explorarem e descobrirem graduações de interesse.",
@@ -116,7 +119,7 @@ export const projectsData: IProjectsProps = {
       id: 3,
       title: "SaveTube",
       type: "web",
-      image: EmptyImage,
+      image: SaveTube,
       tag: NewTag,
       description: [
         "Site desenvolvido como projeto de estudo da ferramenta ytdl-core em conjunto com o framework Next.js, oferecendo uma interface moderna e intuitiva para download de vídeos e áudios do YouTube, com opções de personalização de qualidade e formato, proporcionando uma experiência prática e eficiente para o usuário.",
@@ -176,14 +179,14 @@ export const projectsData: IProjectsProps = {
         },
       ],
       code: "https://github.com/xXLuisHenriqueXx/pizzaria_landing_page",
-      demo: null,
+      demo: "https://xxluishenriquexx.github.io/pizzaria_landing_page/",
       createDate: "17/05/2024",
     },
     {
       id: 5,
       title: "PetShop Monico Frontend",
       type: "web",
-      image: EmptyImage,
+      image: PetShopMonito,
       tag: InProgressTag,
       description: [
         "Site desenvolvido para simular um petshop fictício, oferecendo uma interface moderna e intuitiva que permite ao usuário explorar o petshop, visualizar o catálogo completo de produtos (animais e acessórios) com sistema avançado de busca e filtros, acompanhar campanhas de adoção, adicionar itens ao carrinho e finalizar a compra de forma prática e segura.",
