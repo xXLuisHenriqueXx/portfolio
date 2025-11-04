@@ -21,8 +21,8 @@ const AboutText = () => {
       transition={{ delay: 0.25, duration: 1, type: "spring" }}
       viewport={{ once: true }}
     >
-      {aboutData.paragraphs.map((paragraph: string) => (
-        <p key={paragraph}>{paragraph}</p>
+      {aboutData.paragraphs.map((paragraph, index) => (
+        <p key={index}>{paragraph}</p>
       ))}
     </motion.article>
   );

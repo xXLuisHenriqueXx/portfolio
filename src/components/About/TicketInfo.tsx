@@ -26,11 +26,15 @@ const { container, containerContent, titleText, subtitleText, dot } =
 const TicketInfo = () => {
   return (
     <div className={container()}>
-      <span className={dot({ position: "top" })} />
-      <span className={dot({ position: "bottom" })} />
+      <span className={dot({ position: "top" })} aria-hidden />
+      <span className={dot({ position: "bottom" })} aria-hidden />
 
       {aboutData.ticket.map(({ title, subtitle }) => (
-        <div key={title} className={containerContent()}>
+        <div
+          key={title}
+          className={containerContent()}
+          aria-label={"Info about experience and skills"}
+        >
           <strong className={titleText()}>{title}</strong>
           <p className={subtitleText()}>{subtitle}</p>
         </div>

@@ -27,27 +27,31 @@ const About = ({ setActiveScreen }: IAboutProps) => {
   const ref = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
+    const element = ref.current;
+    if (!element) return;
+
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
-          setActiveScreen("about");
-        }
+        if (entry.isIntersecting) setActiveScreen("about");
       },
       { threshold: 0.5 }
     );
 
-    if (ref.current) observer.observe(ref.current);
+    observer.observe(element);
 
-    return () => {
-      if (ref.current) observer.unobserve(ref.current);
-    };
+    return () => observer.disconnect();
   }, []);
 
   return (
-    <section ref={ref} id={"about"} className={container()}>
+    <section
+      ref={ref}
+      id={"about"}
+      className={container()}
+      aria-label="About section"
+    >
       <AboutText />
 
-      <Separator className={separator()} />
+      <Separator className={separator()} aria-hidden />
 
       <motion.article
         className={containerContent()}

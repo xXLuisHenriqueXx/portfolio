@@ -30,8 +30,9 @@ const Tools = () => {
             key={name}
             className={containerItem()}
             spotlightColor="rgba(123, 83, 238, 0.5)"
+            aria-label={`Tool / Technology - ${name}`}
           >
-            <Icon className={icon()} />
+            <Icon className={icon()} aria-hidden />
 
             <p className={text()}># {name}</p>
           </SpotlightCard>

@@ -53,19 +53,21 @@ const Certificates = () => {
                   spotlightColor="rgba(123, 83, 238, 0.2)"
                 >
                   <AnimatePresence mode="wait">
-                    <motion.div
+                    <motion.button
                       key={!isSelected ? "back" : "front"}
                       className={containerAnimation()}
                       initial={{ rotateY: isSelected ? 180 : 0, opacity: 0 }}
                       animate={{ rotateY: 0, opacity: 1 }}
                       exit={{ rotateY: -180, opacity: 0 }}
                       transition={{ duration: 0.25, ease: "linear" }}
+                      role="button"
                     >
                       {!isSelected ? (
                         <img
                           className={imageCertificate()}
                           src={image}
                           alt={name}
+                          loading="lazy"
                         />
                       ) : (
                         <CertificateInfo
@@ -74,7 +76,7 @@ const Certificates = () => {
                           description={description}
                         />
                       )}
-                    </motion.div>
+                    </motion.button>
                   </AnimatePresence>
                 </SpotlightCard>
               </div>
