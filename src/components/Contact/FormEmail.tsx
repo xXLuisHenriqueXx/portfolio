@@ -95,6 +95,8 @@ const FormEmail = () => {
                         placeholder="Título da sua proposta ..."
                         {...field}
                         autoComplete="off"
+                        role="input"
+                        aria-label="Title of your proposal"
                       />
                     </FormControl>
                     <FormMessage />
@@ -114,6 +116,8 @@ const FormEmail = () => {
                         placeholder="Nome ..."
                         {...field}
                         autoComplete="off"
+                        role="input"
+                        aria-label="Name"
                       />
                     </FormControl>
                     <FormMessage />
@@ -132,6 +136,9 @@ const FormEmail = () => {
                         className={text()}
                         placeholder="Explique sua proposta ..."
                         {...field}
+                        autoComplete="off"
+                        role="input"
+                        aria-label="Explaine your proposal"
                       />
                     </FormControl>
                     <FormMessage />
@@ -139,7 +146,12 @@ const FormEmail = () => {
                 )}
               />
 
-              <Button variant={"gradient"} type="submit" className={button()}>
+              <Button
+                variant={"gradient"}
+                type="submit"
+                className={button()}
+                aria-label="Send"
+              >
                 Enviar
               </Button>
             </form>

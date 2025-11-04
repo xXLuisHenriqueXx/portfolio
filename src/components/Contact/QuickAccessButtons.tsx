@@ -50,9 +50,11 @@ const QuickAccessButtons = () => {
             target="_blank"
             rel="noopener noreferrer"
             className={containerContent()}
+            role="button"
+            aria-label={`Go to ${name}`}
           >
             <div className={containerText()}>
-              <Icon className={icon()} />
+              <Icon className={icon()} aria-hidden />
               <p className={title()}>{name}</p>
             </div>
             <p className={descriptionText()}>{description}</p>
