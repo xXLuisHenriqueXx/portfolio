@@ -21,24 +21,28 @@ const Skills = ({ setActiveScreen }: ISkillsProps) => {
   const ref = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
+    const element = ref.current;
+    if (!element) return;
+
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
-          setActiveScreen("skills");
-        }
+        if (entry.isIntersecting) setActiveScreen("skills");
       },
       { threshold: 0.5 }
     );
 
-    if (ref.current) observer.observe(ref.current);
+    observer.observe(element);
 
-    return () => {
-      if (ref.current) observer.unobserve(ref.current);
-    };
+    return () => observer.disconnect();
   }, []);
 
   return (
-    <section ref={ref} id={"skills"} className={container()}>
+    <section
+      ref={ref}
+      id={"skills"}
+      className={container()}
+      aria-label="Skills section"
+    >
       <Header
         title="MINHAS HABILIDADES"
         description="Abaixo você pode visualizar com maior nível de detalhe as tecnologias e

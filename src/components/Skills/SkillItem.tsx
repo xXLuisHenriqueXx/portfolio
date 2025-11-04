@@ -44,7 +44,7 @@ const SkillItem = ({ data }: SkillItemProps) => {
     <div className={container()}>
       <div className={containerHeader()}>
         <div className={containerIcon()}>
-          <data.icon className={icon()} />
+          <data.icon className={icon()} aria-hidden />
         </div>
 
         <h2 className={title()}>{data.title}</h2>
@@ -66,7 +66,7 @@ const SkillItem = ({ data }: SkillItemProps) => {
               spotlightColor="rgba(123, 83, 238, 0.25)"
             >
               <div className={containerItemIconText()}>
-                <Icon className={iconItem()} />
+                <Icon className={iconItem()} aria-hidden />
 
                 <p className={nameText()}>{name}</p>
               </div>
