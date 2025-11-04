@@ -54,8 +54,8 @@ const ProjectsList = ({
           ))}
         </CarouselContent>
 
-        <CarouselPrevious />
-        <CarouselNext />
+        <CarouselPrevious role="button" aria-label="Previous project" />
+        <CarouselNext role="button" aria-label="Next project" />
       </Carousel>
     </motion.div>
   );

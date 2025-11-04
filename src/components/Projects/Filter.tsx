@@ -33,6 +33,7 @@ const Filter = ({ filter, setFilter }: IFilterProps) => {
           variant={filter === value ? "gradient" : "outline"}
           className={button()}
           onClick={() => setFilter(value)}
+          aria-label={`Filter by ${label}`}
         >
           {label}
         </Button>

@@ -67,11 +67,11 @@ const ProjectItem = ({
         <div className={containerImageIcons()}>
           <div className={containerGradient()} />
           <div className={containerIcons()}>
-            {data.technologies.map((technology: any, index: any) => (
-              <technology.icon key={index} className={icon()} />
+            {data.technologies.map((technology, index) => (
+              <technology.icon key={index} className={icon()} aria-hidden />
             ))}
           </div>
-          <img className={image()} src={data.image} />
+          <img className={image()} src={data.image} loading="lazy" />
         </div>
 
         <div className={containerTextButton()}>
@@ -80,7 +80,9 @@ const ProjectItem = ({
             <p className={create()}>{data.createDate}</p>
           </div>
 
-          <Button variant={"gradient"}>Detalhes</Button>
+          <Button variant={"gradient"} aria-label="Project details">
+            Detalhes
+          </Button>
         </div>
       </SpotlightCard>
     </CarouselItem>

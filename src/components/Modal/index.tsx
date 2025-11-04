@@ -75,7 +75,7 @@ const Modal = ({ showModal, setShowModal, data }: IModalProps) => {
             transition={{ duration: 0.5, type: "spring" }}
             onClick={(e) => e.stopPropagation()}
           >
-            <img className={image()} src={data.image} />
+            <img className={image()} src={data.image} loading="lazy" />
 
             <div className={containerTitle()}>
               <h1 className={title()}>{data.title}</h1>
@@ -83,20 +83,20 @@ const Modal = ({ showModal, setShowModal, data }: IModalProps) => {
             </div>
 
             <div className={containerTools()}>
-              {data.technologies.map((technology: any, index: number) => (
+              {data.technologies.map((technology, index) => (
                 <SpotlightCard
                   key={index}
                   className={containerToolItem()}
                   spotlightColor="rgba(123, 83, 238, 0.5)"
                 >
-                  <technology.icon className={iconTool()} />
+                  <technology.icon className={iconTool()} aria-hidden />
                   <p className={nameTool()}>#{technology.name}</p>
                 </SpotlightCard>
               ))}
             </div>
 
             <div className={containerDescription()}>
-              {data.description.map((description: string, index: number) => (
+              {data.description.map((description, index) => (
                 <p key={index} className={descriptionText()}>
                   {description}
                 </p>
@@ -109,6 +109,8 @@ const Modal = ({ showModal, setShowModal, data }: IModalProps) => {
                 target="_blank"
                 rel="noreferrer"
                 className="w-full"
+                role="button"
+                aria-label="Go to Source Code"
               >
                 <Button
                   className={button()}
@@ -125,6 +127,8 @@ const Modal = ({ showModal, setShowModal, data }: IModalProps) => {
                 target="_blank"
                 rel="noreferrer"
                 className="w-full"
+                role="button"
+                aria-label="Go to Demo"
               >
                 <Button
                   className={button()}
