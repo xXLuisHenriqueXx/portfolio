@@ -11,4 +11,5 @@ export default defineConfig({
       "@src": path.resolve(__dirname, "./src"),
     },
   },
+  base: "http://xxluishenriquexx.github.io/portfolio",
 });
