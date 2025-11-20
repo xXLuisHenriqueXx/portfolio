@@ -12,14 +12,14 @@ export const navbarData: INavbarProps = {
   links: [
     {
       id: "home",
-      text: "Home",
+      text: "navbar.nav.home",
       icon: Home,
       action: () =>
         document.getElementById("home")?.scrollIntoView({ behavior: "smooth" }),
     },
     {
       id: "about",
-      text: "Sobre",
+      text: "navbar.nav.about",
       icon: BookOpen,
       action: () =>
         document
@@ -28,7 +28,7 @@ export const navbarData: INavbarProps = {
     },
     {
       id: "skills",
-      text: "Habilidades",
+      text: "navbar.nav.skills",
       icon: Settings,
       action: () =>
         document
@@ -37,7 +37,7 @@ export const navbarData: INavbarProps = {
     },
     {
       id: "projects",
-      text: "Projetos",
+      text: "navbar.nav.projects",
       icon: Folder,
       action: () =>
         document
@@ -46,7 +46,7 @@ export const navbarData: INavbarProps = {
     },
     {
       id: "contact",
-      text: "Contato",
+      text: "navbar.nav.contact",
       icon: Mail,
       action: () =>
         document

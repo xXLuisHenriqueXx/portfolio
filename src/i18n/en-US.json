@@ -1,0 +1,29 @@
+{
+  "navbar": {
+    "nav": {
+      "home": "Home",
+      "about": "About",
+      "skills": "Skills",
+      "projects": "Projects",
+      "contact": "Contact"
+    },
+    "langButton": "EN",
+    "theme": "Theme"
+  },
+
+  "a11y-navbar": {
+    "main": "Main navigation",
+    "goHome": "Go to home",
+    "logoAlt": "Luis Henrique Cardoso logo",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "toggleLanguageEn": "Switch language to English",
+    "toggleLanguagePt": "Switch language to Portuguese",
+    "flags": {
+      "us": "United States flag",
+      "pt": "Brazil flag"
+    },
+    "toggleTheme": "Toggle theme",
+    "mobileNavigation": "Mobile navigation"
+  }
+}

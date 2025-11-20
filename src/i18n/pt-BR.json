@@ -1,0 +1,29 @@
+{
+  "navbar": {
+    "nav": {
+      "home": "Início",
+      "about": "Sobre",
+      "skills": "Habilidades",
+      "projects": "Projetos",
+      "contact": "Contato"
+    },
+    "langButton": "PT",
+    "theme": "Tema"
+  },
+
+  "navbar-a11y": {
+    "main": "Navegação principal",
+    "goHome": "Ir para o início",
+    "logoAlt": "Logo de Luis Henrique Cardoso",
+    "openMenu": "Abrir menu",
+    "closeMenu": "Fechar menu",
+    "toggleLanguageEn": "Alterar idioma para Inglês",
+    "toggleLanguagePt": "Alterar idioma para Português",
+    "flags": {
+      "us": "Bandeira dos Estados Unidos",
+      "pt": "Bandeira do Brasil"
+    },
+    "toggleTheme": "Alternar tema",
+    "mobileNavigation": "Navegação móvel"
+  }
+}
