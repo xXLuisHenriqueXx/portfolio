@@ -13,7 +13,7 @@ const greetingsStyles = tv({
       "text-4xl lg:text-5xl 2xl:text-6xl font-black text-start text-primary",
     subtitle:
       "text-base lg:text-xl 2xl:text-2xl font-light text-foreground text-center",
-    highlight: "font-bold",
+    highlight: "font-bold text-foreground",
   },
 });
 

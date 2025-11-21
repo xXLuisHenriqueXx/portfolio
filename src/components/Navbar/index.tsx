@@ -64,6 +64,10 @@ const Navbar = ({ activeScreen }: INavbarProps) => {
     localStorage.setItem("lang", newLang);
   };
 
+  const toggleTheme = () => {
+    document.body.classList.toggle("dark");
+  };
+
   return (
     <motion.nav
       className={container()}
@@ -133,6 +137,7 @@ const Navbar = ({ activeScreen }: INavbarProps) => {
         <Button
           variant={"outline"}
           className="size-8"
+          onClick={toggleTheme}
           aria-label={t("navbar-a11y.toggleTheme")}
         >
           <Sun aria-hidden />
