@@ -50,5 +50,31 @@
     "section": "Home section",
     "imageAlt": "Luis Henrique Cardoso profile picture",
     "goTo": "Go to"
+  },
+
+  "about": {
+    "paragraphs": [
+      "Hello! I am Luis Henrique Cardoso, Full Stack and Mobile Developer, passionate about creating robust, scalable web and mobile solutions centered on the best user experience. My work covers the entire development cycle, from visual conception to the implementation of modern, responsive, and well-structured interfaces.",
+      "On the frontend, I work with React, React Native, Next.js and TypeScript, using TailwindCSS, Tailwind Variants and Styled-Components to ensure visual consistency and elegant interfaces. For state management and performance, I use Zustand, creating interactive and efficient applications.",
+      "On the backend, I develop with Node.js, Express, Fastify, NestJS and Ruby on Rails, applying Prisma ORM for safe and efficient database mapping. All projects are containerized with Docker, ensuring portability and well-configured environments. For testing, I use Jest, ensuring quality and reliability in the code.",
+      "I work with PostgreSQL and MongoDB databases, applying best practices for modeling and performance. Code versioning is done with Git, while interface design is planned in Figma. All cloud infrastructure is managed with AWS, enabling scalability and cost optimization.",
+      "With this set of technologies, I am able to deliver high-performance, scalable and high-quality applications, always prioritizing user experience, good development practices and innovative solutions."
+    ],
+    "ticket": {
+      "experience": "years of experience",
+      "tools": "tools and technologies"
+    },
+    "toolsTitle": "Most used tools and technologies",
+    "certificates": {
+      "title": "Certificates",
+      "aws": {
+        "name": "AWS Certified Cloud Practitioner - CFL-02",
+        "description": "Certification I obtained during my internship at Compass UOL."
+      }
+    }
+  },
+
+  "about-a11y": {
+    "section": "About section"
   }
 }

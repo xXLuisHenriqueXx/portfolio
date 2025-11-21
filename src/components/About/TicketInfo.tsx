@@ -1,4 +1,5 @@
 import { tv } from "tailwind-variants";
+import { useTranslation } from "react-i18next";
 
 import { aboutData } from "@src/static/AboutData";
 
@@ -24,19 +25,17 @@ const { container, containerContent, titleText, subtitleText, dot } =
   ticketInfoStyles();
 
 const TicketInfo = () => {
+  const { t } = useTranslation();
+
   return (
     <div className={container()}>
       <span className={dot({ position: "top" })} aria-hidden />
       <span className={dot({ position: "bottom" })} aria-hidden />
 
       {aboutData.ticket.map(({ title, subtitle }) => (
-        <div
-          key={title}
-          className={containerContent()}
-          aria-label={"Info about experience and skills"}
-        >
+        <div key={title} className={containerContent()}>
           <strong className={titleText()}>{title}</strong>
-          <p className={subtitleText()}>{subtitle}</p>
+          <p className={subtitleText()}>{t(subtitle)}</p>
         </div>
       ))}
     </div>

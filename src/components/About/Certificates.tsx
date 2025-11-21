@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { tv } from "tailwind-variants";
 import { AnimatePresence, motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
 import SpotlightCard from "../SpotlightCard";
 import CertificateInfo from "./CertificateInfo";
@@ -30,6 +31,8 @@ const {
 } = certificatesStyles();
 
 const Certificates = () => {
+  const { t } = useTranslation();
+
   const [selectedCertificate, setSelectedCertificate] = useState<number | null>(
     null
   );
@@ -40,7 +43,7 @@ const Certificates = () => {
 
   return (
     <div className={container()}>
-      <h2 className={title()}>Certificados</h2>
+      <h2 className={title()}>{t("about.certificates.title")}</h2>
       <div className={containerContent()}>
         {aboutData.certificates.map(
           ({ image, name, duration, description }, index) => {
@@ -71,9 +74,9 @@ const Certificates = () => {
                         />
                       ) : (
                         <CertificateInfo
-                          name={name}
+                          name={t(name)}
                           duration={duration}
-                          description={description}
+                          description={t(description)}
                         />
                       )}
                     </motion.button>

@@ -1,4 +1,5 @@
 import { tv } from "tailwind-variants";
+import { useTranslation } from "react-i18next";
 
 import SpotlightCard from "../SpotlightCard";
 
@@ -20,9 +21,11 @@ const { container, containerContent, containerItem, title, icon, text } =
   toolsStyles();
 
 const Tools = () => {
+  const { t } = useTranslation();
+
   return (
     <div className={container()}>
-      <h2 className={title()}>Tecnologias e ferramentas mais utilizadas</h2>
+      <h2 className={title()}>{t("about.toolsTitle")}</h2>
 
       <div className={containerContent()}>
         {aboutData.tools.map(({ name, icon: Icon }) => (
@@ -30,7 +33,6 @@ const Tools = () => {
             key={name}
             className={containerItem()}
             spotlightColor="rgba(123, 83, 238, 0.5)"
-            aria-label={`Tool / Technology - ${name}`}
           >
             <Icon className={icon()} aria-hidden />
 

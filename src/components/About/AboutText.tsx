@@ -1,5 +1,6 @@
 import { tv } from "tailwind-variants";
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
 import { aboutData } from "@src/static/AboutData";
 
@@ -13,6 +14,8 @@ const aboutTextStyles = tv({
 const { container } = aboutTextStyles();
 
 const AboutText = () => {
+  const { t } = useTranslation();
+
   return (
     <motion.article
       className={container()}
@@ -22,7 +25,7 @@ const AboutText = () => {
       viewport={{ once: true }}
     >
       {aboutData.paragraphs.map((paragraph, index) => (
-        <p key={index}>{paragraph}</p>
+        <p key={index}>{t(paragraph)}</p>
       ))}
     </motion.article>
   );

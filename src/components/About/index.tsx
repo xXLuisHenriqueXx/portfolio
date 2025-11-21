@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import { tv } from "tailwind-variants";
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
 import { Separator } from "../ui/separator";
 import AboutText from "./AboutText";
@@ -24,6 +25,8 @@ interface IAboutProps {
 }
 
 const About = ({ setActiveScreen }: IAboutProps) => {
+  const { t } = useTranslation();
+
   const ref = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
@@ -47,7 +50,7 @@ const About = ({ setActiveScreen }: IAboutProps) => {
       ref={ref}
       id={"about"}
       className={container()}
-      aria-label="About section"
+      aria-label={t("about-a11y.section")}
     >
       <AboutText />
 
