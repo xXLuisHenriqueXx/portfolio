@@ -1,4 +1,5 @@
 import { tv } from "tailwind-variants";
+import { useTranslation } from "react-i18next";
 
 import SplitText from "../SplitText";
 import TextType from "../TextType";
@@ -19,9 +20,11 @@ const greetingsStyles = tv({
 const { container, title, subtitle, highlight } = greetingsStyles();
 
 const Greetings = () => {
+  const { t } = useTranslation();
+
   return (
     <div className={container()}>
-      <h2 className={subtitle()}>Olá, me chamo</h2>
+      <h2 className={subtitle()}>{t("home.hello")}</h2>
 
       <SplitText
         tag="h1"
@@ -39,10 +42,10 @@ const Greetings = () => {
       />
 
       <h2 className={subtitle()}>
-        e sou{" "}
+        {t("home.andIAm")}
         <TextType
           className={highlight()}
-          text={homeData.experiences}
+          text={homeData.experiences.map((key) => t(key))}
           typingSpeed={75}
           pauseDuration={1500}
           showCursor={true}

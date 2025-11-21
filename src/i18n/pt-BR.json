@@ -25,5 +25,30 @@
     },
     "toggleTheme": "Alternar tema",
     "mobileNavigation": "Navegação móvel"
+  },
+
+  "home": {
+    "hello": "Olá, me chamo",
+    "andIAm": "e sou ",
+    "experiences": {
+      "frontend": "Desenvolvedor Front-end",
+      "mobile": "Desenvolvedor Mobile",
+      "backend": "Desenvolvedor Back-end",
+      "fullstack": "Desenvolvedor Full-stack",
+      "freelancer": "Desenvolvedor Freelancer"
+    },
+    "introduction": "Desenvolvedor FullSatck Web e Mobile, dedicado a criar soluções elegantes e eficientes que melhoram a vida das pessoas.",
+    "buttons": {
+      "projects": "Meus projetos",
+      "contact": "Contato",
+      "resume": "Baixar meu Currículo"
+    },
+    "scroll": "Role para baixo"
+  },
+
+  "home-a11y": {
+    "section": "Seção de ínicio",
+    "imageAlt": "Foto de Luis Henrique Cardoso",
+    "goTo": "Ir para"
   }
 }

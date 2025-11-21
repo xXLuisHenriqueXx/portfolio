@@ -11,7 +11,7 @@
     "theme": "Theme"
   },
 
-  "a11y-navbar": {
+  "navbar-a11y": {
     "main": "Main navigation",
     "goHome": "Go to home",
     "logoAlt": "Luis Henrique Cardoso logo",
@@ -25,5 +25,30 @@
     },
     "toggleTheme": "Toggle theme",
     "mobileNavigation": "Mobile navigation"
+  },
+
+  "home": {
+    "hello": "Hello, my name is",
+    "andIAm": "and I'm a ",
+    "experiences": {
+      "frontend": "Frontend Developer",
+      "mobile": "Mobile Developer",
+      "backend": "Backend Developer",
+      "fullstack": "Fullstack Developer",
+      "freelancer": "Freelancer Developer"
+    },
+    "introduction": "I'm a Fullstack Web and Mobile Developer, dedicated to creating elegant and efficient solutions that improve the lives of people.",
+    "buttons": {
+      "projects": "My projects",
+      "contact": "Contact me",
+      "resume": "Download Curriculum"
+    },
+    "scroll": "Scroll down"
+  },
+
+  "home-a11y": {
+    "section": "Home section",
+    "imageAlt": "Luis Henrique Cardoso profile picture",
+    "goTo": "Go to"
   }
 }

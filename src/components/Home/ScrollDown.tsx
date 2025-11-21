@@ -1,5 +1,6 @@
 import { tv } from "tailwind-variants";
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 import { ArrowDownCircle } from "lucide-react";
 
 const scrollDownStyles = tv({
@@ -14,6 +15,7 @@ const scrollDownStyles = tv({
 const { container, icon, text } = scrollDownStyles();
 
 const ScrollDown = () => {
+  const { t } = useTranslation();
   return (
     <article className={container()}>
       <motion.div
@@ -23,10 +25,10 @@ const ScrollDown = () => {
           repeat: Infinity,
         }}
       >
-        <ArrowDownCircle className={icon()} strokeWidth={1} />
+        <ArrowDownCircle className={icon()} strokeWidth={1} aria-hidden />
       </motion.div>
 
-      <p className={text()}>Role para baixo</p>
+      <p className={text()}>{t("home.scroll")}</p>
     </article>
   );
 };

@@ -1,5 +1,6 @@
 import { useMemo } from "react";
 import { tv } from "tailwind-variants";
+import { useTranslation } from "react-i18next";
 
 import { Button } from "../ui/button";
 import { homeData } from "@src/static/HomeData";
@@ -17,6 +18,8 @@ const { container, containerButtons, button, text } =
   introductionButtonsStyles();
 
 const IntroductionButtons = () => {
+  const { t } = useTranslation();
+
   const Buttons = useMemo(
     () =>
       homeData.buttons.map(({ label, variant, action }) => (
@@ -25,17 +28,17 @@ const IntroductionButtons = () => {
           variant={variant}
           className={button()}
           onClick={action}
-          aria-label={`Go to ${label}`}
+          aria-label={`${t("home-a11y.goTo")} ${label}`}
         >
-          {label}
+          {t(label)}
         </Button>
       )),
-    []
+    [homeData.buttons, t]
   );
 
   return (
     <div className={container()}>
-      <p className={text()}>{homeData.introduction}</p>
+      <p className={text()}>{t(homeData.introduction)}</p>
 
       <div className={containerButtons()}>{Buttons}</div>
     </div>
