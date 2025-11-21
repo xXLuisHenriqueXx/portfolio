@@ -76,5 +76,24 @@
 
   "about-a11y": {
     "section": "Seção sobre mim"
+  },
+
+  "skills": {
+    "header": {
+      "title": "MINHAS HABILIDADES",
+      "description": "Abaixo você pode visualizar com maior nível de detalhe as tecnologias e ferramentas que possuo conhecimento."
+    },
+    "skillsTitles": [
+      "Linguagens",
+      "Front-end",
+      "Back-end",
+      "Banco de Dados",
+      "Outros"
+    ],
+    "tags": ["Uso diário", "Projetos", "Faculdade", "Estudando"]
+  },
+
+  "skills-a11y": {
+    "section": "Seção de habilidades"
   }
 }

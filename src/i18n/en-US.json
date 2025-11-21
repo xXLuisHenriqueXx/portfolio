@@ -76,5 +76,18 @@
 
   "about-a11y": {
     "section": "About section"
+  },
+
+  "skills": {
+    "header": {
+      "title": "MY SKILLS",
+      "description": "Below you can see with greater detail the technologies and tools that I have knowledge of."
+    },
+    "skillsTitles": ["Languages", "Frontend", "Backend", "Database", "Others"],
+    "tags": ["Daily use", "Projects", "School", "Learning"]
+  },
+
+  "skills-a11y": {
+    "section": "Skills section"
   }
 }

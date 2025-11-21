@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import { tv } from "tailwind-variants";
+import { useTranslation } from "react-i18next";
 
 import Header from "../Header";
 import SkillsList from "./SkillsList";
@@ -18,6 +19,8 @@ interface ISkillsProps {
 }
 
 const Skills = ({ setActiveScreen }: ISkillsProps) => {
+  const { t } = useTranslation();
+
   const ref = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
@@ -41,12 +44,11 @@ const Skills = ({ setActiveScreen }: ISkillsProps) => {
       ref={ref}
       id={"skills"}
       className={container()}
-      aria-label="Skills section"
+      aria-label={t("skills-a11y.section")}
     >
       <Header
-        title="MINHAS HABILIDADES"
-        description="Abaixo você pode visualizar com maior nível de detalhe as tecnologias e
-        ferramentas que possuo conhecimento."
+        title={t("skills.header.title")}
+        description={t("skills.header.description")}
       />
 
       <SkillsList />
