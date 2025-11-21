@@ -1,5 +1,6 @@
 import { tv } from "tailwind-variants";
 import { AnimatePresence, motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 import { Globe } from "lucide-react";
 import { FaGithub } from "react-icons/fa";
 
@@ -56,6 +57,8 @@ interface IModalProps {
 }
 
 const Modal = ({ showModal, setShowModal, data }: IModalProps) => {
+  const { t } = useTranslation();
+
   return (
     <AnimatePresence>
       {showModal && (
@@ -75,7 +78,12 @@ const Modal = ({ showModal, setShowModal, data }: IModalProps) => {
             transition={{ duration: 0.5, type: "spring" }}
             onClick={(e) => e.stopPropagation()}
           >
-            <img className={image()} src={data.image} loading="lazy" />
+            <img
+              className={image()}
+              src={data.image}
+              alt={`${t("projects.imageAlt")} ${data.title}`}
+              loading="lazy"
+            />
 
             <div className={containerTitle()}>
               <h1 className={title()}>{data.title}</h1>
@@ -98,7 +106,7 @@ const Modal = ({ showModal, setShowModal, data }: IModalProps) => {
             <div className={containerDescription()}>
               {data.description.map((description, index) => (
                 <p key={index} className={descriptionText()}>
-                  {description}
+                  {t(description)}
                 </p>
               ))}
             </div>
@@ -110,7 +118,7 @@ const Modal = ({ showModal, setShowModal, data }: IModalProps) => {
                 rel="noreferrer"
                 className="w-full"
                 role="button"
-                aria-label="Go to Source Code"
+                aria-label={t("projects-a11y.goToSourceCode")}
               >
                 <Button
                   className={button()}
@@ -118,7 +126,8 @@ const Modal = ({ showModal, setShowModal, data }: IModalProps) => {
                   size={"sm"}
                   disabled={!data.code}
                 >
-                  <FaGithub className={iconButton()} /> Código
+                  <FaGithub className={iconButton()} aria-hidden />{" "}
+                  {t("projects.buttons.code")}
                 </Button>
               </a>
 
@@ -128,7 +137,7 @@ const Modal = ({ showModal, setShowModal, data }: IModalProps) => {
                 rel="noreferrer"
                 className="w-full"
                 role="button"
-                aria-label="Go to Demo"
+                aria-label={t("projects-a11y.goToDemo")}
               >
                 <Button
                   className={button()}
@@ -136,7 +145,8 @@ const Modal = ({ showModal, setShowModal, data }: IModalProps) => {
                   size={"sm"}
                   disabled={!data.demo}
                 >
-                  <Globe className={iconButton()} /> Abrir na Web
+                  <Globe className={iconButton()} aria-hidden />{" "}
+                  {t("projects.buttons.demo")}
                 </Button>
               </a>
             </div>

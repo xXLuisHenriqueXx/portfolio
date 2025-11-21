@@ -89,5 +89,62 @@
 
   "skills-a11y": {
     "section": "Skills section"
+  },
+
+  "projects": {
+    "header": {
+      "title": "MY PROJECTS",
+      "description": "Below you can see proof of the skills described above, through projects I have worked on."
+    },
+    "filter": {
+      "all": "All",
+      "web": "Web",
+      "mobile": "Mobile"
+    },
+    "tags": ["In Progress", "Completed", "New"],
+    "details": "Details",
+    "expense-assistant": {
+      "description": [
+        "Mobile application developed to assist with personal financial control, allowing users to register, edit, delete, and track monthly expenses, as well as manage bank accounts in a practical way.",
+        "The tool provides an organized view of expenses, making daily financial planning and decision-making easier."
+      ]
+    },
+    "descubra-ct": {
+      "description": [
+        "Website developed to present courses and subjects from a higher education institution, offering an intuitive platform to help potential students explore and discover degrees of interest.",
+        "With a modern SPA interface and an integrated AI agent with full knowledge about the institution, the site simplifies the search for information, guides decision-making, and enhances the user experience in choosing the ideal course."
+      ]
+    },
+    "save-tube": {
+      "description": [
+        "Website developed as a study project using the ytdl-core tool together with the Next.js framework, offering a modern and intuitive interface for downloading YouTube videos and audio, with options for customizing quality and format, providing a practical and efficient experience for the user."
+      ]
+    },
+    "dev-pizza": {
+      "description": [
+        "Website developed to simulate a fictional pizzeria, offering a modern and intuitive interface where users can learn about the pizzeria, view the full product catalog (pizzas and drinks), add items to the cart, and complete their purchase easily.",
+        "The system includes validations to ensure robustness during the ordering process, allows address registration, and automatically sends the order details directly to WhatsApp."
+      ]
+    },
+    "petshop-monito": {
+      "description": [
+        "Website developed to simulate a fictional pet shop, offering a modern and intuitive interface that allows users to explore the shop, view the complete product catalog (animals and accessories) with an advanced search and filtering system, follow adoption campaigns, add items to the cart, and complete purchases in a practical and secure way.",
+        "The site includes features for smooth navigation, efficient product organization, and attention to user experience, making the interaction more pleasant and informative."
+      ]
+    },
+    "buttons": {
+      "code": "Source code",
+      "demo": "Open demo"
+    }
+  },
+
+  "projects-a11y": {
+    "section": "Projects section",
+    "filterBy": "Filter by",
+    "buttons": {
+      "previous": "Previous projects",
+      "next": "Next projects"
+    },
+    "imageAlt": "Project image"
   }
 }

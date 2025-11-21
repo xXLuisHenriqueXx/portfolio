@@ -1,5 +1,6 @@
 import { tv } from "tailwind-variants";
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
 import {
   Carousel,
@@ -30,6 +31,8 @@ const ProjectsList = ({
   setShowModal,
   setSelectedProject,
 }: ProjectsListProps) => {
+  const { t } = useTranslation();
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -54,8 +57,14 @@ const ProjectsList = ({
           ))}
         </CarouselContent>
 
-        <CarouselPrevious role="button" aria-label="Previous project" />
-        <CarouselNext role="button" aria-label="Next project" />
+        <CarouselPrevious
+          role="button"
+          aria-label={t("projects-a11y.buttons.previous")}
+        />
+        <CarouselNext
+          role="button"
+          aria-label={t("projects-a11y.buttons.next")}
+        />
       </Carousel>
     </motion.div>
   );

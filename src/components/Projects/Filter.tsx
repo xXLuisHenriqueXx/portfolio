@@ -1,7 +1,9 @@
 import { tv } from "tailwind-variants";
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
 import { Button } from "../ui/button";
+
 import { projectsData } from "@src/static/ProjectsData";
 
 const filterStyles = tv({
@@ -19,6 +21,8 @@ interface IFilterProps {
 }
 
 const Filter = ({ filter, setFilter }: IFilterProps) => {
+  const { t } = useTranslation();
+
   return (
     <motion.nav
       className={container()}
@@ -33,9 +37,9 @@ const Filter = ({ filter, setFilter }: IFilterProps) => {
           variant={filter === value ? "gradient" : "outline"}
           className={button()}
           onClick={() => setFilter(value)}
-          aria-label={`Filter by ${label}`}
+          aria-label={`${t("projects-a11y.filterBy")} ${label}`}
         >
-          {label}
+          {t(label)}
         </Button>
       ))}
     </motion.nav>
