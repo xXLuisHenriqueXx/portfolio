@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import { tv } from "tailwind-variants";
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
 import Squares from "../Squares";
 import Greetings from "./Greetings";
@@ -26,6 +27,8 @@ interface IHomeProps {
 }
 
 const Home = ({ setActiveScreen }: IHomeProps) => {
+  const { t } = useTranslation();
+
   const ref = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
@@ -49,7 +52,7 @@ const Home = ({ setActiveScreen }: IHomeProps) => {
       ref={ref}
       id={"home"}
       className={container()}
-      aria-label="Home section"
+      aria-label={t("home-a11y.section")}
     >
       <Squares
         direction="down"
@@ -80,7 +83,7 @@ const Home = ({ setActiveScreen }: IHomeProps) => {
         transition={{ delay: 0.25, duration: 1.5, type: "spring" }}
         viewport={{ once: true }}
         src={homeData.image}
-        alt="Foto de Luis Henrique"
+        alt={t("home-a11y.imageAlt")}
         loading="lazy"
         decoding="async"
       />

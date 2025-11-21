@@ -1,4 +1,5 @@
 import { tv } from "tailwind-variants";
+import { useTranslation } from "react-i18next";
 
 import { Button } from "../ui/button";
 import { CarouselItem } from "../ui/carousel";
@@ -50,6 +51,8 @@ const ProjectItem = ({
   setShowModal,
   setSelectedProject,
 }: ProjectItemProps) => {
+  const { t } = useTranslation();
+
   return (
     <CarouselItem
       className={container()}
@@ -66,12 +69,19 @@ const ProjectItem = ({
 
         <div className={containerImageIcons()}>
           <div className={containerGradient()} />
+
           <div className={containerIcons()}>
             {data.technologies.map((technology, index) => (
               <technology.icon key={index} className={icon()} aria-hidden />
             ))}
           </div>
-          <img className={image()} src={data.image} loading="lazy" />
+
+          <img
+            className={image()}
+            src={data.image}
+            alt={`${t("projects-a11y.imageAlt")} ${data.title}`}
+            loading="lazy"
+          />
         </div>
 
         <div className={containerTextButton()}>
@@ -80,9 +90,7 @@ const ProjectItem = ({
             <p className={create()}>{data.createDate}</p>
           </div>
 
-          <Button variant={"gradient"} aria-label="Project details">
-            Detalhes
-          </Button>
+          <Button variant={"gradient"}>{t("projects.details")}</Button>
         </div>
       </SpotlightCard>
     </CarouselItem>

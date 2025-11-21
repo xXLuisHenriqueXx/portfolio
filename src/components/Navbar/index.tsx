@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import { tv } from "tailwind-variants";
 import { AnimatePresence, motion } from "framer-motion";
 import { Menu, Sun, X } from "lucide-react";
@@ -11,6 +11,7 @@ import type { TActiveScreen } from "@src/App";
 import { navbarData } from "@src/static/NavbarData";
 import FlagBr from "@src/assets/flag-br.svg";
 import FlagUs from "@src/assets/flag-us.svg";
+import { useTranslation } from "react-i18next";
 
 const navbarStyles = tv({
   slots: {
@@ -51,16 +52,21 @@ interface INavbarProps {
 }
 
 const Navbar = ({ activeScreen }: INavbarProps) => {
-  const [isPortuguese, setIsPortuguese] = useState<boolean>(true);
+  const { t, i18n } = useTranslation();
+
   const [showModal, setShowModal] = useState<boolean>(false);
 
-  const languageButtonData = useMemo(() => {
-    if (isPortuguese) {
-      return { image: FlagBr, text: "PT" };
-    } else {
-      return { image: FlagUs, text: "US" };
-    }
-  }, [isPortuguese]);
+  const isPortuguese = i18n.language === "pt-BR";
+
+  const toggleLanguage = () => {
+    const newLang = isPortuguese ? "en-US" : "pt-BR";
+    i18n.changeLanguage(newLang);
+    localStorage.setItem("lang", newLang);
+  };
+
+  const toggleTheme = () => {
+    document.body.classList.toggle("dark");
+  };
 
   return (
     <motion.nav
@@ -69,14 +75,18 @@ const Navbar = ({ activeScreen }: INavbarProps) => {
       animate={{ translateY: 0, opacity: 1 }}
       transition={{ duration: 1, type: "spring" }}
       role="navigation"
-      aria-label="Main"
+      aria-label={t("navbar-a11y.main")}
     >
       <button
         className={image()}
         onClick={navbarData.logo.action}
-        aria-label="Go to home"
+        aria-label={t("navbar-a11y.goHome")}
       >
-        <img src={navbarData.logo.src} alt="Logo LH" loading="lazy" />
+        <img
+          src={navbarData.logo.src}
+          alt={t("navbar-a11y.logoAlt")}
+          loading="lazy"
+        />
       </button>
 
       <ul className={containerLinksGroup()}>
@@ -90,7 +100,7 @@ const Navbar = ({ activeScreen }: INavbarProps) => {
                 onClick={action}
                 aria-current={isActive ? "page" : undefined}
               >
-                {text}
+                {t(text)}
 
                 {isActive && <span className={bottomBar()} />}
               </button>
@@ -103,34 +113,43 @@ const Navbar = ({ activeScreen }: INavbarProps) => {
         <Button
           variant="outline"
           size={"sm"}
-          onClick={() => setIsPortuguese(!isPortuguese)}
-          aria-label={`Change language to ${
-            isPortuguese ? "English" : "Portuguese"
-          }`}
+          onClick={toggleLanguage}
+          aria-label={
+            isPortuguese
+              ? t("navbar-a11y.toggleLanguagePt")
+              : t("navbar-a11y.toggleLanguageEn")
+          }
         >
           <img
             className={icon()}
-            src={languageButtonData.image}
-            alt={isPortuguese ? "Brazil flag" : "USA flag"}
+            src={isPortuguese ? FlagBr : FlagUs}
+            alt={
+              isPortuguese
+                ? t("navbar-a11y.flags.pt")
+                : t("navbar-a11y.flags.us")
+            }
             loading="lazy"
           />
 
-          {languageButtonData.text}
+          {isPortuguese ? "PT" : "EN"}
         </Button>
 
         <Button
           variant={"outline"}
           className="size-8"
-          aria-label="Toggle dark mode"
+          onClick={toggleTheme}
+          aria-label={t("navbar-a11y.toggleTheme")}
         >
-          <Sun />
+          <Sun aria-hidden />
         </Button>
 
         <Button
           variant={"default"}
           className="relative lg:hidden size-8"
           onClick={() => setShowModal(!showModal)}
-          aria-label={showModal ? "Close menu" : "Open menu"}
+          aria-label={
+            showModal ? t("navbar-a11y.closeMenu") : t("navbar-a11y.openMenu")
+          }
           aria-expanded={showModal}
           aria-controls="mobile-menu"
         >
@@ -143,7 +162,7 @@ const Navbar = ({ activeScreen }: INavbarProps) => {
                 exit={{ rotate: 90, opacity: 0 }}
                 transition={{ duration: 0.25 }}
               >
-                <X className="w-5 h-5" />
+                <X className="w-5 h-5" aria-hidden />
               </motion.div>
             ) : (
               <motion.div
@@ -153,7 +172,7 @@ const Navbar = ({ activeScreen }: INavbarProps) => {
                 exit={{ rotate: 90, opacity: 0 }}
                 transition={{ duration: 0.25 }}
               >
-                <Menu className="w-5 h-5" />
+                <Menu className="w-5 h-5" aria-hidden />
               </motion.div>
             )}
           </AnimatePresence>

@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { tv } from "tailwind-variants";
+import { useTranslation } from "react-i18next";
 
 import Header from "../Header";
 import Filter from "./Filter";
@@ -22,6 +23,8 @@ interface IProjectsProps {
 }
 
 const Projects = ({ setActiveScreen }: IProjectsProps) => {
+  const { t } = useTranslation();
+
   const ref = useRef<HTMLDivElement | null>(null);
 
   const [filter, setFilter] = useState<string>("");
@@ -53,12 +56,11 @@ const Projects = ({ setActiveScreen }: IProjectsProps) => {
       ref={ref}
       id={"projects"}
       className={container()}
-      aria-label="Projects section"
+      aria-label={t("projects-a11y.section")}
     >
       <Header
-        title="MEUS PROJETOS"
-        description="Abaixo você pode visualizar a comprovação das minhas habilidades
-        descritas acima, por meio de projetos em que trabalhei."
+        title={t("projects.header.title")}
+        description={t("projects.header.description")}
       />
 
       <Filter filter={filter} setFilter={setFilter} />

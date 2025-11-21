@@ -1,5 +1,6 @@
 import { tv } from "tailwind-variants";
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
 import SpotlightCard from "../SpotlightCard";
 
@@ -40,6 +41,8 @@ interface SkillItemProps {
   data: ISkillsProps;
 }
 const SkillItem = ({ data }: SkillItemProps) => {
+  const { t } = useTranslation();
+
   return (
     <div className={container()}>
       <div className={containerHeader()}>
@@ -47,7 +50,7 @@ const SkillItem = ({ data }: SkillItemProps) => {
           <data.icon className={icon()} aria-hidden />
         </div>
 
-        <h2 className={title()}>{data.title}</h2>
+        <h2 className={title()}>{t(data.title)}</h2>
 
         <span className={line()} />
       </div>
@@ -58,7 +61,7 @@ const SkillItem = ({ data }: SkillItemProps) => {
             key={name}
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
-            transition={{ delay: index * 0.1, duration: 0.5, type: "spring" }}
+            transition={{ delay: index * 0.1, duration: 0.25, type: "spring" }}
             viewport={{ once: true }}
           >
             <SpotlightCard

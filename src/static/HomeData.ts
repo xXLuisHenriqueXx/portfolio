@@ -3,15 +3,16 @@ import Me from "@src/assets/me.png";
 
 export const homeData: IHomeProps = {
   experiences: [
-    "Desenvolvedor Web",
-    "Desenvolvedor Mobile",
-    "Desenvolvedor FullStack",
+    "home.experiences.frontend",
+    "home.experiences.mobile",
+    "home.experiences.backend",
+    "home.experiences.fullstack",
+    "home.experiences.freelancer",
   ],
-  introduction:
-    "Desenvolvedor FullSatck Web e Mobile, dedicado a criar soluções elegantes e eficientes que melhoram a vida das pessoas.",
+  introduction: "home.introduction",
   buttons: [
     {
-      label: "Meus projetos",
+      label: "home.buttons.projects",
       variant: "outline",
       action: () =>
         document
@@ -19,7 +20,7 @@ export const homeData: IHomeProps = {
           ?.scrollIntoView({ behavior: "smooth" }),
     },
     {
-      label: "Contato",
+      label: "home.buttons.contact",
       variant: "outline",
       action: () =>
         document
@@ -27,7 +28,7 @@ export const homeData: IHomeProps = {
           ?.scrollIntoView({ behavior: "smooth" }),
     },
     {
-      label: "Baixar CV",
+      label: "home.buttons.resume",
       variant: "gradient",
       action: () => {},
     },

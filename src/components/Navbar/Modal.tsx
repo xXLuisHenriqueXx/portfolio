@@ -1,6 +1,7 @@
 import { memo } from "react";
 import { tv } from "tailwind-variants";
 import { AnimatePresence, motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
 import { Card, CardContent } from "@src/components/ui/card";
 
@@ -34,6 +35,8 @@ interface IModalProps {
 }
 
 const Modal = ({ showModal, activeScreen }: IModalProps) => {
+  const { t } = useTranslation();
+
   return (
     <AnimatePresence>
       {showModal && (
@@ -45,7 +48,7 @@ const Modal = ({ showModal, activeScreen }: IModalProps) => {
           exit={{ translateY: -100, opacity: 0 }}
           transition={{ duration: 0.25, type: "spring" }}
           role="menu"
-          aria-label="Mobile navigation"
+          aria-label={t("navbar-a11y.mobileNavigation")}
         >
           <Card>
             <CardContent className={containerContent()}>
@@ -58,8 +61,8 @@ const Modal = ({ showModal, activeScreen }: IModalProps) => {
                     onClick={action}
                     role="menuitem"
                   >
-                    <Icon size={16} />
-                    {text}
+                    <Icon size={16} aria-hidden />
+                    {t(text)}
 
                     {activeScreen === id && <span className={dot()} />}
                   </button>

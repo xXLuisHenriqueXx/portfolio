@@ -49,7 +49,7 @@ import type { ISkillsProps } from "@src/common/interfaces/Skills.interface";
 
 export const skillsData: ISkillsProps[] = [
   {
-    title: "Linguagens",
+    title: "skills.skillsTitles.0",
     icon: Code,
     items: [
       {
@@ -85,7 +85,7 @@ export const skillsData: ISkillsProps[] = [
     ],
   },
   {
-    title: "Frontend",
+    title: "skills.skillsTitles.1",
     icon: Monitor,
     items: [
       {
@@ -136,7 +136,7 @@ export const skillsData: ISkillsProps[] = [
     ],
   },
   {
-    title: "Backend",
+    title: "skills.skillsTitles.2",
     icon: Settings,
     items: [
       {
@@ -182,7 +182,7 @@ export const skillsData: ISkillsProps[] = [
     ],
   },
   {
-    title: "Bancos de dados",
+    title: "skills.skillsTitles.3",
     icon: Database,
     items: [
       {
@@ -208,7 +208,7 @@ export const skillsData: ISkillsProps[] = [
     ],
   },
   {
-    title: "Outros",
+    title: "skills.skillsTitles.4",
     icon: CircleEllipsis,
     items: [
       {

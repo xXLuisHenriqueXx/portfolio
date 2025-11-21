@@ -33,18 +33,18 @@
   --radius: 0.625rem;
 
   --background: rgba(224, 217, 245, 1);
-  --foreground: rgba(20, 18, 28, 1);
-  --primary: rgba(123, 83, 238, 1);
-  --secondary: rgba(250, 114, 104, 1);
-  --secondary-foreground: rgba(20, 18, 28, 1);
+  --foreground: rgba(39, 36, 53, 1);
+  --primary: rgba(137, 104, 234, 1);
+  --secondary: rgba(227, 140, 140, 1);
+  --secondary-foreground: rgba(39, 36, 53, 1);
 
-  --graduation: rgba(238, 202, 83, 1);
-  --projects: rgba(83, 238, 158, 1);
-  --study: rgba(83, 155, 238, 1);
+  --graduation: rgb(193, 140, 78);
+  --projects: rgb(71, 172, 122);
+  --study: rgb(76, 122, 175);
 
-  --card: rgb(255, 255, 255);
-  --border: rgb(229, 229, 229);
-  --ring: rgb(161, 161, 161);
+  --card: rgb(203, 195, 228);
+  --border: rgba(123, 83, 238, 0.1);
+  --ring: rgba(123, 83, 238, 0.1);
 }
 
 .dark {
