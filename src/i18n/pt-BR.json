@@ -154,5 +154,35 @@
     "imageAlt": "Imagem do projeto",
     "goToSourceCode": "Ir para o código-fonte",
     "goToDemo": "Ir para demonstração"
+  },
+
+  "contact": {
+    "header": {
+      "title": "MEUS CONTATOS",
+      "description": "Abaixo você pode entrar em contato comigo, estou sempre aberto a propostas. Me chame para combinarmos nosso próximo projeto!"
+    },
+    "form": {
+      "title": "Título",
+      "placeholderTitle": "Título da sua proposta ...",
+      "name": "Nome",
+      "placeholderName": "Seu nome ...",
+      "message": "Mensagem",
+      "placeholderMessage": "Explique sua proposta ...",
+      "send": "Enviar"
+    },
+    "buttons": {
+      "github": "Clique para ver mais projetos meus",
+      "linkedin": "Clique para ver minhas postagens e certificados",
+      "whatsapp": "Clique para podermos ter um contato mais livre e rápido"
+    },
+    "alert": {
+      "success": "Mensagem enviada com sucesso!",
+      "error": "Ocorreu um erro, tente novamente."
+    }
+  },
+
+  "contact-a11y": {
+    "section": "Seção de contato",
+    "goTo": "Ir para"
   }
 }

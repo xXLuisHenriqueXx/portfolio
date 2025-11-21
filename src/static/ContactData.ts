@@ -9,19 +9,19 @@ export const contactData: IContactProps = {
   buttons: [
     {
       name: "GitHub",
-      description: "Clique para ver mais projetos meus",
+      description: "contact.buttons.github",
       icon: FaGithub,
       href: "https://github.com/xXLuisHenriqueXx",
     },
     {
       name: "LinkedIn",
-      description: "Clique para ver minhas postagens e certificados",
+      description: "contact.buttons.linkedin",
       icon: FaLinkedin,
       href: "https://www.linkedin.com/in/luis-henrique-cardoso-a2b833269/",
     },
     {
       name: "Whatsapp",
-      description: "Clique para podermos ter um contato mais livre e rápido",
+      description: "contact.buttons.whatsapp",
       icon: FaWhatsapp,
       href: `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`,
     },

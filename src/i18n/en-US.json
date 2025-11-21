@@ -145,6 +145,38 @@
       "previous": "Previous projects",
       "next": "Next projects"
     },
-    "imageAlt": "Project image"
+    "imageAlt": "Project image",
+    "goToSourceCode": "Go to source code",
+    "goToDemo": "Go to demo"
+  },
+
+  "contact": {
+    "header": {
+      "title": "MY CONTACTS",
+      "description": "Below you can contact me, I'm always open to proposals. Call me so we can discuss our next project!"
+    },
+    "form": {
+      "title": "Title",
+      "placeholderTitle": "Title of your proposal ...",
+      "name": "Name",
+      "placeholderName": "Your name ...",
+      "message": "Message",
+      "placeholderMessage": "Explain your proposal ...",
+      "send": "Send"
+    },
+    "buttons": {
+      "github": "Click to see more of my projects",
+      "linkedin": "Click to see my posts and certificates",
+      "whatsapp": "Click here so we can have a more free and faster contact."
+    },
+    "alert": {
+      "success": "Message sent successfully!",
+      "error": "There was an error sending the message, please try again later."
+    }
+  },
+
+  "contact-a11y": {
+    "section": "Contact section",
+    "goTo": "Go to"
   }
 }

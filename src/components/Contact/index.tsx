@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import { tv } from "tailwind-variants";
+import { useTranslation } from "react-i18next";
 
 import Header from "../Header";
 import FormEmail from "./FormEmail";
@@ -21,6 +22,8 @@ interface IContactProps {
 }
 
 const Contact = ({ setActiveScreen }: IContactProps) => {
+  const { t } = useTranslation();
+
   const ref = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
@@ -44,12 +47,11 @@ const Contact = ({ setActiveScreen }: IContactProps) => {
       ref={ref}
       id={"contact"}
       className={container()}
-      aria-label="Contact section"
+      aria-label={t("contact-a11y.section")}
     >
       <Header
-        title="MEUS CONTATOS"
-        description="Abaixo você pode entrar em contato comigo, estou sempre aberto a
-        propostas. Me chame para combinarmos nosso próximo projeto!"
+        title={t("contact.header.title")}
+        description={t("contact.header.description")}
       />
 
       <div className={containerContent()}>

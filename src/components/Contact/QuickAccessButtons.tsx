@@ -1,5 +1,6 @@
 import { tv } from "tailwind-variants";
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
 import SpotlightCard from "../SpotlightCard";
 
@@ -30,6 +31,8 @@ const {
 } = quickAccessButtonsStyles();
 
 const QuickAccessButtons = () => {
+  const { t } = useTranslation();
+
   return (
     <motion.div
       className={container()}
@@ -51,13 +54,13 @@ const QuickAccessButtons = () => {
             rel="noopener noreferrer"
             className={containerContent()}
             role="button"
-            aria-label={`Go to ${name}`}
+            aria-label={`${t("contact-a11y.goTo")} ${name}`}
           >
             <div className={containerText()}>
               <Icon className={icon()} aria-hidden />
               <p className={title()}>{name}</p>
             </div>
-            <p className={descriptionText()}>{description}</p>
+            <p className={descriptionText()}>{t(description)}</p>
           </a>
         </SpotlightCard>
       ))}

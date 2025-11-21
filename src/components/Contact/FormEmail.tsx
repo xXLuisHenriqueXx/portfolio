@@ -1,9 +1,11 @@
+import { useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { tv } from "tailwind-variants";
 import { motion } from "framer-motion";
 import emailjs from "@emailjs/browser";
+import { useTranslation } from "react-i18next";
 
 import {
   Form,
@@ -19,6 +21,7 @@ import { Textarea } from "../ui/textarea";
 import { Button } from "../ui/button";
 
 import { contactSchema } from "@src/schemas/ContactSchema";
+import { Loader2 } from "lucide-react";
 
 const formEmailStyles = tv({
   slots: {
@@ -32,6 +35,10 @@ const formEmailStyles = tv({
 const { container, containerContent, button, text } = formEmailStyles();
 
 const FormEmail = () => {
+  const { t } = useTranslation();
+
+  const [loading, setLoading] = useState(false);
+
   const form = useForm<z.infer<typeof contactSchema>>({
     resolver: zodResolver(contactSchema),
     defaultValues: {
@@ -42,12 +49,14 @@ const FormEmail = () => {
   });
 
   const onSubmit = (data: z.infer<typeof contactSchema>) => {
+    setLoading(true);
+
     const serviceId = import.meta.env.VITE_EMAIL_SERVICE_ID;
     const templateId = import.meta.env.VITE_EMAIL_TEMPLATE_ID;
     const publicKey = import.meta.env.VITE_EMAIL_PUBLIC_KEY;
 
     if (!serviceId || !templateId || !publicKey) {
-      alert("Ocorreu um erro, tente novamente.");
+      alert(t("contact.alert.error"));
       return;
     }
 
@@ -60,11 +69,14 @@ const FormEmail = () => {
     emailjs
       .send(serviceId, templateId, templateParams, publicKey)
       .then(() => {
-        alert("Mensagem enviada com sucesso!");
+        alert(t("contact.alert.success"));
         form.reset();
       })
       .catch((error) => {
-        console.log("Ocorreu um erro, tente novamente. Erro: ", error);
+        console.log(t("contact.alert.error"), error);
+      })
+      .finally(() => {
+        setLoading(false);
       });
   };
 
@@ -88,15 +100,16 @@ const FormEmail = () => {
                 name="title"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className={text()}>Título</FormLabel>
+                    <FormLabel className={text()}>
+                      {t("contact.form.title")}
+                    </FormLabel>
                     <FormControl>
                       <Input
                         className={text()}
-                        placeholder="Título da sua proposta ..."
+                        placeholder={t("contact.form.placeholderTitle")}
                         {...field}
                         autoComplete="off"
                         role="input"
-                        aria-label="Title of your proposal"
                       />
                     </FormControl>
                     <FormMessage />
@@ -109,15 +122,16 @@ const FormEmail = () => {
                 name="name"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className={text()}>Nome</FormLabel>
+                    <FormLabel className={text()}>
+                      {t("contact.form.name")}
+                    </FormLabel>
                     <FormControl>
                       <Input
                         className={text()}
-                        placeholder="Nome ..."
+                        placeholder={t("contact.form.placeholderName")}
                         {...field}
                         autoComplete="off"
                         role="input"
-                        aria-label="Name"
                       />
                     </FormControl>
                     <FormMessage />
@@ -130,15 +144,16 @@ const FormEmail = () => {
                 name="message"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className={text()}>Mensagem</FormLabel>
+                    <FormLabel className={text()}>
+                      {t("contact.form.message")}
+                    </FormLabel>
                     <FormControl>
                       <Textarea
                         className={text()}
-                        placeholder="Explique sua proposta ..."
+                        placeholder={t("contact.form.placeholderMessage")}
                         {...field}
                         autoComplete="off"
                         role="input"
-                        aria-label="Explaine your proposal"
                       />
                     </FormControl>
                     <FormMessage />
@@ -150,9 +165,13 @@ const FormEmail = () => {
                 variant={"gradient"}
                 type="submit"
                 className={button()}
-                aria-label="Send"
+                disabled={loading}
               >
-                Enviar
+                {loading ? (
+                  <Loader2 className="animate-spin" />
+                ) : (
+                  t("contact.form.send")
+                )}
               </Button>
             </form>
           </Form>
