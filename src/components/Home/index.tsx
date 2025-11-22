@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { tv } from "tailwind-variants";
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
@@ -31,6 +31,25 @@ const Home = ({ setActiveScreen }: IHomeProps) => {
 
   const ref = useRef<HTMLDivElement | null>(null);
 
+  const [isDarkTheme, setIsDarkTheme] = useState(
+    document.body.classList.contains("dark")
+  );
+
+  useEffect(() => {
+    const html = document.body;
+
+    const observer = new MutationObserver(() => {
+      setIsDarkTheme(html.classList.contains("dark"));
+    });
+
+    observer.observe(html, {
+      attributes: true,
+      attributeFilter: ["class"],
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
   useEffect(() => {
     const element = ref.current;
     if (!element) return;
@@ -60,6 +79,7 @@ const Home = ({ setActiveScreen }: IHomeProps) => {
         squareSize={60}
         borderColor="rgba(123, 83, 238, 0.1)"
         hoverFillColor="rgba(123, 83, 238, 0.1)"
+        gradientColor={isDarkTheme ? "#14121c" : "#e0d9f5"}
         className={squares()}
         aria-hidden
       />

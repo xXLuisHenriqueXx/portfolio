@@ -13,6 +13,7 @@ interface SquaresProps {
   borderColor?: CanvasStrokeStyle;
   squareSize?: number;
   hoverFillColor?: CanvasStrokeStyle;
+  gradientColor?: string;
   className?: string;
 }
 
@@ -22,6 +23,7 @@ const Squares: React.FC<SquaresProps> = ({
   borderColor = "#999",
   squareSize = 40,
   hoverFillColor = "#222",
+  gradientColor = "#fff",
   className,
 }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -74,18 +76,18 @@ const Squares: React.FC<SquaresProps> = ({
         }
       }
 
-      // const gradient = ctx.createRadialGradient(
-      //   canvas.width / 2,
-      //   canvas.height / 2,
-      //   0,
-      //   canvas.width / 2,
-      //   canvas.height / 2,
-      //   Math.sqrt(canvas.width ** 2 + canvas.height ** 2) / 2
-      // );
-      // gradient.addColorStop(0, "rgba(0, 0, 0, 0)");
-      // gradient.addColorStop(1, "#060010");
+      const gradient = ctx.createRadialGradient(
+        canvas.width / 2,
+        canvas.height / 2,
+        0,
+        canvas.width / 2,
+        canvas.height / 2,
+        Math.sqrt(canvas.width ** 2 + canvas.height ** 2) / 2,
+      );
+      gradient.addColorStop(0, "rgba(0, 0, 0, 0)");
+      gradient.addColorStop(1, gradientColor);
 
-      // ctx.fillStyle = gradient;
+      ctx.fillStyle = gradient;
       ctx.fillRect(0, 0, canvas.width, canvas.height);
     };
 
@@ -131,10 +133,10 @@ const Squares: React.FC<SquaresProps> = ({
       const startY = Math.floor(gridOffset.current.y / squareSize) * squareSize;
 
       const hoveredSquareX = Math.floor(
-        (mouseX + gridOffset.current.x - startX) / squareSize
+        (mouseX + gridOffset.current.x - startX) / squareSize,
       );
       const hoveredSquareY = Math.floor(
-        (mouseY + gridOffset.current.y - startY) / squareSize
+        (mouseY + gridOffset.current.y - startY) / squareSize,
       );
 
       if (
@@ -160,7 +162,14 @@ const Squares: React.FC<SquaresProps> = ({
       canvas.removeEventListener("mousemove", handleMouseMove);
       canvas.removeEventListener("mouseleave", handleMouseLeave);
     };
-  }, [direction, speed, borderColor, hoverFillColor, squareSize]);
+  }, [
+    direction,
+    speed,
+    borderColor,
+    hoverFillColor,
+    squareSize,
+    gradientColor,
+  ]);
 
   return (
     <canvas
