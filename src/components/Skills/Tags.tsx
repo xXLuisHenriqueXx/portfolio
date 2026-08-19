@@ -4,68 +4,56 @@ import {
   BriefcaseBusiness,
   GraduationCap,
   RefreshCw,
+  type LucideIcon,
 } from "lucide-react";
 
-export const DiaryTag = () => {
+import { cn } from "@src/lib/utils";
+
+interface BaseTagProps {
+  type: "diary" | "projects" | "graduation" | "study";
+  label: string;
+  icon: LucideIcon;
+}
+
+export const BaseTag = ({ type, label, icon: Icon }: BaseTagProps) => {
   const { t } = useTranslation();
 
   return (
-    <div className="flex flex-row items-center gap-x-0.5 lg:gap-x-1">
-      <RefreshCw
-        className="w-2 h-2 lg:w-3 lg:h-3 2xl:w-4 2xl:h-4 text-primary"
-        aria-hidden
-      />
-      <p className="p-0.75 lg:p-1 2xl:p-2 bg-primary/25 rounded-sm text-[6px] lg:text-[8px] 2xl:text-[10px] font-semibold text-primary">
-        # {t("skills.tags.0")}
+    <div
+      className={cn("flex flex-row items-center gap-x-1", {
+        "text-primary": type === "diary",
+        "text-projects": type === "projects",
+        "text-graduation": type === "graduation",
+        "text-study": type === "study",
+      })}
+    >
+      <Icon className="size-4" aria-hidden />
+      <p
+        className={cn("p-2 rounded-lg text-[10px] font-semibold", {
+          "bg-primary/25": type === "diary",
+          "bg-projects/25": type === "projects",
+          "bg-graduation/25": type === "graduation",
+          "bg-study/25": type === "study",
+        })}
+      >
+        # {t(label)}
       </p>
     </div>
   );
 };
 
-export const ProjectsTag = () => {
-  const { t } = useTranslation();
+export const DiaryTag = () => (
+  <BaseTag type="diary" label="skills.tags.0" icon={RefreshCw} />
+);
 
-  return (
-    <div className="flex flex-row items-center gap-x-0.5 lg:gap-x-1">
-      <BriefcaseBusiness
-        className="w-2 h-2 lg:w-3 lg:h-3 2xl:w-4 2xl:h-4 text-projects"
-        aria-hidden
-      />
-      <p className="p-0.75 lg:p-1 2xl:p-2 bg-projects/25 rounded-sm text-[6px] lg:text-[8px] 2xl:text-[10px] font-semibold text-projects">
-        # {t("skills.tags.1")}
-      </p>
-    </div>
-  );
-};
+export const ProjectsTag = () => (
+  <BaseTag type="projects" label="skills.tags.1" icon={BriefcaseBusiness} />
+);
 
-export const GraduationTag = () => {
-  const { t } = useTranslation();
+export const GraduationTag = () => (
+  <BaseTag type="graduation" label="skills.tags.2" icon={GraduationCap} />
+);
 
-  return (
-    <div className="flex flex-row items-center gap-x-0.5 lg:gap-x-1">
-      <GraduationCap
-        className="w-2 h-2 lg:w-3 lg:h-3 2xl:w-4 2xl:h-4 text-graduation"
-        aria-hidden
-      />
-      <p className="p-0.75 lg:p-1 2xl:p-2 bg-graduation/25 rounded-sm text-[6px] lg:text-[8px] 2xl:text-[10px] font-semibold text-graduation">
-        # {t("skills.tags.2")}
-      </p>
-    </div>
-  );
-};
-
-export const StudyTag = () => {
-  const { t } = useTranslation();
-
-  return (
-    <div className="flex flex-row items-center gap-x-0.5 lg:gap-x-1">
-      <Blocks
-        className="w-2 h-2 lg:w-3 lg:h-3 2xl:w-4 2xl:h-4 text-study"
-        aria-hidden
-      />
-      <p className="p-0.75 lg:p-1 2xl:p-2 bg-study/25 rounded-sm text-[6px] lg:text-[8px] 2xl:text-[10px] font-semibold text-study">
-        # {t("skills.tags.3")}
-      </p>
-    </div>
-  );
-};
+export const StudyTag = () => (
+  <BaseTag type="study" label="skills.tags.3" icon={Blocks} />
+);

@@ -1,43 +1,45 @@
+import type { ComponentType, FC } from "react";
+import {
+  Aws,
+  Cplusplus,
+  Css,
+  Docker,
+  Express,
+  Fastify,
+  Figma,
+  Framer,
+  Git,
+  Html5,
+  Insomnia,
+  Javascript,
+  Jest,
+  Mongodb,
+  Mysql,
+  Nestjs,
+  Nextdotjs,
+  Nodedotjs,
+  Postgresql,
+  Postman,
+  Prisma,
+  React,
+  Redux,
+  Ruby,
+  RubyOnRails,
+  Sqlite,
+  TailwindCss,
+  Typescript,
+  Vite,
+  type SvgIconProps,
+} from "@thesvg/react";
 import {
   CircleEllipsis,
   Code,
   Database,
   Monitor,
   Settings,
+  type LucideIcon,
 } from "lucide-react";
 
-import {
-  aws,
-  cplusplus,
-  css,
-  docker,
-  express,
-  fastify,
-  figma,
-  framermotion,
-  git,
-  html,
-  insomnia,
-  javascript,
-  jest,
-  mongodb,
-  mysql,
-  nestjs,
-  nextjs,
-  node,
-  postgresql,
-  postman,
-  prisma,
-  react,
-  ruby,
-  rubyonrails,
-  sqlite,
-  styledComponents,
-  tailwindcss,
-  typescript,
-  vite,
-  zustand,
-} from "./SVGs";
 import {
   DiaryTag,
   GraduationTag,
@@ -45,41 +47,51 @@ import {
   StudyTag,
 } from "@src/components/Skills/Tags";
 
-import type { ISkillsProps } from "@src/common/interfaces/Skills.interface";
+export interface SkillItem {
+  name: string;
+  icon: ComponentType<SvgIconProps & { variant: any }>;
+  tag: FC;
+}
 
-export const skillsData: ISkillsProps[] = [
+export interface SkillsData {
+  title: string;
+  icon: LucideIcon;
+  items: SkillItem[];
+}
+
+export const SKILLS_DATA: SkillsData[] = [
   {
     title: "skills.skillsTitles.0",
     icon: Code,
     items: [
       {
         name: "HTML5",
-        icon: html,
+        icon: Html5,
         tag: DiaryTag,
       },
       {
         name: "CSS3",
-        icon: css,
+        icon: Css,
         tag: DiaryTag,
       },
       {
         name: "TypeScript",
-        icon: typescript,
+        icon: Typescript,
         tag: DiaryTag,
       },
       {
         name: "JavaScript",
-        icon: javascript,
+        icon: Javascript,
         tag: DiaryTag,
       },
       {
         name: "Ruby",
-        icon: ruby,
+        icon: Ruby,
         tag: ProjectsTag,
       },
       {
         name: "C++",
-        icon: cplusplus,
+        icon: Cplusplus,
         tag: GraduationTag,
       },
     ],
@@ -90,47 +102,42 @@ export const skillsData: ISkillsProps[] = [
     items: [
       {
         name: "React",
-        icon: react,
+        icon: React,
         tag: DiaryTag,
       },
       {
         name: "React Native",
-        icon: react,
+        icon: React,
         tag: DiaryTag,
       },
       {
         name: "Next.js",
-        icon: nextjs,
+        icon: Nextdotjs,
         tag: StudyTag,
       },
       {
-        name: "ViteJS",
-        icon: vite,
+        name: "Vite",
+        icon: Vite,
         tag: DiaryTag,
       },
       {
         name: "TailwindCSS",
-        icon: tailwindcss,
+        icon: TailwindCss,
         tag: DiaryTag,
       },
       {
         name: "Tailwind Variants",
-        icon: tailwindcss,
+        icon: TailwindCss,
         tag: DiaryTag,
       },
       {
-        name: "Styled-Components",
-        icon: styledComponents,
-        tag: DiaryTag,
+        name: "Redux",
+        icon: Redux,
+        tag: ProjectsTag,
       },
       {
-        name: "Zustand",
-        icon: zustand,
-        tag: DiaryTag,
-      },
-      {
-        name: "Framer Motion",
-        icon: framermotion,
+        name: "Framer",
+        icon: Framer,
         tag: DiaryTag,
       },
     ],
@@ -141,42 +148,42 @@ export const skillsData: ISkillsProps[] = [
     items: [
       {
         name: "Node.js",
-        icon: node,
+        icon: Nodedotjs,
         tag: DiaryTag,
       },
       {
         name: "Express",
-        icon: express,
+        icon: Express,
         tag: DiaryTag,
       },
       {
         name: "Fastify",
-        icon: fastify,
+        icon: Fastify,
         tag: DiaryTag,
       },
       {
         name: "NestJS",
-        icon: nestjs,
+        icon: Nestjs,
         tag: ProjectsTag,
       },
       {
         name: "RubyOnRails",
-        icon: rubyonrails,
+        icon: RubyOnRails,
         tag: ProjectsTag,
       },
       {
         name: "PrismaORM",
-        icon: prisma,
+        icon: Prisma,
         tag: ProjectsTag,
       },
       {
         name: "Jest",
-        icon: jest,
+        icon: Jest,
         tag: DiaryTag,
       },
       {
         name: "Docker",
-        icon: docker,
+        icon: Docker,
         tag: DiaryTag,
       },
     ],
@@ -187,22 +194,22 @@ export const skillsData: ISkillsProps[] = [
     items: [
       {
         name: "PostgreSQL",
-        icon: postgresql,
+        icon: Postgresql,
         tag: DiaryTag,
       },
       {
         name: "MongoDB",
-        icon: mongodb,
+        icon: Mongodb,
         tag: DiaryTag,
       },
       {
         name: "MySQL",
-        icon: mysql,
+        icon: Mysql,
         tag: GraduationTag,
       },
       {
         name: "SQLite",
-        icon: sqlite,
+        icon: Sqlite,
         tag: ProjectsTag,
       },
     ],
@@ -213,27 +220,27 @@ export const skillsData: ISkillsProps[] = [
     items: [
       {
         name: "Git",
-        icon: git,
+        icon: Git,
         tag: DiaryTag,
       },
       {
         name: "AWS",
-        icon: aws,
+        icon: Aws,
         tag: StudyTag,
       },
       {
         name: "Insomnia",
-        icon: insomnia,
+        icon: Insomnia,
         tag: DiaryTag,
       },
       {
         name: "Postman",
-        icon: postman,
+        icon: Postman,
         tag: StudyTag,
       },
       {
         name: "Figma",
-        icon: figma,
+        icon: Figma,
         tag: DiaryTag,
       },
     ],

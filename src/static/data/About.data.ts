@@ -8,7 +8,7 @@ import {
   Jest,
   Mongodb,
   Nestjs,
-  Nextjs,
+  Nextdotjs,
   Nodedotjs,
   Postgresql,
   Prisma,
@@ -37,14 +37,14 @@ export interface AboutCertificate {
   description: string;
 }
 
-interface IAboutProps {
+interface AboutData {
   paragraphs: string[];
   ticket: AboutTicket[];
   tools: AboutTool[];
   certificates: AboutCertificate[];
 }
 
-export const ABOUT_DATA: IAboutProps = {
+export const ABOUT_DATA: AboutData = {
   paragraphs: [
     "about.paragraphs.0",
     "about.paragraphs.1",
@@ -73,7 +73,7 @@ export const ABOUT_DATA: IAboutProps = {
     },
     {
       name: "Next.js",
-      icon: Nextjs,
+      icon: Nextdotjs,
     },
     {
       name: "TypeScript",

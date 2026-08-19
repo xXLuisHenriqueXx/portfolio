@@ -1,24 +1,17 @@
 import { useEffect, useRef } from "react";
-import { tv } from "tailwind-variants";
 import { useTranslation } from "react-i18next";
 
-import Header from "../Header";
+import Header from "@src/components/ui/Header";
+import FadeIn from "@src/components/ui/animations/FadeIn";
 import SkillsList from "./SkillsList";
 
-const skillsStyles = tv({
-  slots: {
-    container:
-      "grid grid-cols-1 place-items-center gap-y-8 w-full py-12 px-5 bg-gradient-to-b from-card to-background",
-  },
-});
+import { SKILLS_DATA } from "@src/static/data/Skills.data";
 
-const { container } = skillsStyles();
-
-interface ISkillsProps {
+interface Props {
   setActiveScreen: (value: "skills") => void;
 }
 
-const Skills = ({ setActiveScreen }: ISkillsProps) => {
+const Skills = ({ setActiveScreen }: Props) => {
   const { t } = useTranslation();
 
   const ref = useRef<HTMLDivElement | null>(null);
@@ -31,7 +24,7 @@ const Skills = ({ setActiveScreen }: ISkillsProps) => {
       ([entry]) => {
         if (entry.isIntersecting) setActiveScreen("skills");
       },
-      { threshold: 0.5 }
+      { threshold: 0.5 },
     );
 
     observer.observe(element);
@@ -42,8 +35,8 @@ const Skills = ({ setActiveScreen }: ISkillsProps) => {
   return (
     <section
       ref={ref}
-      id={"skills"}
-      className={container()}
+      id="skills"
+      className="flex flex-col items-center gap-y-8 w-full py-20 px-6 bg-linear-to-b from-card to-background"
       aria-label={t("skills-a11y.section")}
     >
       <Header
@@ -51,7 +44,14 @@ const Skills = ({ setActiveScreen }: ISkillsProps) => {
         description={t("skills.header.description")}
       />
 
-      <SkillsList />
+      <FadeIn
+        className="flex flex-col items-center gap-y-8 w-full max-w-4xl"
+        as="ul"
+      >
+        {SKILLS_DATA.map((skill) => (
+          <SkillsList key={skill.title} data={skill} />
+        ))}
+      </FadeIn>
     </section>
   );
 };
