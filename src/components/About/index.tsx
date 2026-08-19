@@ -1,31 +1,23 @@
 import { useEffect, useRef } from "react";
-import { tv } from "tailwind-variants";
-import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 
-import { Separator } from "../ui/separator";
-import AboutText from "./AboutText";
-import TicketInfo from "./TicketInfo";
+import { Separator } from "@src/components/ui/Separator";
+import SlideIn from "@src/components/ui/animations/SlideIn";
+import FadeIn from "@src/components/ui/animations/FadeIn";
+import Text from "./Text";
+import Ticket from "./Ticket";
 import Tools from "./Tools";
 import Certificates from "./Certificates";
 
-const aboutStyles = tv({
-  slots: {
-    container:
-      "relative grid grid-cols-1 lg:grid-cols-2 place-items-center self-center gap-y-8 lg:gap-y-0 lg:gap-x-14 w-full max-w-7xl py-12 px-5",
-    containerContent: "flex flex-col gap-y-8 w-full max-w-xl",
-    separator: "lg:hidden",
-  },
-});
+import { ABOUT_DATA } from "@src/static/data/About.data";
 
-const { container, containerContent, separator } = aboutStyles();
-
-interface IAboutProps {
+interface Props {
   setActiveScreen: (value: "about") => void;
 }
 
-const About = ({ setActiveScreen }: IAboutProps) => {
+const About = ({ setActiveScreen }: Props) => {
   const { t } = useTranslation();
+  const { paragraphs, ticket, tools, certificates } = ABOUT_DATA;
 
   const ref = useRef<HTMLDivElement | null>(null);
 
@@ -37,7 +29,7 @@ const About = ({ setActiveScreen }: IAboutProps) => {
       ([entry]) => {
         if (entry.isIntersecting) setActiveScreen("about");
       },
-      { threshold: 0.5 }
+      { threshold: 0.5 },
     );
 
     observer.observe(element);
@@ -49,26 +41,20 @@ const About = ({ setActiveScreen }: IAboutProps) => {
     <section
       ref={ref}
       id={"about"}
-      className={container()}
+      className="relative grid grid-cols-1 lg:grid-cols-2 place-items-center self-center gap-8 w-full max-w-7xl py-20 px-6"
       aria-label={t("about-a11y.section")}
     >
-      <AboutText />
+      <Text items={paragraphs} />
 
-      <Separator className={separator()} aria-hidden />
+      <Separator className="lg:hidden" aria-hidden />
 
-      <motion.article
-        className={containerContent()}
-        initial={{ translateX: 200, opacity: 0 }}
-        whileInView={{ translateX: 0, opacity: 1 }}
-        transition={{ duration: 1, type: "spring" }}
-        viewport={{ once: true }}
-      >
-        <TicketInfo />
-
-        <Tools />
-
-        <Certificates />
-      </motion.article>
+      <SlideIn direction="right">
+        <FadeIn className="flex flex-1 flex-col gap-y-8">
+          <Ticket items={ticket} />
+          <Tools items={tools} />
+          <Certificates items={certificates} />
+        </FadeIn>
+      </SlideIn>
     </section>
   );
 };

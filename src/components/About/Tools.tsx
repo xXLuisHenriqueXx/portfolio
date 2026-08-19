@@ -1,45 +1,35 @@
-import { tv } from "tailwind-variants";
 import { useTranslation } from "react-i18next";
 
-import SpotlightCard from "../SpotlightCard";
+import SpotlightCard from "@src/components/ui/SpotlightCard";
 
-import { aboutData } from "@src/static/AboutData";
+import type { AboutTool } from "@src/static/data/About.data";
 
-const toolsStyles = tv({
-  slots: {
-    container: "flex flex-col gap-y-2 w-full max-w-3xl",
-    containerContent: "flex flex-row flex-wrap gap-2",
-    containerItem:
-      "flex flex-row items-center gap-x-2 bg-primary/10 hover:scale-[102.5%] p-2 rounded-lg transition-all duration-300 cursor-pointer text-xs font-medium",
-    title: "text-sm font-semibold",
-    icon: "w-4 h-4 xl:w-6 xl:h-6 text-primary",
-    text: "xl:text-sm",
-  },
-});
+interface Props {
+  items: AboutTool[];
+}
 
-const { container, containerContent, containerItem, title, icon, text } =
-  toolsStyles();
-
-const Tools = () => {
+const Tools = ({ items }: Props) => {
   const { t } = useTranslation();
 
   return (
-    <div className={container()}>
-      <h2 className={title()}>{t("about.toolsTitle")}</h2>
+    <div className="flex flex-1 flex-col gap-y-2">
+      <h2 className="text-sm font-semibold">{t("about.toolsTitle")}</h2>
 
-      <div className={containerContent()}>
-        {aboutData.tools.map(({ name, icon: Icon }) => (
-          <SpotlightCard
-            key={name}
-            className={containerItem()}
-            spotlightColor="rgba(123, 83, 238, 0.5)"
-          >
-            <Icon className={icon()} aria-hidden />
+      <ul className="flex flex-row flex-wrap gap-1">
+        {items.map(({ name, icon: Icon }) => (
+          <li key={name}>
+            <SpotlightCard className="flex flex-row items-center gap-x-2 px-4 py-2 rounded-xl">
+              <Icon
+                className="size-6 text-primary"
+                variant="mono"
+                aria-hidden
+              />
 
-            <p className={text()}># {name}</p>
-          </SpotlightCard>
+              <p className="text-sm"># {name}</p>
+            </SpotlightCard>
+          </li>
         ))}
-      </div>
+      </ul>
     </div>
   );
 };

@@ -1,29 +1,50 @@
-import type { IAboutProps } from "@src/common/interfaces/About.interface";
+import type { ComponentType } from "react";
 import {
-  aws,
-  docker,
-  express,
-  fastify,
-  figma,
-  git,
-  jest,
-  mongodb,
-  nestjs,
-  nextjs,
-  node,
-  postgresql,
-  prisma,
-  react,
-  rubyonrails,
-  styledComponents,
-  tailwindcss,
-  typescript,
-  zustand,
-} from "./SVGs";
+  Aws,
+  Docker,
+  Fastify,
+  Figma,
+  Git,
+  Jest,
+  Mongodb,
+  Nestjs,
+  Nextjs,
+  Nodedotjs,
+  Postgresql,
+  Prisma,
+  React,
+  TailwindCss,
+  Typescript,
+  type SvgIconProps,
+} from "@thesvg/react";
 
 import AWS from "@src/assets/aws.png";
 
-export const aboutData: IAboutProps = {
+export interface AboutTicket {
+  title: string;
+  subtitle: string;
+}
+
+export interface AboutTool {
+  name: string;
+  icon: ComponentType<SvgIconProps & { variant: any }>;
+}
+
+export interface AboutCertificate {
+  image: string;
+  name: string;
+  duration: string;
+  description: string;
+}
+
+interface IAboutProps {
+  paragraphs: string[];
+  ticket: AboutTicket[];
+  tools: AboutTool[];
+  certificates: AboutCertificate[];
+}
+
+export const ABOUT_DATA: IAboutProps = {
   paragraphs: [
     "about.paragraphs.0",
     "about.paragraphs.1",
@@ -44,87 +65,67 @@ export const aboutData: IAboutProps = {
   tools: [
     {
       name: "React",
-      icon: react,
+      icon: React,
     },
     {
       name: "React Native",
-      icon: react,
+      icon: React,
     },
     {
       name: "Next.js",
-      icon: nextjs,
+      icon: Nextjs,
     },
     {
       name: "TypeScript",
-      icon: typescript,
+      icon: Typescript,
     },
     {
       name: "TailwindCSS",
-      icon: tailwindcss,
-    },
-    {
-      name: "Tailwind Variants",
-      icon: tailwindcss,
-    },
-    {
-      name: "Styled-Components",
-      icon: styledComponents,
-    },
-    {
-      name: "Zustand",
-      icon: zustand,
+      icon: TailwindCss,
     },
     {
       name: "Node.js",
-      icon: node,
-    },
-    {
-      name: "Express",
-      icon: express,
+      icon: Nodedotjs,
     },
     {
       name: "Fastify",
-      icon: fastify,
+      icon: Fastify,
     },
     {
       name: "NestJS",
-      icon: nestjs,
-    },
-    {
-      name: "RubyOnRails",
-      icon: rubyonrails,
+      icon: Nestjs,
     },
     {
       name: "PrismaORM",
-      icon: prisma,
+      icon: Prisma,
     },
     {
       name: "Jest",
-      icon: jest,
+      icon: Jest,
     },
     {
       name: "Docker",
-      icon: docker,
+      icon: Docker,
     },
     {
       name: "Git",
-      icon: git,
+      icon: Git,
     },
     {
       name: "PostgreSQL",
-      icon: postgresql,
+      icon: Postgresql,
     },
     {
       name: "MongoDB",
-      icon: mongodb,
+      icon: Mongodb,
     },
     {
       name: "Figma",
-      icon: figma,
+      icon: Figma,
     },
     {
       name: "AWS",
-      icon: aws,
+      icon: Aws,
     },
   ],
   certificates: [
