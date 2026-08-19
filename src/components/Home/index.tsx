@@ -1,33 +1,20 @@
 import { useEffect, useRef } from "react";
-import { tv } from "tailwind-variants";
-import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 
-import Squares from "../Squares";
+import FadeIn from "@src/components/ui/animations/FadeIn";
+import Background from "./Background";
 import Greetings from "./Greetings";
-import IntroductionButtons from "./IntroductionButtons";
-import ScrollDown from "./ScrollDown";
+import UserActions from "./UserActions";
 
-import { homeData } from "@src/static/HomeData";
+import { HOME_DATA } from "@src/static/data/Home.data";
 
-const homeStyles = tv({
-  slots: {
-    container:
-      "relative grid grid-cols-1 lg:grid-cols-2 place-items-center gap-y-4 lg:gap-y-0 w-full h-dvh pt-18 pb-8 px-5",
-    containerContent: "flex flex-col items-center gap-y-4 z-10",
-    image: "w-64 xl:w-92 2xl:w-md z-10",
-    squares: "absolute inset-0 z-0",
-  },
-});
-
-const { container, containerContent, image, squares } = homeStyles();
-
-interface IHomeProps {
+interface Props {
   setActiveScreen: (value: "home") => void;
 }
 
-const Home = ({ setActiveScreen }: IHomeProps) => {
+const Home = ({ setActiveScreen }: Props) => {
   const { t } = useTranslation();
+  const { roles, buttons } = HOME_DATA;
 
   const ref = useRef<HTMLDivElement | null>(null);
 
@@ -39,7 +26,7 @@ const Home = ({ setActiveScreen }: IHomeProps) => {
       ([entry]) => {
         if (entry.isIntersecting) setActiveScreen("home");
       },
-      { threshold: 0.5 }
+      { threshold: 0.5 },
     );
 
     observer.observe(element);
@@ -51,44 +38,18 @@ const Home = ({ setActiveScreen }: IHomeProps) => {
     <section
       ref={ref}
       id={"home"}
-      className={container()}
+      className="relative flex items-center justify-center w-full h-dvh py-20 px-6"
       aria-label={t("home-a11y.section")}
     >
-      <Squares
-        direction="down"
-        speed={0.05}
-        squareSize={60}
-        borderColor="rgba(123, 83, 238, 0.1)"
-        hoverFillColor="rgba(123, 83, 238, 0.1)"
-        className={squares()}
-        aria-hidden
-      />
+      <Background />
 
-      <motion.article
-        className={containerContent()}
-        initial={{ translateX: -200, opacity: 0 }}
-        whileInView={{ translateX: 0, opacity: 1 }}
-        transition={{ duration: 1.5, type: "spring" }}
-        viewport={{ once: true }}
+      <FadeIn
+        className="flex flex-1 flex-col items-center gap-y-8"
+        as="article"
       >
-        <Greetings />
-
-        <IntroductionButtons />
-      </motion.article>
-
-      <motion.img
-        className={image()}
-        initial={{ translateX: 200, opacity: 0 }}
-        whileInView={{ translateX: 0, opacity: 1 }}
-        transition={{ delay: 0.25, duration: 1.5, type: "spring" }}
-        viewport={{ once: true }}
-        src={homeData.image}
-        alt={t("home-a11y.imageAlt")}
-        loading="lazy"
-        decoding="async"
-      />
-
-      <ScrollDown />
+        <Greetings items={roles} />
+        <UserActions items={buttons} />
+      </FadeIn>
     </section>
   );
 };

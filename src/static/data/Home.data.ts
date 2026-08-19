@@ -1,15 +1,22 @@
-import type { IHomeProps } from "@src/common/interfaces/Home.interface";
-import Me from "@src/assets/me.png";
+export interface HomeButton {
+  label: string;
+  variant: "outline" | "gradient";
+  action: () => void;
+}
 
-export const homeData: IHomeProps = {
-  experiences: [
-    "home.experiences.frontend",
-    "home.experiences.mobile",
-    "home.experiences.backend",
-    "home.experiences.fullstack",
-    "home.experiences.freelancer",
+interface HomeData {
+  roles: string[];
+  buttons: HomeButton[];
+}
+
+export const HOME_DATA: HomeData = {
+  roles: [
+    "home.roles.frontend",
+    "home.roles.mobile",
+    "home.roles.backend",
+    "home.roles.fullstack",
+    "home.roles.freelancer",
   ],
-  introduction: "home.introduction",
   buttons: [
     {
       label: "home.buttons.projects",
@@ -33,5 +40,4 @@ export const homeData: IHomeProps = {
       action: () => {},
     },
   ],
-  image: Me,
 };
