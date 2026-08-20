@@ -1,28 +1,39 @@
 import { useEffect, useRef } from "react";
-import { tv } from "tailwind-variants";
 import { useTranslation } from "react-i18next";
+import {
+  Expo,
+  Fastify,
+  Figma,
+  GoogleDrive,
+  Nestjs,
+  Nextdotjs,
+  Notion,
+  Openai,
+  Postgresql,
+  Prisma,
+  React,
+  TailwindCss,
+  Typescript,
+  Whatsapp,
+} from "@thesvg/react";
 
-import Header from "../Header";
+import Header from "@src/components/ui/Header";
+import { OrbitingCircles } from "@src/components/ui/OrbitingCircles";
+import FadeIn from "@src/components/ui/animations/FadeIn";
+import SlideIn from "@src/components/ui/animations/SlideIn";
 import FormEmail from "./FormEmail";
 import QuickAccessButtons from "./QuickAccessButtons";
 
-const contactStyles = tv({
-  slots: {
-    container:
-      "flex flex-col gap-y-8 items-center w-full py-12 px-5 bg-gradient-to-b from-card to-background",
-    containerContent:
-      "grid grid-cols-1 xl:grid-cols-2 place-items-center xl:place-items-start gap-8 w-full max-w-7xl",
-  },
-});
+import { CONTACT_DATA } from "@src/static/data/Contact.data";
+import { Separator } from "../ui/Separator";
 
-const { container, containerContent } = contactStyles();
-
-interface IContactProps {
+interface Props {
   setActiveScreen: (value: "contact") => void;
 }
 
-const Contact = ({ setActiveScreen }: IContactProps) => {
+const Contact = ({ setActiveScreen }: Props) => {
   const { t } = useTranslation();
+  const { buttons } = CONTACT_DATA;
 
   const ref = useRef<HTMLDivElement | null>(null);
 
@@ -34,7 +45,7 @@ const Contact = ({ setActiveScreen }: IContactProps) => {
       ([entry]) => {
         if (entry.isIntersecting) setActiveScreen("contact");
       },
-      { threshold: 0.5 }
+      { threshold: 0.5 },
     );
 
     observer.observe(element);
@@ -45,8 +56,8 @@ const Contact = ({ setActiveScreen }: IContactProps) => {
   return (
     <section
       ref={ref}
-      id={"contact"}
-      className={container()}
+      id="contact"
+      className="flex flex-col gap-y-8 items-center w-full py-20 px-6"
       aria-label={t("contact-a11y.section")}
     >
       <Header
@@ -54,11 +65,43 @@ const Contact = ({ setActiveScreen }: IContactProps) => {
         description={t("contact.header.description")}
       />
 
-      <div className={containerContent()}>
-        <FormEmail />
+      <FadeIn className="relative flex flex-row items-center justify-center gap-x-4 w-full max-w-5xl">
+        <SlideIn
+          className="relative flex flex-col items-center gap-4 w-full"
+          direction="left"
+        >
+          <FormEmail />
 
-        <QuickAccessButtons />
-      </div>
+          <div className="flex flex-row items-center justify-center gap-x-2 w-1/4">
+            <Separator />
+            <p className="shrink-0 text-sm text-foreground/50">
+              Ou acesse minhas redes
+            </p>
+            <Separator />
+          </div>
+
+          <QuickAccessButtons items={buttons} />
+        </SlideIn>
+
+        <SlideIn
+          className="relative hidden lg:flex flex-col items-center justify-center w-full h-125 overflow-hidden"
+          direction="right"
+        >
+          <OrbitingCircles iconSize={36}>
+            <React aria-hidden />
+            <Typescript aria-hidden />
+            <TailwindCss aria-hidden />
+            <Nextdotjs aria-hidden />
+            <Expo aria-hidden />
+          </OrbitingCircles>
+          <OrbitingCircles iconSize={32} radius={100} reverse speed={2}>
+            <Fastify />
+            <Nestjs />
+            <Postgresql />
+            <Prisma />
+          </OrbitingCircles>
+        </SlideIn>
+      </FadeIn>
     </section>
   );
 };

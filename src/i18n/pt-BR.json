@@ -30,7 +30,7 @@
   "home": {
     "hello": "Olá, me chamo",
     "andIAm": "e sou ",
-    "experiences": {
+    "roles": {
       "frontend": "Desenvolvedor Front-end",
       "mobile": "Desenvolvedor Mobile",
       "backend": "Desenvolvedor Back-end",
@@ -42,13 +42,11 @@
       "projects": "Meus projetos",
       "contact": "Contato",
       "resume": "Baixar meu Currículo"
-    },
-    "scroll": "Role para baixo"
+    }
   },
 
   "home-a11y": {
     "section": "Seção de ínicio",
-    "imageAlt": "Foto de Luis Henrique Cardoso",
     "goTo": "Ir para"
   },
 
@@ -147,10 +145,6 @@
   "projects-a11y": {
     "section": "Seção de projetos",
     "filterBy": "Filtrar por",
-    "buttons": {
-      "previous": "Projetos anteriores",
-      "next": "Projetos posteriores"
-    },
     "imageAlt": "Imagem do projeto",
     "goToSourceCode": "Ir para o código-fonte",
     "goToDemo": "Ir para demonstração"
@@ -169,11 +163,6 @@
       "message": "Mensagem",
       "placeholderMessage": "Explique sua proposta ...",
       "send": "Enviar"
-    },
-    "buttons": {
-      "github": "Clique para ver mais projetos meus",
-      "linkedin": "Clique para ver minhas postagens e certificados",
-      "whatsapp": "Clique para podermos ter um contato mais livre e rápido"
     },
     "alert": {
       "success": "Mensagem enviada com sucesso!",
