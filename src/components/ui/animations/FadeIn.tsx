@@ -1,21 +1,14 @@
-"use client";
-
-import type { PropsWithChildren } from "react";
+import { type PropsWithChildren } from "react";
 import { type DOMMotionComponents, motion } from "framer-motion";
 
 type MotionTags = keyof DOMMotionComponents;
-interface IFadeInProps extends PropsWithChildren {
+interface Props extends PropsWithChildren {
   as?: MotionTags;
   delay?: number;
   className?: string;
 }
 
-const FadeIn = ({
-  as = "div",
-  delay = 0,
-  children,
-  ...props
-}: IFadeInProps) => {
+const FadeIn = ({ as = "div", delay = 0, children, ...props }: Props) => {
   const Component = motion[as];
 
   return (
@@ -30,5 +23,4 @@ const FadeIn = ({
     </Component>
   );
 };
-
 export default FadeIn;
