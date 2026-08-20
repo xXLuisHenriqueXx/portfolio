@@ -1,30 +1,56 @@
+import type { ComponentType, FC } from "react";
 import {
-  expo,
-  figma,
-  nextjs,
-  node,
-  python,
-  react,
-  sqlite,
-  styledComponents,
-  tailwindcss,
-  typescript,
-  vite,
-  zustand,
-} from "./SVGs";
+  Expo,
+  Figma,
+  Nextdotjs,
+  Nodedotjs,
+  Python,
+  React,
+  Sqlite,
+  TailwindCss,
+  Typescript,
+  Vite,
+  type SvgIconProps,
+} from "@thesvg/react";
 import {
   CompletedTag,
   InProgressTag,
   NewTag,
 } from "@src/components/Projects/Tags";
 
-import EmptyImage from "@src/assets/empty-image.jpg";
 import DescubraOCT from "@src/assets/descubraoct.png";
 import SaveTube from "@src/assets/savetube.png";
 import PetShopMonito from "@src/assets/petshop_monito.png";
-import type { IProjectsProps } from "@src/common/interfaces/Projects.interface";
 
-export const projectsData: IProjectsProps = {
+export interface ProjectButton {
+  label: string;
+  value: string;
+}
+
+export interface ProjectTechnology {
+  name: string;
+  icon: ComponentType<SvgIconProps & { variant: any }>;
+}
+
+export interface ProjectItem {
+  id: number;
+  title: string;
+  type: string;
+  image: string | null;
+  tag: FC;
+  description: string[];
+  technologies: ProjectTechnology[];
+  code: string | null;
+  demo: string | null;
+  createDate: string;
+}
+
+interface ProjectsData {
+  buttons: ProjectButton[];
+  projects: ProjectItem[];
+}
+
+export const PROJECTS_DATA: ProjectsData = {
   buttons: [
     { label: "projects.filter.all", value: "" },
     { label: "projects.filter.web", value: "web" },
@@ -35,7 +61,7 @@ export const projectsData: IProjectsProps = {
       id: 1,
       title: "Expense Assistant",
       type: "mobile",
-      image: EmptyImage,
+      image: null,
       tag: InProgressTag,
       description: [
         "projects.expense-assistant.description.0",
@@ -44,31 +70,27 @@ export const projectsData: IProjectsProps = {
       technologies: [
         {
           name: "React Native",
-          icon: react,
+          icon: React,
         },
         {
           name: "Expo",
-          icon: expo,
+          icon: Expo,
         },
         {
           name: "Typescript",
-          icon: typescript,
+          icon: Typescript,
         },
         {
-          name: "Styled-Components",
-          icon: styledComponents,
-        },
-        {
-          name: "Zustand",
-          icon: zustand,
+          name: "TailwindCSS",
+          icon: TailwindCss,
         },
         {
           name: "SQLite",
-          icon: sqlite,
+          icon: Sqlite,
         },
         {
           name: "Figma",
-          icon: figma,
+          icon: Figma,
         },
       ],
       code: "https://github.com/xXLuisHenriqueXx/expense_assistant",
@@ -88,32 +110,32 @@ export const projectsData: IProjectsProps = {
       technologies: [
         {
           name: "Vite",
-          icon: vite,
+          icon: Vite,
         },
         {
           name: "React",
-          icon: react,
+          icon: React,
         },
         {
           name: "Typescript",
-          icon: typescript,
+          icon: Typescript,
         },
         {
           name: "TailwindCSS",
-          icon: tailwindcss,
+          icon: TailwindCss,
         },
         {
           name: "Figma",
-          icon: figma,
+          icon: Figma,
         },
         {
           name: "Python",
-          icon: python,
+          icon: Python,
         },
       ],
       code: "https://github.com/xXLuisHenriqueXx/descubra/tree/feat/integration",
       demo: null,
-      createDate: "2/09/2025",
+      createDate: "02/09/2025",
     },
     {
       id: 3,
@@ -125,19 +147,19 @@ export const projectsData: IProjectsProps = {
       technologies: [
         {
           name: "Next.js",
-          icon: nextjs,
+          icon: Nextdotjs,
         },
         {
           name: "TailwindCSS",
-          icon: tailwindcss,
+          icon: TailwindCss,
         },
         {
           name: "Typescript",
-          icon: typescript,
+          icon: Typescript,
         },
         {
           name: "Node.js",
-          icon: node,
+          icon: Nodedotjs,
         },
       ],
       code: "https://github.com/xXLuisHenriqueXx/savetube",
@@ -148,7 +170,7 @@ export const projectsData: IProjectsProps = {
       id: 4,
       title: "Dev Pizza",
       type: "web",
-      image: EmptyImage,
+      image: null,
       tag: CompletedTag,
       description: [
         "projects.dev-pizza.description.0",
@@ -157,23 +179,23 @@ export const projectsData: IProjectsProps = {
       technologies: [
         {
           name: "Vite",
-          icon: vite,
+          icon: Vite,
         },
         {
           name: "React",
-          icon: react,
+          icon: React,
         },
         {
           name: "TailwindCSS",
-          icon: tailwindcss,
+          icon: TailwindCss,
         },
         {
           name: "Typescript",
-          icon: typescript,
+          icon: Typescript,
         },
         {
           name: "Figma",
-          icon: figma,
+          icon: Figma,
         },
       ],
       code: "https://github.com/xXLuisHenriqueXx/pizzaria_landing_page",
@@ -193,15 +215,15 @@ export const projectsData: IProjectsProps = {
       technologies: [
         {
           name: "Next.js",
-          icon: nextjs,
+          icon: Nextdotjs,
         },
         {
           name: "TailwindCSS",
-          icon: tailwindcss,
+          icon: TailwindCss,
         },
         {
           name: "Typescript",
-          icon: typescript,
+          icon: Typescript,
         },
       ],
       code: "https://github.com/xXLuisHenriqueXx/petshop_frontend",
