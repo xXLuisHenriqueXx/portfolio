@@ -3,21 +3,17 @@ import { useTranslation } from "react-i18next";
 import {
   Expo,
   Fastify,
-  Figma,
-  GoogleDrive,
   Nestjs,
   Nextdotjs,
-  Notion,
-  Openai,
   Postgresql,
   Prisma,
   React,
   TailwindCss,
   Typescript,
-  Whatsapp,
 } from "@thesvg/react";
 
 import Header from "@src/components/ui/Header";
+import { Separator } from "@src/components/ui/Separator";
 import { OrbitingCircles } from "@src/components/ui/OrbitingCircles";
 import FadeIn from "@src/components/ui/animations/FadeIn";
 import SlideIn from "@src/components/ui/animations/SlideIn";
@@ -25,7 +21,6 @@ import FormEmail from "./FormEmail";
 import QuickAccessButtons from "./QuickAccessButtons";
 
 import { CONTACT_DATA } from "@src/static/data/Contact.data";
-import { Separator } from "../ui/Separator";
 
 interface Props {
   setActiveScreen: (value: "contact") => void;
