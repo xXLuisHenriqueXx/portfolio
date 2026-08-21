@@ -5,6 +5,13 @@
 
 @custom-variant dark (&:is(.dark *));
 
+@font-face {
+  font-family: "Inter";
+  src: url("../src/assets/fonts/Inter_Font.ttf") format("truetype");
+  font-weight: 100 900;
+  font-style: normal;
+}
+
 @theme inline {
   /* RADIUS */
   --radius-sm: calc(var(--radius) - 4px);
