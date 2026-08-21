@@ -18,9 +18,9 @@ import {
   NewTag,
 } from "@src/components/Projects/Tags";
 
-import DescubraOCT from "@src/assets/descubraoct.png";
-import SaveTube from "@src/assets/savetube.png";
-import PetShopMonito from "@src/assets/petshop_monito.png";
+import DescubraOCT from "@src/assets/images/descubraoct.webp";
+import SaveTube from "@src/assets/images/savetube.webp";
+import PetShopMonito from "@src/assets/images/petshop_monito.webp";
 
 export interface ProjectButton {
   label: string;

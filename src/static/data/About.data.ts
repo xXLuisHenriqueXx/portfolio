@@ -18,7 +18,7 @@ import {
   type SvgIconProps,
 } from "@thesvg/react";
 
-import AWS from "@src/assets/aws.png";
+import AWS from "@src/assets/images/aws.webp";
 
 export interface AboutTicket {
   title: string;
