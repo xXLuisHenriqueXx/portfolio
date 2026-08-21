@@ -7,7 +7,7 @@ import {
   type LucideIcon,
 } from "lucide-react";
 
-import Icon from "@src/assets/icon.svg";
+import Icon from "@src/assets/icons/icon.svg";
 
 export interface NavbarLogo {
   src: string;
