@@ -2,7 +2,7 @@ import { useTranslation } from "react-i18next";
 
 import { Button } from "@src/components/ui/Button";
 
-import type { NavbarLogo } from "@src/static/NavbarData";
+import type { NavbarLogo } from "@src/static/data/Navbar.data";
 
 interface Props {
   data: NavbarLogo;

@@ -2,7 +2,7 @@ import { useTranslation } from "react-i18next";
 
 import { Button } from "@src/components/ui/Button";
 
-import type { NavbarLink } from "@src/static/NavbarData";
+import type { NavbarLink } from "@src/static/data/Navbar.data";
 import { cn } from "@src/lib/utils";
 import type { TActiveScreen } from "@src/App";
 
@@ -15,7 +15,7 @@ const DesktopLinks = ({ items, active }: Props) => {
   const { t } = useTranslation();
 
   return (
-    <nav className="hidden lg:flex flex-row items-center gap-x-2 p-2 bg-primary/5 rounded-full">
+    <nav className="hidden lg:flex flex-row items-center gap-x-2 p-2 bg-card/90 rounded-full">
       {items.map(({ id, text, action }) => {
         const isActive = active === id;
 

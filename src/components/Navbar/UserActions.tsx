@@ -59,7 +59,7 @@ const UserActions = ({
         aria-expanded={open}
         aria-controls="mobile-menu"
       >
-        {open ? <Menu aria-hidden /> : <X aria-hidden />}
+        {!open ? <Menu aria-hidden /> : <X aria-hidden />}
       </Button>
     </div>
   );
