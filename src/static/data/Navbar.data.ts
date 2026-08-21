@@ -1,9 +1,32 @@
-import { BookOpen, Folder, Home, Mail, Settings } from "lucide-react";
+import {
+  BookOpen,
+  Folder,
+  Home,
+  Mail,
+  Settings,
+  type LucideIcon,
+} from "lucide-react";
 
-import type { INavbarProps } from "@src/common/interfaces/Navbar.interface";
 import Icon from "@src/assets/icon.svg";
 
-export const navbarData: INavbarProps = {
+export interface NavbarLogo {
+  src: string;
+  action: () => void;
+}
+
+export interface NavbarLink {
+  id: string;
+  text: string;
+  action: () => void;
+  icon: LucideIcon;
+}
+
+export interface NavbarData {
+  logo: NavbarLogo;
+  links: NavbarLink[];
+}
+
+export const NAVBAR_DATA: NavbarData = {
   logo: {
     src: Icon,
     action: () =>
