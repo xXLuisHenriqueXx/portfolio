@@ -1,5 +1,5 @@
 import type { PropsWithChildren } from "react";
-import { motion, type DOMMotionComponents } from "framer-motion";
+import { motion, type DOMMotionComponents } from "motion/react";
 
 type MotionTags = keyof DOMMotionComponents;
 interface Props extends PropsWithChildren {

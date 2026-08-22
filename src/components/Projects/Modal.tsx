@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { AnimatePresence } from "framer-motion";
+import { AnimatePresence } from "motion/react";
 import { useTranslation } from "react-i18next";
 import { Globe, ImageOff } from "lucide-react";
 import { Github } from "@thesvg/react";
