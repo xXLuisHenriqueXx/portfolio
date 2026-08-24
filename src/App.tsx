@@ -1,4 +1,5 @@
 import LogoLoop from "./components/ui/LogoLoop";
+import GradualBlur from "./components/ui/GradualBlur";
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import About from "./components/About";
@@ -13,7 +14,7 @@ function App() {
   const activeScreen = useActiveSection(SECTION_IDS);
 
   return (
-    <main className="relative flex flex-col min-w-full overflow-hidden">
+    <main className="relative flex flex-col min-w-full min-h-screen overflow-hidden">
       <Navbar activeScreen={activeScreen} />
 
       <Home />
@@ -32,6 +33,8 @@ function App() {
       <Skills />
       <Projects />
       <Contact />
+
+      <GradualBlur target="page" position="bottom" height="4rem" />
     </main>
   );
 }
