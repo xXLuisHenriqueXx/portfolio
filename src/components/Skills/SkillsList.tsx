@@ -1,32 +1,36 @@
-import { tv } from "tailwind-variants";
-import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
-import SkillItem from "./SkillItem";
+import FadeIn from "@src/components/ui/animations/FadeIn";
+import SkillCard from "./SkillCard";
 
-import { skillsData } from "@src/static/SkillsData";
+import type { SkillsData } from "@src/static/data/Skills.data";
 
-const skillsStyles = tv({
-  slots: {
-    container:
-      "grid grid-cols-1 md:place-items-center gap-8 w-full max-w-xl lg:max-w-4xl",
-  },
-});
+interface Props {
+  data: SkillsData;
+}
+const SkillsList = ({ data }: Props) => {
+  const { t } = useTranslation();
 
-const { container } = skillsStyles();
-
-const SkillsList = () => {
   return (
-    <motion.article
-      className={container()}
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      transition={{ duration: 1.5, type: "spring" }}
-      viewport={{ once: true }}
-    >
-      {skillsData.map((skill) => (
-        <SkillItem key={skill.title} data={skill} />
-      ))}
-    </motion.article>
+    <div className="flex flex-col gap-y-2 w-full">
+      <div className="flex flex-row items-center gap-x-2">
+        <div className="p-2 bg-primary/10 border border-border rounded-lg text-primary">
+          <data.icon className="size-4" aria-hidden />
+        </div>
+        <h2 className="shrink-0 text-sm font-bold uppercase">
+          {t(data.title)}
+        </h2>
+        <span className="w-full h-px bg-linear-to-r from-primary to-transparent" />
+      </div>
+
+      <ul className="relative flex flex-row gap-x-2 overflow-x-auto overflow-y-hidden">
+        {data.items.map((item, index) => (
+          <FadeIn key={item.name} as="li" delay={index * 0.1}>
+            <SkillCard data={item} />
+          </FadeIn>
+        ))}
+      </ul>
+    </div>
   );
 };
 

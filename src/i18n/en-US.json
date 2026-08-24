@@ -30,7 +30,7 @@
   "home": {
     "hello": "Hello, my name is",
     "andIAm": "and I'm a ",
-    "experiences": {
+    "roles": {
       "frontend": "Frontend Developer",
       "mobile": "Mobile Developer",
       "backend": "Backend Developer",
@@ -42,13 +42,11 @@
       "projects": "My projects",
       "contact": "Contact me",
       "resume": "Download Curriculum"
-    },
-    "scroll": "Scroll down"
+    }
   },
 
   "home-a11y": {
     "section": "Home section",
-    "imageAlt": "Luis Henrique Cardoso profile picture",
     "goTo": "Go to"
   },
 
@@ -141,10 +139,6 @@
   "projects-a11y": {
     "section": "Projects section",
     "filterBy": "Filter by",
-    "buttons": {
-      "previous": "Previous projects",
-      "next": "Next projects"
-    },
     "imageAlt": "Project image",
     "goToSourceCode": "Go to source code",
     "goToDemo": "Go to demo"
@@ -163,11 +157,6 @@
       "message": "Message",
       "placeholderMessage": "Explain your proposal ...",
       "send": "Send"
-    },
-    "buttons": {
-      "github": "Click to see more of my projects",
-      "linkedin": "Click to see my posts and certificates",
-      "whatsapp": "Click here so we can have a more free and faster contact."
     },
     "alert": {
       "success": "Message sent successfully!",

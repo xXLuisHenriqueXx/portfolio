@@ -1,48 +1,33 @@
-import { tv } from "tailwind-variants";
-import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 
-import { Button } from "../ui/button";
+import { Button } from "@src/components/ui/Button";
+import FadeIn from "@src/components/ui/animations/FadeIn";
 
-import { projectsData } from "@src/static/ProjectsData";
+import type { ProjectButton } from "@src/static/data/Projects.data";
 
-const filterStyles = tv({
-  slots: {
-    container: "flex flex-row gap-x-2",
-    button: "text-xs lg:text-sm 2xl:text-base",
-  },
-});
-
-const { container, button } = filterStyles();
-
-interface IFilterProps {
+interface Props {
   filter: string;
   setFilter: (filter: string) => void;
+  items: ProjectButton[];
 }
 
-const Filter = ({ filter, setFilter }: IFilterProps) => {
+const Filter = ({ filter, setFilter, items }: Props) => {
   const { t } = useTranslation();
 
   return (
-    <motion.nav
-      className={container()}
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      transition={{ duration: 1, type: "spring" }}
-      viewport={{ once: true }}
-    >
-      {projectsData.buttons.map(({ label, value }) => (
+    <FadeIn className="flex flex-row justify-center gap-x-2" as="nav">
+      {items.map(({ label, value }) => (
         <Button
           key={label}
+          className="px-8"
           variant={filter === value ? "gradient" : "outline"}
-          className={button()}
           onClick={() => setFilter(value)}
           aria-label={`${t("projects-a11y.filterBy")} ${label}`}
         >
           {t(label)}
         </Button>
       ))}
-    </motion.nav>
+    </FadeIn>
   );
 };
 

@@ -2,8 +2,6 @@ import { useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
-import { tv } from "tailwind-variants";
-import { motion } from "framer-motion";
 import emailjs from "@emailjs/browser";
 import { useTranslation } from "react-i18next";
 
@@ -12,27 +10,13 @@ import {
   FormControl,
   FormField,
   FormItem,
-  FormLabel,
   FormMessage,
-} from "../ui/form";
-import { Input } from "../ui/input";
-import { Card, CardContent } from "../ui/card";
-import { Textarea } from "../ui/textarea";
-import { Button } from "../ui/button";
+} from "@src/components/ui/Form";
+import { Input } from "@src/components/ui/Input";
+import { TextArea } from "@src/components/ui/TextArea";
+import { Button } from "@src/components/ui/Button";
 
 import { contactSchema } from "@src/schemas/ContactSchema";
-import { Loader2 } from "lucide-react";
-
-const formEmailStyles = tv({
-  slots: {
-    container: "w-full max-w-4xl",
-    containerContent: "space-y-6",
-    button: "w-full 2xl:text-base",
-    text: "text-xs lg:text-sm 2xl:text-base",
-  },
-});
-
-const { container, containerContent, button, text } = formEmailStyles();
 
 const FormEmail = () => {
   const { t } = useTranslation();
@@ -81,103 +65,78 @@ const FormEmail = () => {
   };
 
   return (
-    <motion.div
-      className={container()}
-      initial={{ translateX: -200, opacity: 0 }}
-      whileInView={{ translateX: 0, opacity: 1 }}
-      transition={{ duration: 1.5, type: "spring" }}
-      viewport={{ once: true }}
-    >
-      <Card>
-        <CardContent>
-          <Form {...form}>
-            <form
-              onSubmit={form.handleSubmit(onSubmit)}
-              className={containerContent()}
-            >
-              <FormField
-                control={form.control}
-                name="title"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel className={text()}>
-                      {t("contact.form.title")}
-                    </FormLabel>
-                    <FormControl>
-                      <Input
-                        className={text()}
-                        placeholder={t("contact.form.placeholderTitle")}
-                        {...field}
-                        autoComplete="off"
-                        role="input"
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
+    <div className="w-full">
+      <Form {...form}>
+        <form className="space-y-4" onSubmit={form.handleSubmit(onSubmit)}>
+          <FormField
+            control={form.control}
+            name="title"
+            render={({ field }) => (
+              <FormItem>
+                <FormControl>
+                  <Input
+                    label={t("contact.form.title")}
+                    placeholder={t("contact.form.placeholderTitle")}
+                    {...field}
+                    autoComplete="off"
+                    role="input"
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
 
-              <FormField
-                control={form.control}
-                name="name"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel className={text()}>
-                      {t("contact.form.name")}
-                    </FormLabel>
-                    <FormControl>
-                      <Input
-                        className={text()}
-                        placeholder={t("contact.form.placeholderName")}
-                        {...field}
-                        autoComplete="off"
-                        role="input"
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
+          <FormField
+            control={form.control}
+            name="name"
+            render={({ field }) => (
+              <FormItem>
+                <FormControl>
+                  <Input
+                    label={t("contact.form.name")}
+                    placeholder={t("contact.form.placeholderName")}
+                    {...field}
+                    autoComplete="off"
+                    role="input"
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
 
-              <FormField
-                control={form.control}
-                name="message"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel className={text()}>
-                      {t("contact.form.message")}
-                    </FormLabel>
-                    <FormControl>
-                      <Textarea
-                        className={text()}
-                        placeholder={t("contact.form.placeholderMessage")}
-                        {...field}
-                        autoComplete="off"
-                        role="input"
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
+          <FormField
+            control={form.control}
+            name="message"
+            render={({ field }) => (
+              <FormItem>
+                <FormControl>
+                  <TextArea
+                    label={t("contact.form.message")}
+                    placeholder={t("contact.form.placeholderMessage")}
+                    {...field}
+                    autoComplete="off"
+                    role="input"
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
 
-              <Button
-                variant={"gradient"}
-                type="submit"
-                className={button()}
-                disabled={loading}
-              >
-                {loading ? (
-                  <Loader2 className="animate-spin" />
-                ) : (
-                  t("contact.form.send")
-                )}
-              </Button>
-            </form>
-          </Form>
-        </CardContent>
-      </Card>
-    </motion.div>
+          <Button
+            className="w-full"
+            variant="gradient"
+            type="submit"
+            loading={loading}
+            disabled={loading}
+          >
+            {t("contact.form.send")}
+          </Button>
+        </form>
+      </Form>
+    </div>
   );
 };
 

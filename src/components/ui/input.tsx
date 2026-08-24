@@ -1,22 +1,29 @@
-import * as React from "react"
+import * as React from "react";
 
-import { cn } from "@src/lib/utils"
+import { cn } from "@src/lib/utils";
 
-const Input = React.forwardRef<HTMLInputElement, React.ComponentProps<"input">>(
-  ({ className, type, ...props }, ref) => {
+type Props = React.ComponentProps<"input"> & {
+  label?: string;
+};
+
+const Input = React.forwardRef<HTMLInputElement, Props>(
+  ({ className, label, ...props }, ref) => {
     return (
-      <input
-        type={type}
-        className={cn(
-          "flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-base shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 md:text-sm",
-          className
-        )}
-        ref={ref}
-        {...props}
-      />
-    )
-  }
-)
-Input.displayName = "Input"
+      <div className="relative flex flex-col gap-y-1 w-full">
+        {label && <label className="pl-4 text-sm">{label}</label>}
 
-export { Input }
+        <input
+          ref={ref}
+          className={cn(
+            "w-full min-h-12 px-4 bg-transparent border border-border focus-visible:border-primary aria-invalid:border-error rounded-full transition-all duration-300 text-sm placeholder:text-foreground/50 outline-none disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50",
+            className,
+          )}
+          {...props}
+        />
+      </div>
+    );
+  },
+);
+Input.displayName = "Input";
+
+export { Input };

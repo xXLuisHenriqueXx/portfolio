@@ -1,72 +1,28 @@
-import { tv } from "tailwind-variants";
-import { motion } from "framer-motion";
-import { useTranslation } from "react-i18next";
+import FadeIn from "@src/components/ui/animations/FadeIn";
+import ProjectCard from "./ProjectCard";
 
-import {
-  Carousel,
-  CarouselContent,
-  CarouselNext,
-  CarouselPrevious,
-} from "../ui/carousel";
-import ProjectItem from "./ProjectItem";
+import type { ProjectItem } from "@src/static/data/Projects.data";
 
-import type { IProjectProps } from "@src/common/interfaces/Projects.interface";
-
-const projectsListStyles = tv({
-  slots: {
-    container: "w-full max-w-sm lg:max-w-2xl 2xl:max-w-5xl",
-  },
-});
-
-const { container } = projectsListStyles();
-
-interface ProjectsListProps {
-  data: IProjectProps[];
+interface Props {
+  data: ProjectItem[];
   setShowModal: (showModal: boolean) => void;
-  setSelectedProject: (project: IProjectProps) => void;
+  setSelectedProject: (project: ProjectItem) => void;
 }
 
-const ProjectsList = ({
-  data,
-  setShowModal,
-  setSelectedProject,
-}: ProjectsListProps) => {
-  const { t } = useTranslation();
-
+const ProjectsList = ({ data, setShowModal, setSelectedProject }: Props) => {
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      transition={{ duration: 1.5, type: "spring" }}
-      viewport={{ once: true }}
-    >
-      <Carousel
-        className={container()}
-        opts={{
-          align: "start",
-        }}
-      >
-        <CarouselContent>
-          {data.map((item) => (
-            <ProjectItem
-              key={item.id}
-              data={item}
-              setShowModal={setShowModal}
-              setSelectedProject={setSelectedProject}
-            />
-          ))}
-        </CarouselContent>
-
-        <CarouselPrevious
-          role="button"
-          aria-label={t("projects-a11y.buttons.previous")}
-        />
-        <CarouselNext
-          role="button"
-          aria-label={t("projects-a11y.buttons.next")}
-        />
-      </Carousel>
-    </motion.div>
+    <FadeIn className="w-full">
+      <ul className="flex flex-row items-center gap-x-2 w-full overflow-x-auto">
+        {data.map((item) => (
+          <ProjectCard
+            key={item.title}
+            data={item}
+            setShowModal={setShowModal}
+            setSelectedProject={setSelectedProject}
+          />
+        ))}
+      </ul>
+    </FadeIn>
   );
 };
 

@@ -1,35 +1,41 @@
 import { useTranslation } from "react-i18next";
-import { BadgePlus, CheckCircle2, Loader } from "lucide-react";
+import { BadgePlus, CheckCircle2, Loader, type LucideIcon } from "lucide-react";
 
-export const InProgressTag = () => {
+import { cn } from "@src/lib/utils";
+
+interface BaseTagProps {
+  type: "in-progress" | "completed" | "new";
+  label: string;
+  icon: LucideIcon;
+}
+const BaseTag = ({ type, label, icon: Icon }: BaseTagProps) => {
   const { t } = useTranslation();
 
   return (
-    <div className="absolute top-4 left-4 flex flex-row items-center gap-x-2 p-2 bg-primary/70 rounded-lg z-10 shadow-sm">
-      <Loader className="w-3 h-3" aria-hidden />
-      <p className="text-[10px] font-medium">{t("projects.tags.0")}</p>
+    <div
+      className={cn(
+        "absolute top-4 left-4 flex flex-row items-center gap-x-2 px-4 py-2 rounded-xl z-10",
+        {
+          "bg-primary/70": type === "in-progress",
+          "bg-projects/70": type === "completed",
+          "bg-graduation/70": type === "new",
+        },
+      )}
+    >
+      <Icon className="size-4" aria-hidden />
+      <p className="text-xs font-medium">{t(label)}</p>
     </div>
   );
 };
 
-export const CompletedTag = () => {
-  const { t } = useTranslation();
+export const InProgressTag = () => (
+  <BaseTag type="in-progress" label="projects.tags.0" icon={Loader} />
+);
 
-  return (
-    <div className="absolute top-4 left-4 flex flex-row items-center gap-x-2 p-2 bg-projects/70 rounded-lg z-10 shadow-sm">
-      <CheckCircle2 className="w-3 h-3" aria-hidden />
-      <p className="text-[10px] font-medium">{t("projects.tags.1")}</p>
-    </div>
-  );
-};
+export const CompletedTag = () => (
+  <BaseTag type="completed" label="projects.tags.1" icon={CheckCircle2} />
+);
 
-export const NewTag = () => {
-  const { t } = useTranslation();
-
-  return (
-    <div className="absolute top-4 left-4 flex flex-row items-center gap-x-2 p-2 bg-graduation/70 rounded-lg z-10 shadow-sm">
-      <BadgePlus className="w-3 h-3" aria-hidden />
-      <p className="text-[10px] font-medium">{t("projects.tags.2")}</p>
-    </div>
-  );
-};
+export const NewTag = () => (
+  <BaseTag type="new" label="projects.tags.2" icon={BadgePlus} />
+);

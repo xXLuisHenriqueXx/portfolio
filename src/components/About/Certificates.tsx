@@ -1,92 +1,40 @@
-import { useState } from "react";
-import { tv } from "tailwind-variants";
-import { AnimatePresence, motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 
-import SpotlightCard from "../SpotlightCard";
-import CertificateInfo from "./CertificateInfo";
+import SpotlightCard from "@src/components/ui/SpotlightCard";
 
-import { aboutData } from "@src/static/AboutData";
+import type { AboutCertificate } from "@src/static/data/About.data";
 
-const certificatesStyles = tv({
-  slots: {
-    container: "flex flex-col gap-y-2",
-    containerContent: "grid grid-cols-3 gap-4",
-    containerItem:
-      "relative flex flex-1 flex-col items-center justify-center h-32  xl:h-44 bg-background rounded-xl cursor-pointer hover:scale-[101%] transition-all duration-300",
-    containerAnimation:
-      "absolute inset-0 flex items-center justify-center backface-hidden",
-    imageCertificate: "w-24 h-24 xl:w-36 xl:h-36 object-contain",
-    title: "text-sm font-semibold",
-  },
-});
+interface Props {
+  items: AboutCertificate[];
+}
 
-const {
-  container,
-  containerContent,
-  containerItem,
-  containerAnimation,
-  imageCertificate,
-  title,
-} = certificatesStyles();
-
-const Certificates = () => {
+const Certificates = ({ items }: Props) => {
   const { t } = useTranslation();
 
-  const [selectedCertificate, setSelectedCertificate] = useState<number | null>(
-    null
-  );
-
-  const handleClick = (index: number) => {
-    setSelectedCertificate((prev) => (prev === index ? null : index));
-  };
-
   return (
-    <div className={container()}>
-      <h2 className={title()}>{t("about.certificates.title")}</h2>
-      <div className={containerContent()}>
-        {aboutData.certificates.map(
-          ({ image, name, duration, description }, index) => {
-            const isSelected = selectedCertificate === index;
+    <div className="flex flex-col gap-y-2">
+      <h2 className="text-sm font-semibold">{t("about.certificates.title")}</h2>
 
-            return (
-              <div key={name} onClick={() => handleClick(index)}>
-                <SpotlightCard
-                  className={containerItem()}
-                  spotlightColor="rgba(123, 83, 238, 0.2)"
-                >
-                  <AnimatePresence mode="wait">
-                    <motion.button
-                      key={!isSelected ? "back" : "front"}
-                      className={containerAnimation()}
-                      initial={{ rotateY: isSelected ? 180 : 0, opacity: 0 }}
-                      animate={{ rotateY: 0, opacity: 1 }}
-                      exit={{ rotateY: -180, opacity: 0 }}
-                      transition={{ duration: 0.25, ease: "linear" }}
-                      role="button"
-                    >
-                      {!isSelected ? (
-                        <img
-                          className={imageCertificate()}
-                          src={image}
-                          alt={name}
-                          loading="lazy"
-                        />
-                      ) : (
-                        <CertificateInfo
-                          name={t(name)}
-                          duration={duration}
-                          description={t(description)}
-                        />
-                      )}
-                    </motion.button>
-                  </AnimatePresence>
-                </SpotlightCard>
-              </div>
-            );
-          }
-        )}
-      </div>
+      <ul className="grid grid-cols-3 gap-2">
+        {items.map(({ image, name, duration, description }) => (
+          <SpotlightCard className="group relative flex flex-1 flex-col items-center justify-center aspect-square">
+            <img
+              className="absolute inset-0 w-[90%] h-[90%] m-auto object-cover -z-1"
+              src={image}
+              alt={name}
+              loading="lazy"
+            />
+
+            <div className="absolute inset-0 flex flex-col items-center justify-center gap-y-2 bg-background/90 backdrop-blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-center">
+              <h3 className="text-xs md:text-sm font-bold text-secondary">
+                {t(name)}
+              </h3>
+              <p className="text-[10px] md:text-xs text-nowrap">{duration}</p>
+              <p className="text-[10px] md:text-xs">{t(description)}</p>
+            </div>
+          </SpotlightCard>
+        ))}
+      </ul>
     </div>
   );
 };
