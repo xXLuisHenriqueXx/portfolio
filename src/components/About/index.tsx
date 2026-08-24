@@ -1,7 +1,6 @@
 import { useTranslation } from "react-i18next";
 
 import { Separator } from "@src/components/ui/Separator";
-import SlideIn from "@src/components/ui/animations/SlideIn";
 import FadeIn from "@src/components/ui/animations/FadeIn";
 import Text from "./Text";
 import Ticket from "./Ticket";
@@ -20,17 +19,17 @@ const About = () => {
       className="relative grid grid-cols-1 lg:grid-cols-2 place-items-center self-center gap-8 w-full max-w-7xl py-20 px-6"
       aria-label={t("about-a11y.section")}
     >
-      <Text items={paragraphs} />
+      <FadeIn className="flex flex-1 flex-col gap-y-8">
+        <Text items={paragraphs} />
+      </FadeIn>
 
       <Separator className="lg:hidden" aria-hidden />
 
-      <SlideIn direction="right">
-        <FadeIn className="flex flex-1 flex-col gap-y-8">
-          <Ticket items={ticket} />
-          <Tools items={tools} />
-          <Certificates items={certificates} />
-        </FadeIn>
-      </SlideIn>
+      <FadeIn className="flex flex-1 flex-col gap-y-8">
+        <Ticket items={ticket} />
+        <Tools items={tools} />
+        <Certificates items={certificates} />
+      </FadeIn>
     </section>
   );
 };
