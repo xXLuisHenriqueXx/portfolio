@@ -2,6 +2,7 @@ import type { PropsWithChildren } from "react";
 import { motion, type DOMMotionComponents } from "motion/react";
 
 type MotionTags = keyof DOMMotionComponents;
+
 interface Props extends PropsWithChildren {
   as?: MotionTags;
   delay?: number;
@@ -18,11 +19,18 @@ const SlideIn = ({
 }: Props) => {
   const Component = motion[as];
 
+  const x = direction === "left" ? -400 : 400;
+
   return (
     <Component
-      initial={{ translateX: direction === "left" ? -200 : 200 }}
-      whileInView={{ translateX: 0 }}
-      transition={{ duration: 0.5, type: "spring", delay }}
+      initial={{ x }}
+      animate={{ x: 0 }}
+      exit={{ x }}
+      transition={{
+        duration: 0.75,
+        type: "spring",
+        delay,
+      }}
       {...props}
     >
       {children}
