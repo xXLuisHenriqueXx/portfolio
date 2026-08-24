@@ -1,9 +1,9 @@
 import { useTranslation } from "react-i18next";
 import {
-  Expo,
   Fastify,
   Nestjs,
   Nextdotjs,
+  Nodedotjs,
   Postgresql,
   Prisma,
   React,
@@ -15,7 +15,6 @@ import Header from "@src/components/ui/Header";
 import { Separator } from "@src/components/ui/Separator";
 import { OrbitingCircles } from "@src/components/ui/OrbitingCircles";
 import FadeIn from "@src/components/ui/animations/FadeIn";
-import SlideIn from "@src/components/ui/animations/SlideIn";
 import FormEmail from "./FormEmail";
 import QuickAccessButtons from "./QuickAccessButtons";
 
@@ -37,10 +36,7 @@ const Contact = () => {
       />
 
       <FadeIn className="relative flex flex-row items-center justify-center gap-x-4 w-full max-w-5xl">
-        <SlideIn
-          className="relative flex flex-col items-center gap-4 w-full"
-          direction="left"
-        >
+        <div className="relative flex flex-col items-center gap-y-4 w-full">
           <FormEmail />
 
           <div className="flex flex-row items-center justify-center gap-x-2 w-1/4">
@@ -52,26 +48,25 @@ const Contact = () => {
           </div>
 
           <QuickAccessButtons items={buttons} />
-        </SlideIn>
+        </div>
 
-        <SlideIn
-          className="relative hidden lg:flex flex-col items-center justify-center w-full h-125 overflow-hidden"
-          direction="right"
-        >
-          <OrbitingCircles iconSize={36}>
+        <div className="relative hidden lg:flex flex-col items-center justify-center w-full h-125 overfl-yow-hidden">
+          <div className="absolute size-64 bg-primary/25 rounded-full animate-pulse blur-2xl"></div>
+
+          <OrbitingCircles iconSize={44} radius={200}>
             <React aria-hidden />
             <Typescript aria-hidden />
             <TailwindCss aria-hidden />
             <Nextdotjs aria-hidden />
-            <Expo aria-hidden />
+            <Nodedotjs aria-hidden />
           </OrbitingCircles>
-          <OrbitingCircles iconSize={32} radius={100} reverse speed={2}>
+          <OrbitingCircles iconSize={36} radius={120} reverse speed={2}>
             <Fastify />
             <Nestjs />
             <Postgresql />
             <Prisma />
           </OrbitingCircles>
-        </SlideIn>
+        </div>
       </FadeIn>
     </section>
   );
