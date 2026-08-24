@@ -1,4 +1,3 @@
-import { useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import {
   Expo,
@@ -22,35 +21,12 @@ import QuickAccessButtons from "./QuickAccessButtons";
 
 import { CONTACT_DATA } from "@src/static/data/Contact.data";
 
-interface Props {
-  setActiveScreen: (value: "contact") => void;
-}
-
-const Contact = ({ setActiveScreen }: Props) => {
+const Contact = () => {
   const { t } = useTranslation();
   const { buttons } = CONTACT_DATA;
 
-  const ref = useRef<HTMLDivElement | null>(null);
-
-  useEffect(() => {
-    const element = ref.current;
-    if (!element) return;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) setActiveScreen("contact");
-      },
-      { threshold: 0.5 },
-    );
-
-    observer.observe(element);
-
-    return () => observer.disconnect();
-  }, []);
-
   return (
     <section
-      ref={ref}
       id="contact"
       className="flex flex-col gap-y-8 items-center w-full py-20 px-6"
       aria-label={t("contact-a11y.section")}

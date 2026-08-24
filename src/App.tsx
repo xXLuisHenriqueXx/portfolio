@@ -1,33 +1,24 @@
-import { lazy, Suspense, useState } from "react";
-
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
-const About = lazy(() => import("./components/About"));
-const Skills = lazy(() => import("./components/Skills"));
-const Projects = lazy(() => import("./components/Projects"));
-const Contact = lazy(() => import("./components/Contact"));
+import About from "./components/About";
+import Skills from "./components/Skills";
+import Projects from "./components/Projects";
+import Contact from "./components/Contact";
 
-export type TActiveScreen =
-  | "home"
-  | "about"
-  | "skills"
-  | "projects"
-  | "contact";
+import { SECTION_IDS, useActiveSection } from "./hooks/useActiveSection";
 
 function App() {
-  const [activeScreen, setActiveScreen] = useState<TActiveScreen>("home");
+  const activeScreen = useActiveSection(SECTION_IDS);
 
   return (
     <main className={"flex flex-col min-w-full overflow-x-hidden"}>
       <Navbar activeScreen={activeScreen} />
-      <Home setActiveScreen={setActiveScreen} />
 
-      <Suspense fallback={null}>
-        <About setActiveScreen={setActiveScreen} />
-        <Skills setActiveScreen={setActiveScreen} />
-        <Projects setActiveScreen={setActiveScreen} />
-        <Contact setActiveScreen={setActiveScreen} />
-      </Suspense>
+      <Home />
+      <About />
+      <Skills />
+      <Projects />
+      <Contact />
     </main>
   );
 }

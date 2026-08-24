@@ -1,4 +1,3 @@
-import { useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
 
 import FadeIn from "@src/components/ui/animations/FadeIn";
@@ -8,35 +7,12 @@ import UserActions from "./UserActions";
 
 import { HOME_DATA } from "@src/static/data/Home.data";
 
-interface Props {
-  setActiveScreen: (value: "home") => void;
-}
-
-const Home = ({ setActiveScreen }: Props) => {
+const Home = () => {
   const { t } = useTranslation();
   const { roles, buttons } = HOME_DATA;
 
-  const ref = useRef<HTMLDivElement | null>(null);
-
-  useEffect(() => {
-    const element = ref.current;
-    if (!element) return;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) setActiveScreen("home");
-      },
-      { threshold: 0.5 },
-    );
-
-    observer.observe(element);
-
-    return () => observer.disconnect();
-  }, []);
-
   return (
     <section
-      ref={ref}
       id={"home"}
       className="relative flex items-center justify-center w-full h-dvh py-20 px-6"
       aria-label={t("home-a11y.section")}
