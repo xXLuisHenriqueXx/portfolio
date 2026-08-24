@@ -1,26 +1,51 @@
-import { type PropsWithChildren } from "react";
-import { type DOMMotionComponents, motion } from "motion/react";
+import type { PropsWithChildren } from "react";
+import {
+  motion,
+  useReducedMotion,
+  type DOMMotionComponents,
+} from "motion/react";
 
-type MotionTags = keyof DOMMotionComponents;
+type MotionTag = keyof DOMMotionComponents;
+
 interface Props extends PropsWithChildren {
-  as?: MotionTags;
+  as?: MotionTag;
   delay?: number;
   className?: string;
 }
 
+const INITIAL = {
+  opacity: 0,
+  y: 16,
+};
+
+const VISIBLE = {
+  opacity: 1,
+  y: 0,
+};
+
 const FadeIn = ({ as = "div", delay = 0, children, ...props }: Props) => {
   const Component = motion[as];
+  const shouldReduceMotion = useReducedMotion();
 
   return (
     <Component
-      initial={{ opacity: 0, filter: "blur(5px)" }}
-      whileInView={{ opacity: 1, filter: "blur(0px)" }}
-      exit={{ opacity: 0, filter: "blur(5px)" }}
-      transition={{ duration: 0.5, delay }}
+      initial={shouldReduceMotion ? false : INITIAL}
+      whileInView={shouldReduceMotion ? undefined : VISIBLE}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={
+        shouldReduceMotion
+          ? undefined
+          : {
+              duration: 0.5,
+              delay,
+              ease: "easeOut",
+            }
+      }
       {...props}
     >
       {children}
     </Component>
   );
 };
+
 export default FadeIn;
