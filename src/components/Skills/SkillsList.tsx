@@ -23,9 +23,9 @@ const SkillsList = ({ data }: Props) => {
         <span className="w-full h-px bg-linear-to-r from-primary to-transparent" />
       </div>
 
-      <ul className="relative flex flex-row gap-x-2 overflow-x-auto">
+      <ul className="relative flex flex-row gap-x-2 overflow-x-auto overflow-y-hidden">
         {data.items.map((item, index) => (
-          <FadeIn key={item.name} className="flex" as="li" delay={index * 0.1}>
+          <FadeIn key={item.name} as="li" delay={index * 0.1}>
             <SkillCard data={item} />
           </FadeIn>
         ))}
