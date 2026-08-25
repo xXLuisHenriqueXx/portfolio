@@ -7,8 +7,8 @@ import Logo from "./Logo";
 import DesktopLinks from "./DesktopLinks";
 import UserActions from "./UserActions";
 
-import type { TActiveScreen } from "@src/App";
 import { NAVBAR_DATA } from "@src/static/data/Navbar.data";
+import type { TActiveScreen } from "../../hooks/useActiveSection";
 
 interface Props {
   activeScreen: TActiveScreen;

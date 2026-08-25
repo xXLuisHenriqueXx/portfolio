@@ -4,7 +4,7 @@ import { Button } from "@src/components/ui/Button";
 
 import type { NavbarLink } from "@src/static/data/Navbar.data";
 import { cn } from "@src/lib/utils";
-import type { TActiveScreen } from "@src/App";
+import type { TActiveScreen } from "../../hooks/useActiveSection";
 
 interface Props {
   items: NavbarLink[];
