@@ -1,69 +1,56 @@
-# React + TypeScript + Vite
+# Luis Henrique | Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<div style="display: inline_block">
+  <img src="https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/react/default.svg" alt="React" width="24" height="24" />
+  &nbsp;&nbsp;
+  <img src="https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/typescript/default.svg" alt="TypeScript" width="24" height="24" />
+  &nbsp;&nbsp;
+  <img src="https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/vite/default.svg" alt="Vite" width="24" height="24" />
+  &nbsp;&nbsp;
+  <img src="https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/tailwind-css/default.svg" alt="Tailwind CSS" width="24" height="24" />
+  &nbsp;&nbsp;
+  <img src="https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/motion/dark.svg" alt="Motion" width="24" height="24" />
+  &nbsp;&nbsp;
+  <img src="https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/lucide/default.svg" alt="Lucide" width="24" height="24" />
+  &nbsp;&nbsp;
+  <img src="https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/i18next/default.svg" alt="i18next" width="24" height="24" />
+</div>
+<br />
 
-Currently, two official plugins are available:
+**A personal developer portfolio showcasing projects, technical skills, experience, and professional background through a modern and interactive interface.**
+This project was built to present my work, development experience, and technical interests in a centralized place. It focuses on responsive design, smooth interactions, accessibility, and a clean user experience.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
+### Portfolio Sections
+- **Home** — Introduction and professional presentation.
+- **About** — Background, professional experience, tools, and certifications.
+- **Skills** — Overview of technical skills and technologies.
+- **Projects** — Project showcase with category filtering and detailed project modals.
+- **Contact** — Contact form and quick access to professional social networks.
 
-## Expanding the ESLint configuration
+### Interactive Experience
+- Active section detection for navigation synchronization.
+- Animated transitions and scroll-based visual effects.
+- Interactive technology logo carousel.
+- Project filtering by category.
+- Detailed project modal.
+- Responsive layouts for desktop and mobile devices.
+- Reusable and composable UI components.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Internationalization
+- Multi-language support using i18next and react-i18next.
+- Translation-based content management.
+- Localized interface content and accessibility labels.
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### Contact Form
+- Email integration through EmailJS.
+- Form state management with React Hook Form.
+- Schema validation using Zod.
+- Loading states and submission feedback.
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+## License
+This project is a personal portfolio developed by Luis Henrique. All rights to personal content, images, and branding are reserved by their respective owners.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+---
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+**Designed and developed by Luis Henrique.**
