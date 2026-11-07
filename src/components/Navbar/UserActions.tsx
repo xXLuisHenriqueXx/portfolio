@@ -3,8 +3,8 @@ import { Menu, Sun, X } from "lucide-react";
 
 import { Button } from "@src/components/ui/Button";
 
-import FlagBr from "@src/assets/icons/flag-br.svg";
-import FlagUs from "@src/assets/icons/flag-us.svg";
+import FlagBr from "@src/assets/icons/flag-br.webp";
+import FlagUs from "@src/assets/icons/flag-us.webp";
 
 interface Props {
   open: boolean;
