@@ -29,7 +29,7 @@ export interface ProjectButton {
 
 export interface ProjectTechnology {
   name: string;
-  icon: ComponentType<SvgIconProps & { variant: any }>;
+  icon: ComponentType<SvgIconProps & { variant?: "default" | "mono" }>;
 }
 
 export interface ProjectItem {

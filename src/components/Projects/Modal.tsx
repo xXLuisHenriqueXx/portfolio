@@ -14,7 +14,7 @@ import useDismiss from "@src/hooks/useDismiss";
 interface Props {
   open: boolean;
   onClose: () => void;
-  data: ProjectItem;
+  data?: ProjectItem;
 }
 
 const Modal = ({ open, onClose, data }: Props) => {
@@ -25,7 +25,7 @@ const Modal = ({ open, onClose, data }: Props) => {
 
   return (
     <AnimatePresence>
-      {open && (
+      {open && data && (
         <div
           ref={ref}
           className="fixed inset-0 z-50 flex items-center justify-center w-full min-h-dvh px-6 bg-black/75 backdrop-blur-xs outline-hidden"

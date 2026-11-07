@@ -6,7 +6,7 @@ import Filter from "./Filter";
 import ProjectsList from "./ProjectsList";
 import Modal from "./Modal";
 
-import { PROJECTS_DATA } from "@src/static/data/Projects.data";
+import { PROJECTS_DATA, type ProjectItem } from "@src/static/data/Projects.data";
 
 const Projects = () => {
   const { t } = useTranslation();
@@ -14,7 +14,7 @@ const Projects = () => {
 
   const [filter, setFilter] = useState<string>("");
   const [showModal, setShowModal] = useState<boolean>(false);
-  const [selectedProject, setSelectedProject] = useState<any>();
+  const [selectedProject, setSelectedProject] = useState<ProjectItem>();
 
   const filteredProjects = projects.filter((project) => {
     return project.type.toLowerCase().includes(filter.toLowerCase());
