@@ -1,29 +1,19 @@
 import * as React from "react";
+import { Input as InputPrimitive } from "@base-ui/react/input";
+import { cn } from "cn";
 
-import { cn } from "@src/lib/utils";
-
-type Props = React.ComponentProps<"input"> & {
-  label?: string;
-};
-
-const Input = React.forwardRef<HTMLInputElement, Props>(
-  ({ className, label, ...props }, ref) => {
-    return (
-      <div className="relative flex flex-col gap-y-1 w-full">
-        {label && <label className="pl-4 text-sm">{label}</label>}
-
-        <input
-          ref={ref}
-          className={cn(
-            "w-full min-h-12 px-4 bg-transparent border border-border focus-visible:border-primary aria-invalid:border-error rounded-full transition-all duration-300 text-sm placeholder:text-foreground/50 outline-none disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50",
-            className,
-          )}
-          {...props}
-        />
-      </div>
-    );
-  },
-);
-Input.displayName = "Input";
+function Input({ className, type, ...props }: React.ComponentProps<"input">) {
+  return (
+    <InputPrimitive
+      type={type}
+      data-slot="input"
+      className={cn(
+        "w-full min-w-0 min-h-12 px-4 bg-transparent border border-border focus-visible:border-primary rounded-full text-base transition-colors duration-300 outline-none placeholder:text-foreground/50 disabled:pointer-events-none disabled:cursor-not-allowed disabled:bg-input/50 disabled:opacity-50 aria-invalid:border-destructive",
+        className,
+      )}
+      {...props}
+    />
+  );
+}
 
 export { Input };
