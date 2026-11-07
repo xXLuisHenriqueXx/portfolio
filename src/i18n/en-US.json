@@ -156,11 +156,15 @@
       "placeholderName": "Your name ...",
       "message": "Message",
       "placeholderMessage": "Explain your proposal ...",
-      "send": "Send"
+      "send": "Send",
+      "opening": "Opening your email app..."
+    },
+    "email": {
+      "copy": "Copy email",
+      "copied": "Copied!"
     },
     "alert": {
-      "success": "Message sent successfully!",
-      "error": "There was an error sending the message, please try again later."
+      "success": "Opening your email app..."
     }
   },
 

@@ -2,7 +2,6 @@ import { useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
-import emailjs from "@emailjs/browser";
 import { useTranslation } from "react-i18next";
 
 import {
@@ -17,11 +16,13 @@ import { TextArea } from "@src/components/ui/TextArea";
 import { Button } from "@src/components/ui/Button";
 
 import { contactSchema } from "@src/schemas/ContactSchema";
+import { CONTACT_DATA } from "@src/static/data/Contact.data";
 
 const FormEmail = () => {
   const { t } = useTranslation();
 
   const [loading, setLoading] = useState(false);
+  const [feedback, setFeedback] = useState<string | null>(null);
 
   const form = useForm<z.infer<typeof contactSchema>>({
     resolver: zodResolver(contactSchema),
@@ -34,34 +35,20 @@ const FormEmail = () => {
 
   const onSubmit = (data: z.infer<typeof contactSchema>) => {
     setLoading(true);
+    setFeedback(t("contact.alert.success"));
 
-    const serviceId = import.meta.env.VITE_EMAIL_SERVICE_ID;
-    const templateId = import.meta.env.VITE_EMAIL_TEMPLATE_ID;
-    const publicKey = import.meta.env.VITE_EMAIL_PUBLIC_KEY;
+    const subject = encodeURIComponent(data.title);
+    const body = encodeURIComponent(
+      `${t("contact.form.name")}: ${data.name}\n\n${data.message}`,
+    );
 
-    if (!serviceId || !templateId || !publicKey) {
-      alert(t("contact.alert.error"));
-      return;
-    }
+    const mailtoUrl = `mailto:${CONTACT_DATA.email}?subject=${subject}&body=${body}`;
+    window.open(mailtoUrl, "_blank", "noopener,noreferrer");
 
-    const templateParams = {
-      title: data.title,
-      name: data.name,
-      message: data.message,
-    };
-
-    emailjs
-      .send(serviceId, templateId, templateParams, publicKey)
-      .then(() => {
-        alert(t("contact.alert.success"));
-        form.reset();
-      })
-      .catch((error) => {
-        console.log(t("contact.alert.error"), error);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
+    form.reset();
+    setTimeout(() => {
+      setLoading(false);
+    }, 1000);
   };
 
   return (
@@ -125,6 +112,12 @@ const FormEmail = () => {
             )}
           />
 
+          {feedback && (
+            <p className="text-sm text-center text-foreground/80" role="status">
+              {feedback}
+            </p>
+          )}
+
           <Button
             className="w-full"
             variant="gradient"
@@ -132,7 +125,7 @@ const FormEmail = () => {
             loading={loading}
             disabled={loading}
           >
-            {t("contact.form.send")}
+            {loading ? t("contact.form.opening") : t("contact.form.send")}
           </Button>
         </form>
       </Form>
