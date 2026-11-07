@@ -1,4 +1,6 @@
+import { useState } from "react";
 import { useTranslation } from "react-i18next";
+import { Check, Copy, Mail } from "lucide-react";
 import {
   Fastify,
   Nestjs,
@@ -12,6 +14,7 @@ import {
 } from "@thesvg/react";
 
 import Header from "@src/components/ui/Header";
+import { Button } from "@src/components/ui/Button";
 import { Separator } from "@src/components/ui/Separator";
 import { OrbitingCircles } from "@src/components/ui/OrbitingCircles";
 import FadeIn from "@src/components/ui/animations/FadeIn";
@@ -22,7 +25,14 @@ import { CONTACT_DATA } from "@src/static/data/Contact.data";
 
 const Contact = () => {
   const { t } = useTranslation();
-  const { buttons } = CONTACT_DATA;
+  const { email, buttons } = CONTACT_DATA;
+  const [copied, setCopied] = useState(false);
+
+  const handleCopyEmail = async () => {
+    await navigator.clipboard.writeText(email);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
 
   return (
     <section
@@ -38,6 +48,33 @@ const Contact = () => {
       <FadeIn className="relative flex flex-row items-center justify-center gap-x-4 w-full max-w-5xl">
         <div className="relative flex flex-col items-center gap-y-4 w-full">
           <FormEmail />
+
+          <div className="flex flex-row items-center justify-between gap-x-2 w-full px-4 py-2 border border-border rounded-full bg-background/50">
+            <div className="flex items-center gap-x-2 min-w-0">
+              <Mail className="size-4 shrink-0 text-foreground/70" aria-hidden />
+              <span className="text-sm truncate select-all">{email}</span>
+            </div>
+
+            <Button
+              type="button"
+              variant="ghost"
+              className="h-8 px-3 text-xs shrink-0"
+              onClick={handleCopyEmail}
+              aria-label={t("contact.email.copy")}
+            >
+              {copied ? (
+                <>
+                  <Check className="size-4" aria-hidden />
+                  {t("contact.email.copied")}
+                </>
+              ) : (
+                <>
+                  <Copy className="size-4" aria-hidden />
+                  {t("contact.email.copy")}
+                </>
+              )}
+            </Button>
+          </div>
 
           <div className="flex flex-row items-center justify-center gap-x-2 w-1/4">
             <Separator />

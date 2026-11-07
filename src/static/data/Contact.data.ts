@@ -3,11 +3,12 @@ import { Github, Linkedin, Whatsapp, type SvgIconProps } from "@thesvg/react";
 
 export interface ContactButton {
   name: string;
-  icon: ComponentType<SvgIconProps & { variant: any }>;
+  icon: ComponentType<SvgIconProps & { variant?: "mono" }>;
   href: string;
 }
 
 interface ContactData {
+  email: string;
   buttons: ContactButton[];
 }
 
@@ -15,6 +16,7 @@ const phoneNumber = import.meta.env.VITE_PHONE_NUMBER;
 const message = `Olá, gostaria de entrar em contato para contratar seus serviços de desenvolvimento.`;
 
 export const CONTACT_DATA: ContactData = {
+  email: "luishenri567@gmail.com",
   buttons: [
     {
       name: "GitHub",

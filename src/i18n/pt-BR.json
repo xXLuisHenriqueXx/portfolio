@@ -162,11 +162,15 @@
       "placeholderName": "Seu nome ...",
       "message": "Mensagem",
       "placeholderMessage": "Explique sua proposta ...",
-      "send": "Enviar"
+      "send": "Enviar",
+      "opening": "Abrindo seu aplicativo de e-mail..."
+    },
+    "email": {
+      "copy": "Copiar e-mail",
+      "copied": "Copiado!"
     },
     "alert": {
-      "success": "Mensagem enviada com sucesso!",
-      "error": "Ocorreu um erro, tente novamente."
+      "success": "Abrindo seu aplicativo de e-mail..."
     }
   },
 
