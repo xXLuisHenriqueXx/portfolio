@@ -24,7 +24,7 @@ const QuickAccessButtons = ({ items }: Props) => {
           aria-label={`${t("contact-a11y.goTo")} ${name}`}
         >
           <Button className="w-full" variant="outline">
-            <Icon variant="mono" aria-hidden /> {name}
+            <Icon aria-hidden /> {name}
           </Button>
         </a>
       ))}
