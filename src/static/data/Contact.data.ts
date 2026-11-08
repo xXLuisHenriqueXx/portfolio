@@ -3,7 +3,7 @@ import { Github, Linkedin, Whatsapp, type SvgIconProps } from "@thesvg/react";
 
 export interface ContactButton {
   name: string;
-  icon: ComponentType<SvgIconProps & { variant?: "mono" }>;
+  icon: ComponentType<SvgIconProps>;
   href: string;
 }
 

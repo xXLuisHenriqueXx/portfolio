@@ -123,7 +123,7 @@ const getGradientDirection = (position: string): string => {
   return directions[position] || "to bottom";
 };
 
-const debounce = <T extends (...a: any[]) => void>(fn: T, wait: number) => {
+const debounce = <T extends (...a: unknown[]) => void>(fn: T, wait: number) => {
   let t: ReturnType<typeof setTimeout>;
   return (...a: Parameters<T>) => {
     clearTimeout(t);
@@ -133,22 +133,23 @@ const debounce = <T extends (...a: any[]) => void>(fn: T, wait: number) => {
 const useResponsiveDimension = (
   responsive: boolean | undefined,
   config: Partial<GradualBlurProps>,
-  key: keyof GradualBlurProps,
-) => {
-  const [val, setVal] = useState<any>(config[key]);
+  key: "height" | "width",
+): string | undefined => {
+  const [val, setVal] = useState<string | undefined>(config[key]);
   useEffect(() => {
     if (!responsive) return;
     const calc = () => {
       const w = window.innerWidth;
-      let v: any = config[key];
+      let v: string | undefined = config[key];
       const cap = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
-      const k = cap(key as string);
-      if (w <= 480 && (config as any)["mobile" + k])
-        v = (config as any)["mobile" + k];
-      else if (w <= 768 && (config as any)["tablet" + k])
-        v = (config as any)["tablet" + k];
-      else if (w <= 1024 && (config as any)["desktop" + k])
-        v = (config as any)["desktop" + k];
+      const k = cap(key);
+      const responsiveConfig = config as Record<string, string | undefined>;
+      if (w <= 480 && responsiveConfig["mobile" + k])
+        v = responsiveConfig["mobile" + k];
+      else if (w <= 768 && responsiveConfig["tablet" + k])
+        v = responsiveConfig["tablet" + k];
+      else if (w <= 1024 && responsiveConfig["desktop" + k])
+        v = responsiveConfig["desktop" + k];
       setVal(v);
     };
     const deb = debounce(calc, 100);
@@ -156,7 +157,7 @@ const useResponsiveDimension = (
     window.addEventListener("resize", deb);
     return () => window.removeEventListener("resize", deb);
   }, [responsive, config, key]);
-  return responsive ? val : (config as any)[key];
+  return responsive ? val : config[key];
 };
 
 const useIntersectionObserver = (
@@ -296,7 +297,7 @@ const GradualBlur: React.FC<GradualBlurProps> = (props) => {
   }, [config, responsiveHeight, responsiveWidth, isVisible]);
 
   const { hoverIntensity, animated, onAnimationComplete, duration } =
-    config as any;
+    config;
   useEffect(() => {
     if (isVisible && animated === "scroll" && onAnimationComplete) {
       const t = setTimeout(
@@ -321,10 +322,10 @@ const GradualBlur: React.FC<GradualBlurProps> = (props) => {
   );
 };
 
-const GradualBlurMemo = React.memo(GradualBlur);
-GradualBlurMemo.displayName = "GradualBlur";
-(GradualBlurMemo as any).PRESETS = PRESETS;
-(GradualBlurMemo as any).CURVE_FUNCTIONS = CURVE_FUNCTIONS;
+Object.assign(GradualBlur, {
+  PRESETS,
+  CURVE_FUNCTIONS,
+});
 export default GradualBlur;
 
 const injectStyles = () => {

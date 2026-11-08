@@ -5,12 +5,11 @@ import { useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 
 import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormMessage,
-} from "@src/components/ui/Form";
+  Field,
+  FieldError,
+  FieldGroup,
+  FieldLabel,
+} from "@src/components/ui/Field";
 import { Input } from "@src/components/ui/Input";
 import { TextArea } from "@src/components/ui/TextArea";
 import { Button } from "@src/components/ui/Button";
@@ -24,7 +23,12 @@ const FormEmail = () => {
   const [loading, setLoading] = useState(false);
   const [feedback, setFeedback] = useState<string | null>(null);
 
-  const form = useForm<z.infer<typeof contactSchema>>({
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm<z.infer<typeof contactSchema>>({
     resolver: zodResolver(contactSchema),
     defaultValues: {
       title: "",
@@ -45,7 +49,7 @@ const FormEmail = () => {
     const mailtoUrl = `mailto:${CONTACT_DATA.email}?subject=${subject}&body=${body}`;
     window.open(mailtoUrl, "_blank", "noopener,noreferrer");
 
-    form.reset();
+    reset();
     setTimeout(() => {
       setLoading(false);
     }, 1000);
@@ -53,64 +57,43 @@ const FormEmail = () => {
 
   return (
     <div className="w-full">
-      <Form {...form}>
-        <form className="space-y-4" onSubmit={form.handleSubmit(onSubmit)}>
-          <FormField
-            control={form.control}
-            name="title"
-            render={({ field }) => (
-              <FormItem>
-                <FormControl>
-                  <Input
-                    label={t("contact.form.title")}
-                    placeholder={t("contact.form.placeholderTitle")}
-                    {...field}
-                    autoComplete="off"
-                    role="input"
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <FieldGroup className="space-y-4">
+          <Field data-invalid={!!errors.title}>
+            <FieldLabel htmlFor="title">{t("contact.form.title")}</FieldLabel>
+            <Input
+              id="title"
+              placeholder={t("contact.form.placeholderTitle")}
+              {...register("title")}
+              aria-invalid={!!errors.title}
+              autoComplete="off"
+            />
+            <FieldError errors={[errors.title]} />
+          </Field>
 
-          <FormField
-            control={form.control}
-            name="name"
-            render={({ field }) => (
-              <FormItem>
-                <FormControl>
-                  <Input
-                    label={t("contact.form.name")}
-                    placeholder={t("contact.form.placeholderName")}
-                    {...field}
-                    autoComplete="off"
-                    role="input"
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
+          <Field data-invalid={!!errors.name}>
+            <FieldLabel htmlFor="name">{t("contact.form.name")}</FieldLabel>
+            <Input
+              id="name"
+              placeholder={t("contact.form.placeholderName")}
+              {...register("name")}
+              aria-invalid={!!errors.name}
+              autoComplete="off"
+            />
+            <FieldError errors={[errors.name]} />
+          </Field>
 
-          <FormField
-            control={form.control}
-            name="message"
-            render={({ field }) => (
-              <FormItem>
-                <FormControl>
-                  <TextArea
-                    label={t("contact.form.message")}
-                    placeholder={t("contact.form.placeholderMessage")}
-                    {...field}
-                    autoComplete="off"
-                    role="input"
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
+          <Field data-invalid={!!errors.message}>
+            <FieldLabel htmlFor="message">{t("contact.form.message")}</FieldLabel>
+            <TextArea
+              id="message"
+              placeholder={t("contact.form.placeholderMessage")}
+              {...register("message")}
+              aria-invalid={!!errors.message}
+              autoComplete="off"
+            />
+            <FieldError errors={[errors.message]} />
+          </Field>
 
           {feedback && (
             <p className="text-sm text-center text-foreground/80" role="status">
@@ -122,13 +105,12 @@ const FormEmail = () => {
             className="w-full"
             variant="gradient"
             type="submit"
-            loading={loading}
             disabled={loading}
           >
             {loading ? t("contact.form.opening") : t("contact.form.send")}
           </Button>
-        </form>
-      </Form>
+        </FieldGroup>
+      </form>
     </div>
   );
 };

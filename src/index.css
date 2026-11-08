@@ -1,25 +1,18 @@
 @import "tailwindcss";
 @import "tw-animate-css";
-
 @plugin "tailwindcss-animate";
+@import "@fontsource-variable/inter";
 
 @custom-variant dark (&:is(.dark *));
 
-@font-face {
-  font-family: "Inter";
-  src: url("../src/assets/fonts/Inter_Font.ttf") format("truetype");
-  font-weight: 100 900;
-  font-style: normal;
-}
-
 @theme inline {
-  /* RADIUS */
+  --font-inter: "Inter Variable", sans-serif;
+
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
 
-  /* COLORS */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-primary: var(--primary);
@@ -31,9 +24,8 @@
   --color-card: var(--card);
   --color-border: var(--border);
   --color-ring: var(--ring);
+  --color-destructive: var(--destructive);
 
-  /* FONTS */
-  --font-inter: "Inter", sans-serif;
   --animate-orbit: orbit calc(var(--duration) * 1s) linear infinite;
   @keyframes orbit {
     0% {
@@ -64,6 +56,7 @@
   --card: rgb(203, 195, 228);
   --border: rgba(123, 83, 238, 0.1);
   --ring: rgba(123, 83, 238, 0.1);
+  --destructive: rgba(176, 0, 32, 1);
 }
 
 .dark {
@@ -80,6 +73,7 @@
   --card: rgb(29, 26, 40);
   --border: rgba(123, 83, 238, 0.25);
   --ring: rgba(123, 83, 238, 0.25);
+  --destructive: rgba(207, 102, 121, 1);
 }
 
 @layer base {

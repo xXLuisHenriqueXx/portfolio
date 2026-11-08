@@ -1,26 +1,22 @@
-import * as React from "react";
-import { Slot } from "@radix-ui/react-slot";
+import { Button as ButtonPrimitive } from "@base-ui/react/button";
 import { cva, type VariantProps } from "class-variance-authority";
-import { Loader2 } from "lucide-react";
-
-import { cn } from "@src/lib/utils";
+import { cn } from "cn";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full text-sm font-medium hover:scale-101 transition-all duration-300 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 cursor-pointer",
+  "group/button inline-flex shrink-0 items-center justify-center border border-transparent rounded-full bg-clip-padding text-sm font-medium whitespace-nowrap transition-all duration-300 outline-none select-none active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg]:size-4",
   {
     variants: {
       variant: {
-        default: "bg-primary hover:bg-primary/90 shadow-sm",
-        outline:
-          "bg-background hover:bg-primary border border-border shadow-sm",
+        default: "bg-primary hover:bg-primary/90",
+        outline: "bg-background hover:bg-primary border-border",
         secondary:
-          "bg-secondary hover:bg-secondary/90 shadow-sm text-secondary-foreground",
+          "bg-secondary hover:bg-secondary/90 text-secondary-foreground",
         ghost: "hover:bg-primary/10 hover:text-primary",
         link: "text-primary underline-offset-4 hover:underline",
         gradient: "bg-linear-to-r from-primary to-secondary text-[#e1dcef]",
       },
       size: {
-        default: "h-12 px-4",
+        default: "gap-2 h-12 px-4",
         icon: "size-12",
       },
     },
@@ -31,40 +27,19 @@ const buttonVariants = cva(
   },
 );
 
-export interface ButtonProps
-  extends
-    React.ButtonHTMLAttributes<HTMLButtonElement>,
-    VariantProps<typeof buttonVariants> {
-  asChild?: boolean;
-  loading?: boolean;
+function Button({
+  className,
+  variant = "default",
+  size = "default",
+  ...props
+}: ButtonPrimitive.Props & VariantProps<typeof buttonVariants>) {
+  return (
+    <ButtonPrimitive
+      data-slot="button"
+      className={cn(buttonVariants({ variant, size, className }))}
+      {...props}
+    />
+  );
 }
-
-const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  (
-    {
-      className,
-      variant,
-      size,
-      asChild = false,
-      loading = false,
-      children,
-      ...props
-    },
-    ref,
-  ) => {
-    const Comp = asChild ? Slot : "button";
-
-    return (
-      <Comp
-        className={cn(buttonVariants({ variant, size, className }))}
-        ref={ref}
-        {...props}
-      >
-        {loading ? <Loader2 className="animate-spin" /> : children}
-      </Comp>
-    );
-  },
-);
-Button.displayName = "Button";
 
 export { Button, buttonVariants };

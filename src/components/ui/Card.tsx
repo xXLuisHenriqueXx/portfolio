@@ -1,17 +1,17 @@
 import * as React from "react";
+import { cn } from "cn";
 
-import { cn } from "@src/lib/utils";
-
-const Card = React.forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
->(({ className, ...props }, ref) => (
-  <div
-    ref={ref}
-    className={cn("p-4 md:p-8 rounded-4xl border bg-card", className)}
-    {...props}
-  />
-));
-Card.displayName = "Card";
+function Card({ className, ...props }: React.ComponentProps<"div">) {
+  return (
+    <div
+      data-slot="card"
+      className={cn(
+        "group/card flex flex-col gap-2 p-4 md:p-8 bg-card rounded-4xl overflow-hidden",
+        className,
+      )}
+      {...props}
+    />
+  );
+}
 
 export { Card };

@@ -49,7 +49,7 @@ import {
 
 export interface SkillItem {
   name: string;
-  icon: ComponentType<SvgIconProps & { variant: any }>;
+  icon: ComponentType<SvgIconProps & { variant?: "default" | "mono" }>;
   tag: FC;
 }
 
