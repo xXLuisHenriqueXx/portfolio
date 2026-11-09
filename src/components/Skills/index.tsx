@@ -20,10 +20,7 @@ const Skills = () => {
         description={t("skills.header.description")}
       />
 
-      <FadeIn
-        className="flex flex-col items-center gap-y-8 w-full max-w-4xl"
-        as="ul"
-      >
+      <FadeIn className="flex flex-col items-center gap-y-8 w-full max-w-4xl">
         {SKILLS_DATA.map((skill) => (
           <SkillsList key={skill.title} data={skill} />
         ))}

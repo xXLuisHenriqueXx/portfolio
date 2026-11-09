@@ -15,14 +15,20 @@ const Certificates = ({ items }: Props) => {
     <div className="flex flex-col gap-y-2">
       <h2 className="text-sm font-semibold">{t("about.certificates.title")}</h2>
 
-      <ul className="grid grid-cols-3 gap-2">
+      <div className="grid grid-cols-3 gap-2">
         {items.map(({ image, name, duration, description }) => (
-          <SpotlightCard className="group relative flex flex-1 flex-col items-center justify-center aspect-square">
+          <SpotlightCard
+            key={name}
+            className="group relative flex flex-1 flex-col items-center justify-center aspect-square"
+          >
             <img
               className="absolute inset-0 w-[90%] h-[90%] m-auto object-cover -z-1"
               src={image}
-              alt={name}
+              alt={t(name)}
               loading="lazy"
+              decoding="async"
+              width={200}
+              height={200}
             />
 
             <div className="absolute inset-0 flex flex-col items-center justify-center gap-y-2 bg-background/90 backdrop-blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-center">
@@ -34,7 +40,7 @@ const Certificates = ({ items }: Props) => {
             </div>
           </SpotlightCard>
         ))}
-      </ul>
+      </div>
     </div>
   );
 };

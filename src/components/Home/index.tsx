@@ -1,6 +1,5 @@
 import { useTranslation } from "react-i18next";
 
-import FadeIn from "@src/components/ui/animations/FadeIn";
 import Background from "./Background";
 import Greetings from "./Greetings";
 import UserActions from "./UserActions";
@@ -19,13 +18,10 @@ const Home = () => {
     >
       <Background />
 
-      <FadeIn
-        className="flex flex-1 flex-col items-center gap-y-8"
-        as="article"
-      >
+      <article className="flex flex-1 flex-col items-center gap-y-8">
         <Greetings items={roles} />
         <UserActions items={buttons} />
-      </FadeIn>
+      </article>
     </section>
   );
 };

@@ -11,6 +11,11 @@ interface Props extends PropsWithChildren {
   as?: MotionTag;
   delay?: number;
   className?: string;
+  role?: string;
+  "aria-label"?: string;
+  "aria-labelledby"?: string;
+  "aria-describedby"?: string;
+  id?: string;
 }
 
 const INITIAL = {

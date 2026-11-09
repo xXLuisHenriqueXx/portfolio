@@ -30,8 +30,8 @@ const Navbar = ({ activeScreen }: Props) => {
 
   return (
     <FadeIn
+      as="nav"
       className="fixed top-0 left-0 right-0 flex flex-row justify-between items-center px-6 py-4 z-50"
-      aria-role="navigation"
       aria-label={t("navbar-a11y.main")}
     >
       <Logo data={logo} />

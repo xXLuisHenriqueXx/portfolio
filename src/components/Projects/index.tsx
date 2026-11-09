@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useState, lazy, Suspense } from "react";
 import { useTranslation } from "react-i18next";
 
 import Header from "@src/components/ui/Header";
 import Filter from "./Filter";
 import ProjectsList from "./ProjectsList";
-import Modal from "./Modal";
+
+const Modal = lazy(() => import("./Modal"));
 
 import { PROJECTS_DATA, type ProjectItem } from "@src/static/data/Projects.data";
 
@@ -39,11 +40,15 @@ const Projects = () => {
         setSelectedProject={setSelectedProject}
       />
 
-      <Modal
-        open={showModal}
-        onClose={() => setShowModal(false)}
-        data={selectedProject}
-      />
+      {showModal && (
+        <Suspense fallback={null}>
+          <Modal
+            open={showModal}
+            onClose={() => setShowModal(false)}
+            data={selectedProject}
+          />
+        </Suspense>
+      )}
     </section>
   );
 };

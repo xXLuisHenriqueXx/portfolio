@@ -46,6 +46,9 @@ const ProjectCard = ({ data, setShowModal, setSelectedProject }: Props) => {
               src={data.image}
               alt={`${t("projects-a11y.imageAlt")} ${data.title}`}
               loading="lazy"
+              decoding="async"
+              width={448}
+              height={288}
             />
           ) : (
             <div className="absolute inset-0 flex items-center justify-center w-full h-full bg-primary -z-1 opacity-50">

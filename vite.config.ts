@@ -7,6 +7,9 @@ import path from "path";
 export default defineConfig({
   base: "/portfolio/",
   plugins: [react(), tailwindcss()],
+  build: {
+    sourcemap: true,
+  },
   resolve: {
     alias: {
       "@src": path.resolve(import.meta.dirname, "./src"),

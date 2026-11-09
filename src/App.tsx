@@ -1,14 +1,16 @@
+import { lazy, Suspense } from "react";
 import LogoLoop from "./components/ui/LogoLoop";
 import GradualBlur from "./components/ui/GradualBlur";
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
-import About from "./components/About";
-import Skills from "./components/Skills";
-import Projects from "./components/Projects";
-import Contact from "./components/Contact";
 
 import { SECTION_IDS, useActiveSection } from "./hooks/useActiveSection";
 import { LOOP_LOGOS } from "./static/data/LogoLoop.data";
+
+const About = lazy(() => import("./components/About"));
+const Skills = lazy(() => import("./components/Skills"));
+const Projects = lazy(() => import("./components/Projects"));
+const Contact = lazy(() => import("./components/Contact"));
 
 function App() {
   const activeScreen = useActiveSection(SECTION_IDS);
@@ -29,10 +31,12 @@ function App() {
         />
       </div>
 
-      <About />
-      <Skills />
-      <Projects />
-      <Contact />
+      <Suspense fallback={null}>
+        <About />
+        <Skills />
+        <Projects />
+        <Contact />
+      </Suspense>
 
       <GradualBlur target="page" position="bottom" height="4rem" />
     </main>
