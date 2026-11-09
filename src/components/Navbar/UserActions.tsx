@@ -28,8 +28,8 @@ const UserActions = ({
         onClick={toggleLanguage}
         aria-label={
           isPortuguese
-            ? t("navbar-a11y.toggleLanguagePt")
-            : t("navbar-a11y.toggleLanguageEn")
+            ? `PT - ${t("navbar-a11y.toggleLanguagePt")}`
+            : `EN - ${t("navbar-a11y.toggleLanguageEn")}`
         }
       >
         <img
@@ -38,6 +38,9 @@ const UserActions = ({
           alt={
             isPortuguese ? t("navbar-a11y.flags.pt") : t("navbar-a11y.flags.us")
           }
+          width={16}
+          height={16}
+          decoding="async"
         />
         {isPortuguese ? "PT" : "EN"}
       </Button>

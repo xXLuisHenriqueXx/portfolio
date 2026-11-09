@@ -28,6 +28,9 @@ const Modal = ({ open, onClose, data }: Props) => {
       {open && data && (
         <div
           ref={ref}
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="project-modal-title"
           className="fixed inset-0 z-50 flex items-center justify-center w-full min-h-dvh px-6 bg-black/75 backdrop-blur-xs outline-hidden"
         >
           <ScaleIn className="relative z-60 flex flex-col gap-y-4 w-full max-w-xl p-4 bg-card rounded-4xl border border-border overflow-hidden">
@@ -37,6 +40,10 @@ const Modal = ({ open, onClose, data }: Props) => {
                   className="w-full h-full object-cover"
                   src={data.image}
                   alt={`${t("projects-a11y.imageAlt")} ${data.title}`}
+                  loading="lazy"
+                  decoding="async"
+                  width={640}
+                  height={360}
                 />
               ) : (
                 <div className="flex items-center justify-center w-full h-full bg-primary">
@@ -46,9 +53,9 @@ const Modal = ({ open, onClose, data }: Props) => {
             </div>
 
             <div className="flex flex-col items-center gap-y-1">
-              <h1 className="text-xl font-extrabold text-center">
+              <h2 id="project-modal-title" className="text-xl font-extrabold text-center">
                 {data.title}
-              </h1>
+              </h2>
               <div className="w-1/4 h-1 bg-linear-to-r from-primary to-secondary rounded-full" />
             </div>
 
